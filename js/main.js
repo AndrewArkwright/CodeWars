@@ -323,6 +323,7 @@ function oddOrEven(array) {
 /*
 Write a function that takes a single string (word) as argument. The function must return an ordered list containing the indexes of all capital letters in the string.
 */
+
 var capitals = function (word) {
   let array = []
   for (let i = 0; i < word.length; i++) {
@@ -331,4 +332,29 @@ var capitals = function (word) {
     }
   }
   return array
+}
+
+/*
+Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+*/
+//can use split() to make it into an array that you can filter or map
+
+function XO(str) {
+  str = str.toLowerCase()
+  let x = 0
+  let o = 0
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "x") {
+      x++
+    }
+    else if (str[i] === "o") {
+      o++
+    }
+  }
+  if (x === o) {
+    return true
+  }
+  else {
+    return false
+  }
 }

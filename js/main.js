@@ -399,4 +399,24 @@ function nbYear(p0, percent, aug, p) {
   return year
 }
 
+/*
+Several people are standing in a row divided into two teams.
+The first person goes into team 1, the second goes into team 2, the third goes into team 1, and so on.
+
+Task
+Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+
+Notes
+Array size is at least 1.
+All numbers will be positive.
+*/
+
+function rowWeights(array){
+  let teamOne = 0
+  let teamTwo = 0
+  array.map((value, count) => count % 2 == 0 ? teamOne += value : teamTwo += value)
+  let newArray = [teamOne, teamTwo]
+  return newArray
+}
+
 //in collections, scramble test, for loop for str2.length and then check  if str1.indexOf(str2[i]) == -1, then return false because the character is not their, else str2[i] = 0 and continue, cannot reuse letters

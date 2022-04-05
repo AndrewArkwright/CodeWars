@@ -419,4 +419,27 @@ function rowWeights(array){
   return newArray
 }
 
+/*
+Complete the solution so that the function will break up camel casing, using a space between words.
+
+Example
+"camelCasing"  =>  "camel Casing"
+*/
+
+function solution(string) {
+  if (string === "") {
+    return string
+  }
+  else {
+    for (let i = 0; i < string.length; i++) {
+      let upperCheck = string[i].toUpperCase()
+      if (string[i] === upperCheck) {
+        string = string.slice(0, i) + " " + string.slice(i, string.length)
+        i++ //to increment past the space
+      }
+    }
+    return string
+  }
+}
+
 //in collections, scramble test, for loop for str2.length and then check  if str1.indexOf(str2[i]) == -1, then return false because the character is not their, else str2[i] = 0 and continue, cannot reuse letters

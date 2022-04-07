@@ -442,4 +442,105 @@ function solution(string) {
   }
 }
 
-//in collections, scramble test, for loop for str2.length and then check  if str1.indexOf(str2[i]) == -1, then return false because the character is not their, else str2[i] = 0 and continue, cannot reuse letters
+//scramble,but it is taking too long, need to make it more efficient
+function scramble(str1, str2) {
+  if (str2.length > str1.length) {
+    return false //if there are not even enough characters in str1, return false
+  }
+  for (let i = 0; i < str2.length; i++) {
+    if (str1.indexOf(str2[i]) === -1) {
+      return false //no index of character in string2, return false
+    }
+    else {
+      str1 = str1.replace(str1[str1.indexOf(str2[i])], "")
+    }
+  }
+  return true
+}
+
+//keep last index for indexOf search, and use that for repeated letters
+//if value does not match, remove all values in array1, in order to do this, we have to compare each value from array 1 to see if matches a value in array 2, but we are doing the reverse right now
+function scramble(str1, str2) {
+  if (str2.length > str1.length) {
+    return false //if there are not even enough characters in str1, return false
+  }
+  let i = 0
+  while (str2.length !== 0 || str1.length !== 0)
+  {
+    if (str2.indexOf(str1[i]) == -1) { //if it is not found, remove all characters that = that on array 1
+      str1 = str1.replaceAll(str2[i], "")
+    }
+    else { //else it is found and we remove that character from array 2
+      str2 = str2.replace(str2[i], "")
+      if (str2.length === 0) {
+        return true
+      }
+    }
+    i++
+  }
+  return false
+}
+
+/*
+Step 1: Create a function called encode() to replace all the lowercase vowels in a given string with numbers according to the following pattern:
+
+a -> 1
+e -> 2
+i -> 3
+o -> 4
+u -> 5
+*/
+
+function encode(string) {
+  string = string.replaceAll("a", "1")
+  string = string.replaceAll("e", "2")
+  string = string.replaceAll("i", "3")
+  string = string.replaceAll("o", "4")
+  string = string.replaceAll("u", "5")
+  return string
+}
+
+function decode(string) {
+  string = string.replaceAll("1", "a")
+  string = string.replaceAll("2", "e")
+  string = string.replaceAll("3", "i")
+  string = string.replaceAll("4", "o")
+  string = string.replaceAll("5", "u")
+  return string
+}
+
+/*
+Trolls are attacking your comment section!
+
+A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+
+Your task is to write a function that takes a string and return a new string with all vowels removed.
+
+For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+
+Note: for this kata y isn't considered a vowel.
+*/
+//there are quicker ways to type it to get it to work, but I wanted to write one that would be effecient for long 
+function disemvowel(str) {
+  const vowelMap = new Map()
+  vowelMap.set("a" , "")
+  vowelMap.set("e" , "")
+  vowelMap.set("i" , "")
+  vowelMap.set("o" , "")
+  vowelMap.set("u" , "")
+  vowelMap.set("A" , "")
+  vowelMap.set("E" , "")
+  vowelMap.set("I" , "")
+  vowelMap.set("O" , "")
+  vowelMap.set("U" , "")
+  
+  
+  for (let i = 0; i < str.length; i++){
+    if (vowelMap.has(str[i]) === true) { //if there is a key in the object with value str[i]
+      //replace
+      str = str.substring(0, i) + str.substring(i+1, str.length) //could use the value of the key here, but not needed since we delete it
+      i--
+    }
+  }
+  return str;
+}

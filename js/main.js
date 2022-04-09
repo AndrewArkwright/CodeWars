@@ -544,3 +544,31 @@ function disemvowel(str) {
   }
   return str;
 }
+
+/*
+Return the number (count) of vowels in the given string.
+
+We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+The input string will only consist of lower case letters and/or spaces.
+*/
+
+function getCount(str) {
+  return (str.match(/[aeiou]/ig || [])).length; //need || [] for empty string / no vowels
+}
+//or
+function getCount1(str) {
+  var vowelsCount = 0;
+  const vowelMap = new Map()
+  vowelMap.set("a" , "")
+  vowelMap.set("e" , "")
+  vowelMap.set("i" , "")
+  vowelMap.set("o" , "")
+  vowelMap.set("u" , "")
+  for (let i = 0; i < str.length; i++){
+    if (vowelMap.has(str[i]) === true) { //if there is a key in the object with value str[i]
+      vowelsCount++
+    }
+  }
+  return vowelsCount;
+}

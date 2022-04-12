@@ -572,3 +572,54 @@ function getCount1(str) {
   }
   return vowelsCount;
 }
+
+/*
+This time no story, no theory. The examples below show you how to write function accum:
+
+Examples:
+accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt"
+*/
+
+function accum(string) {
+  let newString = ""
+  for (let i = 0; i < string.length; i++) {
+    newString += string[i].toUpperCase()
+    if (i !== 0) {
+      let multString = ""
+      for (let j = 0; j < i; j++) {
+        multString += string[i].toLowerCase() 
+      }
+      newString += multString
+    }
+    if ( i === string.length-1) {
+      return newString //do now so we dont add a - at the end
+    }
+    else {
+      newString += "-"
+    }
+  }
+}
+
+/*
+In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+*/
+
+function filter_list(l) {
+  return l.filter(value => Number.isInteger(value))
+}
+
+/*
+You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+*/
+
+function getMiddle(s)
+{
+  if (s.length % 2 === 0) {
+    return `${s[s.length/2-1]}${s[s.length/2]}`
+  }
+  else {
+    return `${s[Math.floor(s.length/2)]}`
+  }
+}

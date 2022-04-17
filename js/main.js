@@ -691,3 +691,31 @@ function isPangram(string){
   }
   return true
 }
+
+/*
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+Example
+"abcde" -> 0 # no characters repeats more than once
+"aabbcde" -> 2 # 'a' and 'b'
+"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+"indivisibility" -> 1 # 'i' occurs six times
+"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+"aA11" -> 2 # 'a' and '1'
+"ABBA" -> 2 # 'A' and 'B' each occur twice
+*/
+
+function duplicateCount(text){
+  let charCount = 0
+  let checkString = "abcdefghijklmnopqrstuvwxyz1234567890"
+  text = text.toLowerCase()
+  for (let i = 0; i < checkString.length; i++) {
+    if (text.indexOf(checkString.charAt(i)) != -1) {// if we find a character of it, then lets check for another
+      let lastIndex = text.indexOf(checkString.charAt(i)) //just to make it more readable
+      if (text.indexOf(checkString.charAt(i), lastIndex + 1) != -1) { //if it finds another of the same char
+        charCount++
+      }
+    }
+  }
+  return charCount
+}

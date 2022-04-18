@@ -719,3 +719,34 @@ function duplicateCount(text){
   }
   return charCount
 }
+
+/*
+Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+
+Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+
+Example:
+
+Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+*/
+
+//can probably do this better with arrays and slice
+
+String.prototype.toJadenCase = function () {
+  let copy = this.substring(0, this.length)
+  
+  let after = copy.substring(1, copy.length)
+  let changeChar = copy.charAt(0).toUpperCase()
+  copy = changeChar + after
+  
+  for (let i = 0; i < copy.length; i++) {
+    if (copy.charAt(i) === " ") {
+      let before = copy.substring(0, i+1)
+      after = copy.substring(i+2, copy.length)
+      changeChar = copy.charAt(i+1).toUpperCase()
+      copy = before + changeChar + after
+    }
+  }
+  return copy
+};

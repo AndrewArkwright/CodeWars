@@ -750,3 +750,38 @@ String.prototype.toJadenCase = function () {
   }
   return copy
 };
+
+/*
+Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
+
+For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
+
+[10, 343445353, 3453445, 3453545353453] should return 3453455.
+*/
+
+function sumTwoSmallestNumbers(numbers) {  
+  let sortedNums = numbers.sort( (a,b) => a - b );
+  return sortedNums[0] + sortedNums[1];
+};
+
+
+/*
+Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+aka add them together, sort, and return with no duplicate characters
+
+const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('') //does the same thing, but shorter, did not write
+*/
+
+function longest(s1, s2) {
+  let bestString = s1 + s2
+  bestString = bestString.split("").sort().join("")
+  for (let i = 0; i < bestString.length; i++) {
+    if (bestString.lastIndexOf(bestString.charAt(i)) != bestString.indexOf(bestString.charAt(i))) {
+      //if duplicate
+      while (bestString.lastIndexOf(bestString.charAt(i)) != bestString.indexOf(bestString.charAt(i))) {
+        bestString = bestString.replace(bestString.charAt(i), "")
+      }
+    }
+  }
+  return bestString
+}

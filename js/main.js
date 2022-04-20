@@ -785,3 +785,56 @@ function longest(s1, s2) {
   }
   return bestString
 }
+
+/*
+Write Number in Expanded Form
+You will be given a number and you will need to return it as a string in Expanded Form. For example:
+
+expandedForm(12); // Should return '10 + 2'
+expandedForm(42); // Should return '40 + 2'
+expandedForm(70304); // Should return '70000 + 300 + 4'
+NOTE: All numbers will be whole numbers greater than 0.
+
+better code I didn't make
+const expandedForm = n => n.toString()
+                            .split("")
+                            .reverse()
+                            .map( (a, i) => a * Math.pow(10, i))
+                            .filter(a => a > 0)
+                            .reverse()
+                            .join(" + ");
+*/
+
+function expandedForm(num) {
+  let numArray = String(num).split("").map((num) => {
+    return Number(num)
+  })
+
+  let i = 1
+  let stringAnswer = ""
+  while (i < num) {
+    if (numArray[numArray.length-1] != 0) {
+      if (i === 1) {
+        //add first number if not 0
+        stringAnswer = `${numArray.pop() * i}`
+      }
+      else {
+        stringAnswer = `${numArray.pop() * i} + ` + stringAnswer
+      }
+    }
+    else {
+      if (i === 1) {
+        while (numArray[numArray.length - 1] === 0) { //remove all 0s if first number is a 0
+          numArray.pop() //pop all 0s
+          i *= 10 //increment so we start adding to the array properly once done
+        }
+        stringAnswer = `${numArray.pop() * i}`
+      }
+      else {
+        numArray.pop()
+      }
+    }
+    i *= 10
+  }
+  return stringAnswer
+}

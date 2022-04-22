@@ -846,3 +846,13 @@ Your task is to write a function maskify, which changes all but the last four ch
 */
 
 maskify = (cc) => cc.length < 5 ? cc : cc.split("").map((value, index, array) => index < array.length - 4 ? array[index] = "#" : array[index]).join("")
+
+/*
+Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+
+The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+*/
+
+isSquare = (n) => Math.sqrt(n) % 1 === 0 ? true : false

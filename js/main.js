@@ -906,18 +906,16 @@ Invalid smiley faces: ;( :> :} :]
 */
 
 function countSmileys(arr) {
+  //not by code, but also works, return arr.filter(x => /^[:;][-~]?[)D]$/.test(x)).length;
   let count = 0
-  arr.forEach((value, index) => {
+  arr.forEach(value => {
     if (value.charAt(0) === ":" || value.charAt(0) === ";") {
-      console.log("here1")
       if (value.charAt(1) === "-" || value.charAt(1) === "~") {
-        console.log("here2")
         if (value.charAt(2) === "D" || value.charAt(2) === "\)") {
           count++
         }
       }
       else if(value.charAt(1) === "D" || value.charAt(1) === "\)") {
-        console.log("here3")
         count++
       }
     }

@@ -874,3 +874,53 @@ function solution(number){
   }
   return sum
 }
+
+/*
+Create a function with two arguments that will return an array of the first (n) multiples of (x).
+
+Assume both the given number and the number of times to count will be positive numbers greater than 0.
+
+Return the results as an array (or list in Python, Haskell or Elixir).
+*/
+
+function countBy(x, n) {
+  let z = [];
+    for (let i = 1; i <= n; i++) {
+      z.push(i*x);
+    }
+  return z;
+}
+
+/*
+Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+
+Rules for a smiling face:
+
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned.
+
+Valid smiley face examples: :) :D ;-D :~)
+Invalid smiley faces: ;( :> :} :]
+*/
+
+function countSmileys(arr) {
+  let count = 0
+  arr.forEach((value, index) => {
+    if (value.charAt(0) === ":" || value.charAt(0) === ";") {
+      console.log("here1")
+      if (value.charAt(1) === "-" || value.charAt(1) === "~") {
+        console.log("here2")
+        if (value.charAt(2) === "D" || value.charAt(2) === "\)") {
+          count++
+        }
+      }
+      else if(value.charAt(1) === "D" || value.charAt(1) === "\)") {
+        console.log("here3")
+        count++
+      }
+    }
+  })
+  return count
+}

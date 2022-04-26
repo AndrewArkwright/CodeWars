@@ -922,3 +922,25 @@ function countSmileys(arr) {
   })
   return count
 }
+
+/*
+This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
+*/
+
+simpleMultiplication = (number) => number%2 === 0 ? number*8 : number*9;
+
+/*
+Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types.
+*/
+
+function findShort(s){
+  let smallest = 1000
+  s.split(" ").forEach(value => {
+    if (value.length < smallest) {
+      smallest = value.length
+    }
+  })
+  return smallest
+}

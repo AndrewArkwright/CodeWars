@@ -983,3 +983,60 @@ function sumArray(array) {
   if (array === null || array === undefined || array.length < 3) return 0
   return array.reduce((previous, current) => previous + current, 0) - Math.min(...array) - Math.max(...array)
 }
+
+/*
+Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
+
+Other code found online that works
+function validParentheses(parens){
+  var n = 0;
+  for (var i = 0; i < parens.length; i++) {
+    if (parens[i] == '(') n++;
+    if (parens[i] == ')') n--;
+    if (n < 0) return false; //when more closed and open, it returns false
+  }
+  
+  return n == 0;
+}
+*/
+
+function validParentheses(parens) {
+  if (parens.length === 0) return true
+  if (parens.length % 2 != 0) return false
+  
+  let open = 0, close = 0
+  for (let i = 0; i < parens.length; i++) {
+    if (parens.charAt(i) === "(") {
+      open++
+    }
+    else {
+      close++
+    }
+    if (close > open) { //if there are more close brackets than open currently
+      return false
+    }
+  }
+  let sorted = parens.split("").sort().join("")
+  if (sorted.charAt(sorted.length/2-1) === "(" && sorted.charAt(sorted.length/2) === ")") { //if there are an equal amount of "(" and ")"
+      return true
+  }
+  return false
+}
+
+/*
+Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+found another function that just used reduce a ^ b, works since XOR will return 0 for all even numbers and just leave the remaining number
+*/
+
+function findOdd(A) {
+  A.sort()
+  let keep
+  while (A.length % 2 != 0) {
+    keep = A[0] 
+    A = A.filter(value => value != keep)
+  }
+  return keep
+}

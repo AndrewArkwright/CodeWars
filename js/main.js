@@ -1028,7 +1028,7 @@ Given an array of integers, find the one that appears an odd number of times.
 
 There will always be only one integer that appears an odd number of times.
 
-found another function that just used reduce a ^ b, works since XOR will return 0 for all even numbers and just leave the remaining number
+found another function that just used reduce a ^ b, works since XOR will return 0 for all even numbers and just leave the remaining number since the previous was 0
 */
 
 function findOdd(A) {
@@ -1040,3 +1040,22 @@ function findOdd(A) {
   }
   return keep
 }
+
+/*
+Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+
+Examples:
+
+solution('abc', 'bc') // returns true
+solution('abc', 'd') // returns false
+*/
+
+solution = (str, ending) => str.substring(0, str.length-ending.length) + ending === str ? true : false
+
+/*
+Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+It should remove all values from list a, which are present in list b keeping their order.
+*/
+
+const arrayDiff = (a, b) => a.filter(value => !b.includes(value));

@@ -1048,6 +1048,8 @@ Examples:
 
 solution('abc', 'bc') // returns true
 solution('abc', 'd') // returns false
+
+Learned afterwards that string.endsWith() exists
 */
 
 solution = (str, ending) => str.substring(0, str.length-ending.length) + ending === str ? true : false
@@ -1059,3 +1061,21 @@ It should remove all values from list a, which are present in list b keeping the
 */
 
 const arrayDiff = (a, b) => a.filter(value => !b.includes(value));
+
+/*
+Digital root is the recursive sum of all the digits in a number.
+
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+
+Examples
+    16  -->  1 + 6 = 7
+
+Found online that there is another way to do it: return (n - 1) % 9 + 1;
+*/
+
+function digital_root(n) {
+  while (n > 9) {
+    n = Array.from(String(n)).reduce((previous, current) => Number(previous) + Number(current), 0)
+  }
+  return n
+}

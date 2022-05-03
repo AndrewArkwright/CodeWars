@@ -1109,3 +1109,33 @@ Example: The binary representation of 1234 is 10011010010, so the function shoul
 */
 
 const countBits = n => parseInt(n.toString(2).split("").reduce((a, b) => Number(a) + Number(b)))
+
+/*
+Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+*/
+
+function reverseWords(str) {
+  return str.split(" ").map(value => value.split("").reverse().join("")).join(" ")
+}
+
+/*
+Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
+
+Don't change the order of the elements that are left.
+*/
+
+function removeSmallest(numbers) {
+  let min = Math.min(...numbers)
+  let onlyOne = 0
+  let newArray = []
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] === min && onlyOne === 0) {
+      //found first min and don't add it
+      onlyOne++
+    }
+    else {
+      newArray.push(numbers[i])
+    }
+  }
+  return newArray
+}

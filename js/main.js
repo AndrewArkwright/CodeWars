@@ -1205,3 +1205,21 @@ function findOutlier(integers){
     }
   }
 }
+
+/*
+The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+Examples
+"din"      =>  "((("
+"recede"   =>  "()()()"
+"Success"  =>  ")())())"
+"(( @"     =>  "))((" 
+
+Found that you could also do return word.replace(/./g, m => word.indexOf(m) == word.lastIndexOf(m) ? '(' : ')');
+*/
+
+function duplicateEncode(word){
+  let answer = ""
+  word.toLowerCase().split("").forEach((value, index, array) => array.indexOf(value) === array.lastIndexOf(value) ? answer += '(' : answer += ")")
+  return answer
+}

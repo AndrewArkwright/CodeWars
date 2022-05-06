@@ -1223,3 +1223,45 @@ function duplicateEncode(word){
   word.toLowerCase().split("").forEach((value, index, array) => array.indexOf(value) === array.lastIndexOf(value) ? answer += '(' : answer += ")")
   return answer
 }
+
+/*
+In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
+*/
+
+const makeNegative = num => num <= 0 ? num : num * -1
+
+/*
+Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
+*/
+
+function dirReduc(arr){
+  for (let i = 0; i < arr.length; i++) {
+    if ((arr[i] === "NORTH" && arr[i+1] === "SOUTH") || (arr[i] === "SOUTH" && arr[i+1] === "NORTH")) {
+      arr[i] = 0
+      arr[i+1] = 0
+      arr = arr.filter(value => value != 0)
+      i -= 2    
+    }
+      else if ((arr[i] === "EAST" && arr[i+1] === "WEST") || (arr[i] === "WEST" && arr[i+1] === "EAST")) {
+      arr[i] = 0
+      arr[i+1] = 0
+      arr = arr.filter(value => value != 0)
+      i -= 2
+    }
+  }
+  return arr
+}
+
+/*
+In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+*/
+
+const dontGiveMeFive = (start, end) => {
+  let count = 0
+  for (let i = start; i <= end; i++) {
+    if (String(i).split("").map(value => value === "5" ? true : false).indexOf(true) === -1) {
+      count++
+    }
+  }
+  return count
+}

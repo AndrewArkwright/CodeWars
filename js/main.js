@@ -1254,6 +1254,7 @@ function dirReduc(arr){
 
 /*
 In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+Could have just compared i to !/5/.test(i)
 */
 
 const dontGiveMeFive = (start, end) => {
@@ -1264,4 +1265,58 @@ const dontGiveMeFive = (start, end) => {
     }
   }
   return count
+}
+
+/*
+You live in the city of Cartesia where all roads are laid out in a perfect grid. You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk. The city provides its citizens with a Walk Generating App on their phones -- everytime you press the button it sends you an array of one-letter strings representing directions to walk (eg. ['n', 's', 'w', 'e']). You always walk only a single block for each letter (direction) and you know it takes you one minute to traverse one city block, so create a function that will return true if the walk the app gives you will take you exactly ten minutes (you don't want to be early or late!) and will, of course, return you to your starting point. Return false otherwise.
+*/
+
+function isValidWalk(walk) {
+  if (walk.length != 10) {
+    return false
+  }
+  let n = 0, s = 0, e = 0, w = 0
+  walk.map(value => value === "n" ? n++ : undefined)
+  walk.map(value => value === "s" ? s++ : undefined)
+  walk.map(value => value === "e" ? e++ : undefined)
+  walk.map(value => value === "w" ? w++ : undefined)
+  if (n === s && e === w) {
+    return true
+  }
+  else {
+    return false
+  }
+  /*
+  This works as well, make sure to include the first if statement with this
+  for (let i = 0; i < walk.length; i++) {
+    if (walk[i] === "n") {
+      if (walk.indexOf("s") != -1) {
+        walk[i] = 0
+        walk[walk.indexOf("s")] = 0
+        walk = walk.filter(value => value != 0)
+        i--
+      }
+      else {
+        return false
+      }
+    }
+    else if (walk[i] === "e") {
+      if (walk.indexOf("w") != -1) {
+        walk[i] = 0
+        walk[walk.indexOf("w")] = 0
+        walk = walk.filter(value => value != 0)
+        i--
+      }
+      else {
+        return false
+      }
+    }
+  }
+  if (walk.length != 0) {
+    return false
+  }
+  else {
+    return true
+  }
+*/
 }

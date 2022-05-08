@@ -1320,3 +1320,59 @@ function isValidWalk(walk) {
   }
 */
 }
+
+/*
+  Given a number, determine if the number is odd or even and return "Even" or "Odd"
+*/
+
+function even_or_odd(number) {
+  if (number % 2 === 0) {
+    return "Even"
+  }
+  else {
+    return "Odd"
+  }
+}
+
+/*
+Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
+*/
+
+function getSum( a,b ) {
+  if (a === b) return a
+  if (a < b) {
+    let count = b
+    for (let i = a; i < b; i++) {
+    count += i
+    }
+    return count
+  }
+  else {
+    let count = a
+    for (let i = b; i < a; i++) {
+    count += i
+    }
+    return count
+  }
+}
+
+/*
+In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+If anything in the text isn't a letter, ignore it and don't return it.
+
+"a" = 1, "b" = 2, etc.
+
+Example
+alphabetPosition("The sunset sets at twelve o' clock.")
+Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" ( as a string )
+*/
+
+function alphabetPosition(text) {
+  let alphabet = [NaN, "a" , "b", "c", "d", "e", "f", "g" , "h", "i", "j", "k", "l", "m" , "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  let answer = []
+  text.toLowerCase().split(" ").join("").split("").forEach(value => alphabet.indexOf(value) != -1 ? answer.push(alphabet.indexOf(value)) : undefined)
+  return answer.join(" ")
+}

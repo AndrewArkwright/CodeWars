@@ -1391,3 +1391,313 @@ function moveZeros(arr) {
   }
   return arr
 }
+
+/*
+This time we want to write calculations using functions and get the results. Let's have a look at some examples:
+
+seven(times(five())); // must return 35
+four(plus(nine())); // must return 13
+eight(minus(three())); // must return 5
+six(dividedBy(two())); // must return 3
+Requirements:
+
+There must be a function for each number from 0 ("zero") to 9 ("nine")
+There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy
+Each calculation consist of exactly one operation and two numbers
+The most outer function represents the left operand, the most inner function represents the right operand
+Division should be integer division. For example, this should return 2, not 2.666666...:
+eight(dividedBy(three()));
+
+Another way to do it using recursion that I found, 
+function zero(func)   { return func ? func(0) : 0; };
+function one(func)    { return func ? func(1) : 1; };
+function two(func)    { return func ? func(2) : 2; };
+function three(func)  { return func ? func(3) : 3; };
+function four(func)   { return func ? func(4) : 4; };
+function five(func)   { return func ? func(5) : 5; };
+function six(func)    { return func ? func(6) : 6; };
+function seven(func)  { return func ? func(7) : 7; };
+function eight(func)  { return func ? func(8) : 8; };
+function nine(func)   { return func ? func(9) : 9; };
+
+function plus( b )      { return function( a ) { return a + b; }; };
+function minus( b )     { return function( a ) { return a - b; }; };
+function times( b )     { return function( a ) { return a * b; }; };
+function dividedBy( b ) { return function( a ) { return a / b; }; };
+*/
+
+function zero(array) {
+  if (array === undefined) {
+    let array = [0]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 0 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 0 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 0 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(0 / array[0])
+    }
+  }
+}
+
+function one(array) {
+  if (array === undefined) {
+    let array = [1]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 1 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 1 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 1 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(1 / array[0])
+    }
+  }
+}  
+
+function two(array) {
+  if (array === undefined) {
+    let array = [2]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 2 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 2 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 2 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(2 / array[0])
+    }
+  }
+}  
+
+function three(array) {
+  if (array === undefined) {
+    let array = [3]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 3 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 3 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 3 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(3 / array[0])
+    }
+  }
+}  
+
+function four(array) {
+  if (array === undefined) {
+    let array = [4]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 4 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 4 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 4 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(4 / array[0])
+    }
+  }
+}  
+
+function five(array) {
+  if (array === undefined) {
+    let array = [5]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 5 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 5 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 5 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(5 / array[0])
+    }
+  }
+}
+
+function six(array) {
+  if (array === undefined) {
+    let array = [6]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 6 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 6 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 6 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(6 / array[0])
+    }
+  }
+}  
+function seven(array) {
+  if (array === undefined) {
+    let array = [7]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 7 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 7 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 7 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(7 / array[0])
+    }
+  }
+}
+
+function eight(array) {
+  if (array === undefined) {
+    let array = [8]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 8 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 8 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 8 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(8 / array[0])
+    }
+  }
+}  
+
+function nine(array) {
+  if (array === undefined) {
+    let array = [9]
+    return array
+  }
+  else {
+    if (array[1] === "+") {
+        return 9 + array[0]
+    }
+    else if (array[1] === "-") {
+        return 9 - array[0]
+    }
+    else if (array[1] === "*") {
+        return 9 * array[0]
+    }
+    else if (array[1] === "/") {
+        return Math.floor(9 / array[0])
+    }
+  }
+}  
+
+function plus(array) {
+  array.push("+")
+  return array
+}
+function minus(array) {
+  array.push("-")
+  return array
+}
+function times(array) {
+  array.push("*")
+  return array
+}
+function dividedBy(array) {
+  array.push("/")
+  return array
+}
+
+/*
+Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+Examples
+"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+
+Saw someone else do
+return words.split(' ').sort(function(a, b){
+      return a.match(/\d/) - b.match(/\d/);
+   }).join(' ');
+*/
+
+function order(words){
+  let answer = []
+  words = words.split(" ")
+  let num = 1
+  for(let j = 0; j < words.length; j++) {
+    for (let i = 0; i < words.length; i++) {
+      if (words[i].includes(num) === true) {
+        answer.push(words[i])
+      }
+    }
+    num++
+  }
+  return answer.join(" ")
+}
+
+/*
+[0, 0, 1, 1, 2, 4, 7, 13, 24, ...]
+Well, you may have guessed it by now, but to be clear: you need to create a fibonacci function that given a signature array/list, returns the first n elements - signature included of the so seeded sequence.
+
+Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified ;)
+*/
+
+function tribonacci(signature,n){
+  let index = 0
+  for (let i = 0; i < n; i++) {
+    signature.push(signature[index] + signature[index+1] + signature[index+2])
+    index++
+  }
+  for (let i = 0; i < 3; i++) {
+    signature.pop()
+  }
+  return signature
+}

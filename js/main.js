@@ -1701,3 +1701,24 @@ function tribonacci(signature,n){
   }
   return signature
 }
+
+/*
+Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+For example:
+
+uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+
+Found that someone else did this: return [...iterable].filter((a, i) => a !== iterable[i-1])
+*/
+
+var uniqueInOrder=function(iterable){
+  if (typeof iterable === "string") {
+    iterable = iterable.split("")
+  }
+  if (iterable.length === 0) return iterable
+  let array = []
+  array.push(iterable[0])
+  iterable.map(value => value != array[array.length-1] ? array.push(value) : undefined)
+  return array
+}

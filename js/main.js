@@ -1796,3 +1796,38 @@ function digPow(n, p){
   }
   return answer
 }
+
+/*
+Given a list and a number, create a new list that contains each number of list at most N times, without reordering.
+For example if the input number is 2, and the input list is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+With list [20,37,20,21] and number 1, the result would be [20,37,21].
+
+One answer by another person:
+function deleteNth(arr,x) {
+  var cache = {};
+  return arr.filter(function(n) {
+    cache[n] = (cache[n]||0) + 1;
+    return cache[n] <= x;
+  });
+}
+*/
+
+function deleteNth(arr,n){
+  let count = 0
+  let prevIndex = 0
+  for (let i = 0; i < arr.length; i++) {
+    while(arr.indexOf(arr[i], prevIndex) != -1) {
+      prevIndex = arr.indexOf(arr[i], prevIndex) + 1
+      count++
+    }
+    if (count > n) {
+      for (let j = count; j > n; j--) {
+        arr[arr.lastIndexOf(arr[i])] = undefined
+      }
+      arr = arr.filter(value => value != undefined)
+    }
+    prevIndex = 0
+    count = 0
+  }
+  return arr
+}

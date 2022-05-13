@@ -1830,4 +1830,8 @@ function deleteNth(arr,n){
     count = 0
   }
   return arr
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4bff98b5cd1745c2f03bbf86eff68462fb957a28

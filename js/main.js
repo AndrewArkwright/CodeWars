@@ -1831,3 +1831,77 @@ function deleteNth(arr,n){
   }
   return arr
 }
+
+/*
+Mr. Scrooge has a sum of money 'P' that he wants to invest. Before he does, he wants to know how many years 'Y' this sum 'P' has to be kept in the bank in order for it to amount to a desired sum of money 'D'.
+
+The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
+
+Note to Tax: not the invested principal is taxed, but only the year's accrued interest
+*/
+
+function calculateYears(principal, interest, tax, desired) {
+  let years = 0
+  while (principal < desired) {
+    principal += principal * (interest-(interest * tax))
+    years++
+  }
+  return years
+}
+
+/*
+Build a pyramid-shaped tower given a positive integer number of floors. A tower block is represented with "*" character.
+
+For example, a tower with 3 floors looks like this:
+
+[
+  "  *  ",
+  " *** ", 
+  "*****"
+]
+
+Another way to do it that I found:
+function towerBuilder(nFloors) {
+  var tower = [];
+  for (var i = 0; i < nFloors; i++) {
+    tower.push(" ".repeat(nFloors - i - 1)
+             + "*".repeat((i * 2)+ 1)
+             + " ".repeat(nFloors - i - 1));
+  }
+  return tower;
+}
+*/
+
+function towerBuilder(nFloors) {
+  //prep
+  //parameter seems to only be a number and not 0, but not stated
+  //return is an array it seems and spaces are set to max number of * in the pyramid, assuming that it splits the pyramid
+  //examples
+  /*
+  we are given 6 as nFloors
+  1 - 1* and 10 spaces
+  2 - 3* and 8 spaces
+  3 - 5* and 6 spaces
+  4 - 7* and 4 spaces
+  5 - 9* and 2 spaces
+  6 - 11* and 0 spaces
+  n is the middle point on each row
+  */
+  //will need to find the max right off the bat to know how many spaces to put in and maybe replace the middle depending on the row
+  //n * 2 - 1 = number of *
+
+  let pyramid = []
+  for (let i = 0; i < nFloors; i++) {
+    let stars = "" //zero out each run
+    for (let k = 0; k < (i + 1) * 2 - 1; k++) {
+      stars += "*"
+    }
+    let spacesOnEachSide = ((nFloors * 2 - 1) - stars.length)/2
+    let stringSpaces = "" //zero out each run
+    for (let j = 0; j < spacesOnEachSide; j++) {
+      stringSpaces += " "
+    }
+    pyramid.push(stringSpaces + stars + stringSpaces)
+  }
+  return pyramid
+}

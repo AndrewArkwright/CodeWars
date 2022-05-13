@@ -1830,8 +1830,6 @@ function deleteNth(arr,n){
     count = 0
   }
   return arr
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ac053e07605d1f7bfb7fc592b2537645cca3729d
+//test
+//Not sure why it is blue now

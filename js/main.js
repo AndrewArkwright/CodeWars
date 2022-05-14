@@ -1905,3 +1905,20 @@ function towerBuilder(nFloors) {
   }
   return pyramid
 }
+
+/*
+Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
+
+Write a function which takes a list of strings and returns each line prepended by the correct number.
+
+The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+*/
+
+var number=function(array){
+  //PREP
+  //Parameter will always be an array, but may be empty
+  //Return will always be an array with  "${i+1}: " in front of each value
+  //Examples: ["a", "b", "c"]), ["1: a", "2: b", "3: c"]
+  //Pseudo - look at return for more info
+  return array.map((value, index) => value = `${index+1}: ` + value)
+}

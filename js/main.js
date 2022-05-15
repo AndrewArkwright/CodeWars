@@ -1922,3 +1922,44 @@ var number=function(array){
   //Pseudo - look at return for more info
   return array.map((value, index) => value = `${index+1}: ` + value)
 }
+
+/*
+You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return -1.
+
+Could have done this as well probably...
+forEach
+slice left.reduce
+slice right.reduce
+if equal, return index
+else - 1
+Saw other answers similar to the above that used findIndex() instead of forEach
+*/
+
+function findEvenIndex(arr) {
+  //PREP
+  //given an array of numbers that could be empty, including negative numbers
+  //return the index of which both sides of the array sum to the same number or -1 if it does not exist
+  // [1,2,3,4,3,2,1]),3    [1,2,3,4,5,6]),-1
+  
+  //while sum left side != sum right side && index(answer) < array.length
+  //sum left side
+  //sum right side
+  //increment index
+  let sumLeft = 1, sumRight = 0
+  let index = 0
+  while (sumLeft != sumRight && index <= arr.length) {
+    sumLeft = 0
+    sumRight = 0
+    //sum left
+    for(let i = 0; i < index; i++){
+      sumLeft += arr[i]
+    }
+    //sum right
+    for(let i = index + 1; i < arr.length; i++){
+      sumRight += arr[i]
+    }
+    index++
+  }
+  if (index - 1 === arr.length) {return -1}
+  else {return index - 1}
+}

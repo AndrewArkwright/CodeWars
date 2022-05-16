@@ -5,8 +5,8 @@ The JavaScript file in this repository contains all of my Codewars functions tha
 ![alt tag](https://global-uploads.webflow.com/62462834c60df92621c6b5be/626057205c2e23f53af70d01_Codewars%20Open%20Graph.png)
 
 ## How It's Made:
-**Tech used:** JavaScript
-Each problem has the Codewars problem in a comment block and some have some extra information noted in it about extra solutions or other related information regareding the question. After the comment block, is the code I submitted. Some have more than one solution that I made as well.
+**Tech used:** HTML, CSS, JavaScript
+I have a full website attached that has the HTML, CSS, and JavaScript I use for my Codewars. In the JavaScript file, each problem is in a comment block and some comment blocks have some extra information noted in it about extra solutions or other related information regareding the question. After the comment block, is the code I submitted. Some have more than one solution that I made as well.
 
 ## Lessons Learned:
 Doing these can become addicting. The more interesting or realistic questions are not usually the popular ones.

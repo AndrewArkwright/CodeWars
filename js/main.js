@@ -1963,3 +1963,53 @@ function findEvenIndex(arr) {
   if (index - 1 === arr.length) {return -1}
   else {return index - 1}
 }
+
+/*
+Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
+*/
+
+function lovefunc(flower1, flower2){
+  // PREP
+  //Parameters are numbers that are >= 0
+  //we return true or false depending on if one flower is odd and one flower is even
+  // 1, 4 = true, 2, 2 = false
+  if (flower1 % 2 === flower2 % 2) {return false}
+  else {return true}
+}
+
+/*
+A child is playing with a ball on the nth floor of a tall building. The height of this floor, h, is known.
+
+He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
+
+His mother looks out of a window 1.5 meters from the ground.
+
+How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing?
+
+Three conditions must be met for a valid experiment:
+Float parameter "h" in meters must be greater than 0
+Float parameter "bounce" must be greater than 0 and less than 1
+Float parameter "window" must be less than h.
+If all three conditions above are fulfilled, return a positive integer, otherwise return -1.
+
+Note:
+The ball can only be seen if the height of the rebounding ball is strictly greater than the window parameter.
+*/
+
+function bouncingBall(h,  bounce,  window) {
+  //PREP
+  //All numbers are floats. H is >= 1, bounce is how much it goes up by compared to original height and is between 0 and 1, window where mom is watching is < h
+  //return is how many times the ball will bounce UP AND DOWN until it is below window
+  // 3, .65, 1.5 -> 3,
+  //while h >= window, do math for ball, assign h as the new height. once out of the loop, return count of loops
+  if (bounce < 0 || bounce >= 1) {return -1}
+  if (window > h) {return -1}
+  if (h <= 0) {return -1}
+  
+  let count = 0
+  while (h > window) {
+    h *= bounce
+    count++
+  }
+  return count * 2 - 1
+}

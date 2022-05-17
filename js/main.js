@@ -2013,3 +2013,74 @@ function bouncingBall(h,  bounce,  window) {
   }
   return count * 2 - 1
 }
+
+/*
+You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+
+Complete the method which accepts such an array, and returns that single different number.
+
+The input array will always be valid! (odd-length >= 3)
+*/
+
+//PREP
+//Parameters is a non empty array of numbers with only one number being different
+//We return the numbers that is different in the array
+// [1, 1, 2] -> 2
+// sort the array and that will either put the number we want at the very beginning or end of the array, then we will check if array[1] is equal to one of the numbers since we know it is not the odd one out
+function stray(numbers) {
+	numbers.sort();
+	if (numbers[0]===numbers[1]) {
+	  return numbers[numbers.length-1];
+	}
+  else {
+	  return numbers[0];
+	}
+}
+
+/*
+Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+HH = hours, padded to 2 digits, range: 00 - 99
+MM = minutes, padded to 2 digits, range: 00 - 59
+SS = seconds, padded to 2 digits, range: 00 - 59
+The maximum time never exceeds 359999 (99:59:59)
+
+//remembered after that you can use padStart() to add padding instead
+*/
+
+function humanReadable (seconds) {
+  //PREP
+  //Parameter is a non negative integer
+  //We return a string with hours, minutes, and seconds
+  //90 -> 00:01:30
+  //i'm thinking of doing two while statements and doing while num > 60, minute++ and then doing the same thing for hours and then putting those into the string
+  
+  //convert seconds to hours, minutes, and seconds
+  let minutes = 0, hours = 0
+  while (seconds >= 60) {
+    seconds -= 60
+    minutes++
+  }
+  while (minutes >= 60) {
+    minutes -= 60
+    hours++
+  }
+  
+  //convert to string to prepare to return
+  seconds.toString()
+  minutes.toString()
+  hours.toString()
+
+  //if an answer is a single digit, we need to add a leading zero
+  if (seconds < 10) {
+    seconds = "0" + seconds 
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes 
+  }
+  if (hours < 10) {
+    hours = "0" + hours 
+  }
+  
+  return `${hours}:${minutes}:${seconds}`
+}

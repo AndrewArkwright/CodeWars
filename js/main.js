@@ -2090,6 +2090,7 @@ function humanReadable (seconds) {
 */
 
 function twiceAsOld(dadYearsOld, sonYearsOld) {
+  //Needed to append this one and the later one. Forgot to commit
   //PREP
   //parameters will be numbers >= 0
   //return a number, which is the number of years until father is twice the son's age

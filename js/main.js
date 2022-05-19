@@ -2084,3 +2084,56 @@ function humanReadable (seconds) {
   
   return `${hours}:${minutes}:${seconds}`
 }
+
+/*
+Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old).
+*/
+
+function twiceAsOld(dadYearsOld, sonYearsOld) {
+  //PREP
+  //parameters will be numbers >= 0
+  //return a number, which is the number of years until father is twice the son's age
+  // 36, 7 => 22
+  // i would double the son's age and then check if it is > or < dad's age. If older, return son - dad, else return dad - son
+  
+  return sonYearsOld * 2 > dadYearsOld ? sonYearsOld * 2 - dadYearsOld : dadYearsOld - sonYearsOld * 2
+}
+
+/*
+Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
+
+For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
+
+The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
+
+Based on: http://oj.leetcode.com/problems/two-sum/
+*/
+
+function twoSum(numbers, target) {
+  //PREP
+  //Parameters are an array and a number. Array will have at least two numbers. The number will always be a sum of two different numbers in the array
+  //we return the index of the two numbers in the array that add up to the targer and put it in an array
+  // [1,2,3], 4 => [0,2]
+  //I"m thinking of doing a for loop nested in a for loop and if they equal the target, return
+  
+  for(let i = 0; i < numbers.length; i++) {
+    for (let j = 1; j < numbers.length; j++) {
+      if (numbers[i] + numbers[j] === target) return [i, j]
+    }
+  }
+}
+
+/*
+Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+*/
+
+function pigIt(str){
+  //PREP
+  //we are giving a string, doesn't state if it could be empty
+  //we return a string. All but the first letter is moved behind the first letter and then you add "ay" at the end of each string
+  //('Pig latin is cool'),'igPay atinlay siay oolcay')
+  //get a substring of of the first char and the rest of the string, arrange them, and then add "ay" at the end. Do that for each word, which we can do by changing it to an array and doing map 
+  //However, if there is punctuation, we can determine if it is punctualtion using value.match and using a if statment
+  
+  return str.split(" ").map(value => value.match(/[a-z]/i) ? value = value.substring(1) + value.substring(0,1) + "ay" : value).join(" ")
+}

@@ -2137,3 +2137,38 @@ function pigIt(str){
   
   return str.split(" ").map(value => value.match(/[a-z]/i) ? value = value.substring(1) + value.substring(0,1) + "ay" : value).join(" ")
 }
+
+/*
+What is an anagram? Well, two words are anagrams of each other if they both contain the same letters. For example:
+
+'abba' & 'baab' == true
+
+'abba' & 'bbaa' == true
+
+'abba' & 'abbba' == false
+
+'abba' & 'abca' == false
+Write a function that will find all the anagrams of a word from a list. You will be given two inputs a word and an array with words. You should return an array of all the anagrams or an empty array if there are none. For example:
+
+anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa']
+
+anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', 'racer']
+
+anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
+Note for Go
+For Go: Empty string slice is expected when there are no anagrams found.
+*/
+
+function anagrams(word, words) {
+  //PREP
+  //We are given a string and an array of strings
+  //We return all of the strings in words that are anagrams of word
+  //('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa']
+  //first thought about looping through each word and checking index and removing it from the words string, but that would be overly complex
+  //instead thought about sorting each string and word to each string in words, would need a copy of the array to keep track of what the original string was and to return it
+  
+  let copy = [...words]
+  let answer = []
+  words = words.map((value, index) => value.split("").sort().join("") === word.split("").sort().join("") ? answer.push(copy[index]) : undefined)                  
+  return answer
+}

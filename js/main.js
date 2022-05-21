@@ -2172,3 +2172,32 @@ function anagrams(word, words) {
   words = words.map((value, index) => value.split("").sort().join("") === word.split("").sort().join("") ? answer.push(copy[index]) : undefined)                  
   return answer
 }
+
+/*
+The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
+
+Easy case is when the list is made up of only positive numbers and the maximum sum is the sum of the whole array. If the list is made up of only negative numbers, return 0 instead.
+
+Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
+*/
+
+var maxSequence = function(arr){
+  //prep
+  //parameter - array of numbers, can be all negative as well or an empty array
+  //return the max sum of any amount of numbers in a sequence
+  //([-2, 1, -3, 4, -1, 2, 1, -5, 4]), 6);
+  //What I'm thinking is setting maxVal to 0 and doing a nested for loop for each index and change max if we get a bigger number
+  
+  let max = 0 //may need to change
+  for (let i = 0; i < arr.length; i++) {
+    //where each sequence check starts
+    let temp = arr[i] //do this here so it resets temp each loop
+    if (temp > max) {max = temp}
+    for (let j = i+1; j < arr.length; j++) {
+      //start at i+1 so we don't grab i since we do in the above loop and so we don't check previous values
+      temp += arr[j]
+      if (temp > max) {max = temp}
+    }
+  }
+  return max
+}

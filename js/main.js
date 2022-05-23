@@ -2202,3 +2202,23 @@ var maxSequence = function(arr){
   }
   return max
 }
+
+/*
+You will be given an array of numbers.
+
+For each number in the array you will need to create an object.
+
+The object key will be the number, as a string. The value will be the corresponding character code, as a string.
+
+Return an array of the resulting objects.
+
+All inputs will be arrays of numbers. All character codes are valid lower case letters. The input array will not be empty.
+*/
+
+//Prep
+//parameter is an array of numbers that are all valid ASCII characters and the array will not be empty
+//We return an array of objects which contain one property. The property key is the value stored in the array and the value of it is that number converted to ASCII
+//[118,117,120]),[{'118':'v'}, {'117':'u'}, {'120':'x'}]
+//Since we are working with an array and making an object for each value, I want to use Array.forEach or Array.map, create the object for each one, and then return
+
+const numObj = s => s.map(value => obj = {[value] : String.fromCharCode(value)})

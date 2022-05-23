@@ -2222,3 +2222,29 @@ All inputs will be arrays of numbers. All character codes are valid lower case l
 //Since we are working with an array and making an object for each value, I want to use Array.forEach or Array.map, create the object for each one, and then return
 
 const numObj = s => s.map(value => obj = {[value] : String.fromCharCode(value)})
+
+/*
+You'll be passed an array of objects (list) - you must sort them in descending order based on the value of the specified property (sortBy).
+*/
+
+//PREP
+//sortBy parameter is either "a" or "b" to represent which key you want to sort by of the object. list is the array of objects, which can be empty, but will always have a and b as properties
+//Return the array of objects sorted. It is sorted by descending order so sort(b-a)
+/*
+  {"a": 1, "b": 3},
+  {"a": 3, "b": 2},
+  {"a": 2, "b": 40},
+  {"a": 4, "b": 12}
+]
+should return:
+
+[
+  {"a": 4, "b": 12},
+  {"a": 3, "b": 2},
+  {"a": 2, "b": 40},
+  {"a": 1, "b": 3}
+]
+*/
+// retur if "a", array.sort(second.a - first.a) else array.sort(second.b - first.b)
+
+const sortList = (sortBy, list) => sortBy === "a" ? list.sort((first, second) => second.a - first.a) : list.sort((first, second) => second.b - first.b)

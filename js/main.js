@@ -2248,3 +2248,64 @@ should return:
 // retur if "a", array.sort(second.a - first.a) else array.sort(second.b - first.b)
 
 const sortList = (sortBy, list) => sortBy === "a" ? list.sort((first, second) => second.a - first.a) : list.sort((first, second) => second.b - first.b)
+
+/*
+Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with all the even-indexed characters of S, this process should be repeated N times.
+
+Together with the encryption function, you should also implement a decryption function which reverses the process.
+
+If the string S is an empty value or the integer N is not positive, return the first argument without changes.
+*/
+
+function encrypt(text, n) {
+  //given a string and the number of times we need to encrypt/decrypt. string can be empty or null. number of times can be 0 or negative, in which we return just return text
+  //returning the string encrypted and decrypted
+  //encrypt("This is a test!", 1), "hsi  etTi sats!"
+  //for encrypt,loop for text.length and compare if odd or even, move to even and odd array, then add arrays together (odd first)
+  //for decrypt, do reverse
+  if (text === null) {return null}
+  let even = "", odd = ""
+  for(let j = 0; j < n; j++) {
+    for (let i = 0; i < text.length; i++) {
+      //do even
+      if (i % 2 === 0) {even += text.charAt(i)}
+      //do odd
+      else {odd += text.charAt(i)}
+    }
+    text = odd + even
+    odd = ""
+    even = ""
+  }
+  return text
+}
+
+function decrypt(encryptedText, n) {
+  console.log(encryptedText, n)
+  if (encryptedText === null) {return null}
+  if (encryptedText.length === 0 || n == 0) return encryptedText
+  let answer = ""
+  let even = Math.floor(encryptedText.length/2)
+  let odd = 0
+  for (let j = 0; j < n; j++) {
+      for (let i = 0; i < encryptedText.length; i++) {
+        //push even, then odd
+        console.log(encryptedText.charAt(i))
+        if(i % 2 === 0) {
+          answer += encryptedText.charAt(even)
+          even++
+          console.log("even")
+        }
+        else {
+          answer += encryptedText.charAt(odd)
+          odd++
+          console.log("odd")
+        }
+        console.log("Answer",answer)
+      }
+      encryptedText = answer
+      answer = ""
+      even = Math.floor(encryptedText.length/2)
+      odd = 0
+  }
+  return encryptedText
+}

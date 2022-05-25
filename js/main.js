@@ -2309,3 +2309,13 @@ function decrypt(encryptedText, n) {
   }
   return encryptedText
 }
+
+/*
+Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+*/
+
+//array is the only parameter and contains 4 numbers from 0 to 1. It does not state it will be more than 4 or less than 4
+//We return the binary combinations of the numbers as a base 2 number
+//([0,0,1,0]), 2);
+//arr.join to merge numbers and as thinking of using toString, but we would have to remove any leading 0's in order to make sure it is the correct number while parseInt lets us use a string.
+const binaryArrayToNumber = arr => parseInt(arr.join(""),2)

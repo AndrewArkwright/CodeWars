@@ -2319,3 +2319,21 @@ Given an array of ones and zeroes, convert the equivalent binary value to an int
 //([0,0,1,0]), 2);
 //arr.join to merge numbers and as thinking of using toString, but we would have to remove any leading 0's in order to make sure it is the correct number while parseInt lets us use a string.
 const binaryArrayToNumber = arr => parseInt(arr.join(""),2)
+
+/*
+In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
+*/
+
+function wave(str){
+  //for the parameters, we are given a string that could be empty and all characters will be lowercase. String can have spaces in it
+  //We return an array that is the same length as the stirng - the amount of whitespace
+  //hello => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+  //there may be a way to do it using an arrow function, but I'm thinking of just doing a nexted for loop to iterate the array and then capitalize the character. Then putting the answer into an array.
+  let result = []
+  for (let i = 0; i < str.length; i++) {
+    if (str.charAt(i) != " "){
+      result.push(str.split("").map((value, index) => index === i ? value.toUpperCase() : value).join(""))
+    }
+  }
+  return result
+}

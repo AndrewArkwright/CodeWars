@@ -2337,3 +2337,30 @@ function wave(str){
   }
   return result
 }
+
+/*
+Let's pretend your company just hired your friend from college and paid you a referral bonus. Awesome! To celebrate, you're taking your team out to the terrible dive bar next door and using the referral bonus to buy, and build, the largest three-dimensional beer can pyramid you can. And then probably drink those beers, because let's pretend it's Friday too.
+
+A beer can pyramid will square the number of cans in each level - 1 can in the top level, 4 in the second, 9 in the next, 16, 25...
+
+Complete the beeramid function to return the number of complete levels of a beer can pyramid you can make, given the parameters of:
+
+your referral bonus, and
+
+the price of a beer can
+*/
+
+var beeramid = function(bonus, price) {
+  //We are given a refural bonus as well as the price of beers, bonus can be negative
+  //we return the amount of pyrmaid levels he can make out of the beers he can buy, if any
+  //(11, 2), 2
+  //need to calculate how many beers he can buy, if any, and while you reduce the number of beers, you increase the level and then return level. Beers per level = level^level
+  if (bonus < price) {return 0}
+  let totalBeer = bonus/price
+  let level = 1
+  while (totalBeer >= level * level) {
+    totalBeer -= (level * level)
+    level++
+  }
+  return level-1
+}

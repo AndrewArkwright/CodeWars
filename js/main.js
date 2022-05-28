@@ -2364,3 +2364,30 @@ var beeramid = function(bonus, price) {
   }
   return level-1
 }
+
+/*
+There is a queue for the self-checkout tills at the supermarket. Your task is write a function to calculate the total time required for all the customers to check out!
+
+input
+customers: an array of positive integers representing the queue. Each integer represents a customer, and its value is the amount of time they require to check out.
+n: a positive integer, the number of checkout tills.
+output
+The function should return an integer, the total time required.
+*/
+
+function queueTime(customers, n) {
+  //We are given an array of customers and each value in the array is the amount of time it takes to do that person. Array queue can be empty. Also given n, the amount of tills available.
+  //We return the amount of time it takes to go through all customers
+  //([2,2,3,3,4,4], 2), 9);
+  //I think I can just do a array.reduce and then devide by N to get the result. Need to return the max amount of time if there are more tills than people. Will need to take care of empty array case as well
+  //Noticed that my method above basically made it so everyone had to wait in order for the next person to start. So if you had 6 people, one takes 10 minutes and the other 5 take 2 minutes, I would give 20 instead of 10
+  //Researched and found that one way you can do it is to just push the next person in the quickest till and add the values. Then once you are done with all the people you just return the lowest since that is the lowest time to finish all customers
+  let tills = Array(n).fill(0)
+  let max = customers.length
+  for (let i = 0; i < max; i++) {
+    let min = tills.indexOf(Math.min(...tills))
+    console.log(min, tills)
+    tills[min] += customers.shift()
+  }
+  return Math.max(...tills)
+}

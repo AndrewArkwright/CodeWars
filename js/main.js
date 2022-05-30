@@ -2391,3 +2391,23 @@ function queueTime(customers, n) {
   }
   return Math.max(...tills)
 }
+
+/*
+Count the number of divisors of a positive integer n.
+
+Random tests go up to n = 500000.
+*/
+
+function getDivisorsCnt(n){
+  //we are given n, which is a positive number
+  //we return a number, which is the amount of numbers that can go into n evenly
+  //12 --> 6 (1, 2, 3, 4, 6, 12)
+  //There could be a formula to more efficently check the number of numbers divisible by another number, but a for loop until n should be fine and we would check if it is divisible with no remaineder and then increment a counter
+  let count = 0
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) {
+      count++
+    }
+  }
+  return count
+}

@@ -2426,3 +2426,25 @@ function narcissistic(value) {
   //Since it is a number, we need to convert to string and if we convert to an array, we can map and reduce it to get the sum
   return String(value).split("").map(val => Number(val) ** String(value).length).reduce((prev, current) => prev + current, 0) === value ? true : false
 }
+
+/*
+There is an array with some numbers. All numbers are equal except for one. Try to find it!
+It’s guaranteed that array contains at least 3 numbers.
+The tests contain some very huge arrays, so think about performance.
+*/
+
+function findUniq(arr) {
+  //We are given an array of numbers where all but one is the same and the length is at least 3
+  //We return the number that is unqiue
+  //([ 1, 1, 1, 2, 1, 1 ]), 2);
+  //sorting the array and checking the last or first number is one way, but means going through the entire array every time. Thinking of checking if the first number or two is the answer and if not, then doing a while loop until it does not equal array[0] since we know it is not the answer
+  if (arr[0] != arr[1]) {
+    if (arr[0] === arr[2]) {return arr[1]}
+    else {return arr[0]}
+  }
+  let index = 2
+  while (arr[index] === arr[0]) {
+    index++
+  }
+  return arr[index]
+}

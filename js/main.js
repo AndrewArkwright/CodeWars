@@ -2448,3 +2448,50 @@ function findUniq(arr) {
   }
   return arr[index]
 }
+
+/*
+The Fibonacci numbers are the numbers in the following integer sequence (Fn):
+
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ...
+
+such as
+
+F(n) = F(n-1) + F(n-2) with F(0) = 0 and F(1) = 1.
+
+Given a number, say prod (for product), we search two Fibonacci numbers F(n) and F(n+1) verifying
+
+F(n) * F(n+1) = prod.
+
+Your function productFib takes an integer (prod) and returns an array:
+
+[F(n), F(n+1), true] or {F(n), F(n+1), 1} or (F(n), F(n+1), True)
+depending on the language if F(n) * F(n+1) = prod.
+
+If you don't find two consecutive F(n) verifying F(n) * F(n+1) = prodyou will return
+
+[F(n), F(n+1), false] or {F(n), F(n+1), 0} or (F(n), F(n+1), False)
+F(n) being the smallest one such as F(n) * F(n+1) > prod.
+*/
+
+function productFib(prod){
+  //we are given a number and we need to see if the current fib sequence * the prev fib sequence == the number
+  //we return the two numbers of the fib sequence that mult and if they do equal the number given. We go until those numbers are equal to or over the amount given
+  //productFib(714) # should return [21, 34, true], 
+  //since we mult the fib numbs until it is equal to or greater than the given number, a while look would be good. Make the fib sequence using an array, pop into a new array when we find an answer
+  let fibArray = [0, 1]
+  while(fibArray[fibArray.length-1] * fibArray[fibArray.length-2] < prod) {
+    //add next number to fibArray
+    fibArray.push(fibArray[fibArray.length-1] + fibArray[fibArray.length-2])
+  }
+  let answer = []
+  answer.push(fibArray.pop())
+  answer.unshift(fibArray.pop())
+  if (answer[0] * answer[1] === prod) {
+    answer.push(true)
+    return answer
+  }
+  else {
+    answer.push(false)
+    return answer
+  }
+}

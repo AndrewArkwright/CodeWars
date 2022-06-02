@@ -2495,3 +2495,24 @@ function productFib(prod){
     return answer
   }
 }
+
+/*
+Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+*/
+
+function solution(str){
+  //we are given a string of letters
+  //we return an array where each value is two characters and if the length of the given string is not even, the last char will be "_"
+  //("abcdefg"), ["ab", "cd", "ef", "g_"]);
+  //There may be a way to use str.split and join to solve it, but it seems messy. Will just put each char of the string in an array and pop two each time and if the last one is undefined when shifting, just replace it with "_"
+  
+  str = str.split("")
+  let array = []
+  while (str.length != 0) {
+    let charOne = str.shift()
+    let charTwo = str.shift()
+    if (charTwo === undefined) {charTwo = "_"}
+    array.push(charOne + charTwo)
+  }
+  return array
+}

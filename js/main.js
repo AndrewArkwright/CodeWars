@@ -2516,3 +2516,29 @@ function solution(str){
   }
   return array
 }
+
+/*
+Write a function cakes(), which takes the recipe (object) and the available ingredients (also an object) and returns the maximum number of cakes Pete can bake (integer). For simplicity there are no units for the amounts (e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200). Ingredients that are not present in the objects, can be considered as 0.
+
+Found a shorter hand way to do what I was doing that another person made
+const cakes = (needs, has) => Math.min(
+  ...Object.keys(needs).map(key => Math.floor(has[key] / needs[key] || 0))
+)
+*/
+
+function cakes(recipe, available) {
+  //given two objects with numbers assigned to each key for the amount of ingredients
+  //return the number of cakes you can make with the available ingredients, measurements(pd vs grams) do not matter
+  /*    let recipe = {flour: 500, sugar: 200, eggs: 1};
+    let available = {flour: 1200, sugar: 1200, eggs: 5, milk: 200};
+    (cakes(recipe, available), 2);
+  */
+  //Thinking about for looping the receipe object and then comparing each key in the receipe to the one in available. Will do the math for each and keep the lowest value. Need to make sure the ingredient exists as well in available
+  let cakes = -1
+  for (const property in recipe) {
+    if (typeof available[property] != "number") {return 0} //if the ingredient does not exist in available
+    else if (cakes === -1) {cakes = Math.floor(available[property]/recipe[property])}// if cakes has no val, assign first val
+    else if (available[property]/recipe[property] < cakes) {cakes = Math.floor(available[property]/recipe[property])} // if new number is less than current, assign new lowest
+  }
+  return cakes
+}

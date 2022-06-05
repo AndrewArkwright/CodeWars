@@ -2542,3 +2542,33 @@ function cakes(recipe, available) {
   }
   return cakes
 }
+
+/*
+For example 99 will have "weight" 18, 100 will have "weight" 1 so in the list 100 will come before 99.
+
+Given a string with the weights of FFC members in normal order can you give this string ordered by "weights" of these numbers?
+
+When two numbers have the same "weight", let us class them as if they were strings (alphabetical ordering) and not numbers:
+
+180 is before 90 since, having the same "weight" (9), it comes before as a string.
+
+All numbers in the list are positive numbers and the list can be empty.
+
+Notes
+it may happen that the input string have leading, trailing whitespaces and more than a unique whitespace between two consecutive numbers
+*/
+
+function orderWeight(string) {
+  //We are given a string of numbers that are positive with a space in between them, but there extra white spaces everywhere in the string
+  //We return a string of numbers that are sorted by the sum of each number (109 = 1 + 0 + 9) and when they have the same weight, we compare them as strings instead of numbers
+  //("2000 10003 1234000 44444444 9999 11 11 22 123"), "11 11 2000 10003 22 123 1234000 44444444 9999")
+  //thinking of splitting it into an array to get rid of the white spaces and then sorting it using reduce and if they are equal, just sort by a-b
+  return string.split(" ").sort((a, b) => {
+    let sumA = a.split("").reduce((prev, curr) => Number(prev) + Number(curr),0)
+    let sumB = b.split("").reduce((prev, curr) => Number(prev) + Number(curr),0)
+    if (sumA === sumB) {
+      return a.localeCompare(b) //instructions just said to sort by string, but they actually wanted to sort by the values of the string on the ASCII table
+    }
+    else {return sumA - sumB}
+  }).join(" ")
+}

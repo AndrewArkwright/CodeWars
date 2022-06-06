@@ -2599,3 +2599,25 @@ function perimeter(n) {
   }
   return fibArray.reduce((prev, current) => prev + current, 0) * 4
 }
+
+/*
+The marketing team is spending way too much time typing in hashtags.
+Let's help them with our own Hashtag Generator!
+
+Here's the deal:
+
+It must start with a hashtag (#).
+All words must have their first letter capitalized.
+If the final result is longer than 140 chars it must return false.
+If the input or the result is an empty string it must return false.
+*/
+
+function generateHashtag (str) {
+  //We are given string and it may have extra spaces in between words, be empty, or just contain spaces
+  //We need to return the string with "#" in front combined with each each word (that is separated by spaces) that has the first letter capitalized
+  //("Codewars Is Nice"), "#CodewarsIsNice"
+  //So I want split each word and then for each word, we split it again to capitalize the first letter and lowercase all the other letters. Then we return and check if the length will be correct. Will need to trim the whitespaces to check for empty string.
+  let newString = str.split(" ").map(value => value.split("").map((val, index) => index === 0 ? val.toUpperCase() : val.toLowerCase()).join("")).join("")
+  if ("#".length + newString.length > 140 || str.trim().length === 0) {return false}
+  return "#" + newString
+}

@@ -2621,3 +2621,22 @@ function generateHashtag (str) {
   if ("#".length + newString.length > 140 || str.trim().length === 0) {return false}
   return "#" + newString
 }
+
+/*
+Write a function named first_non_repeating_letter that takes a string input, and returns the first character that is not repeated anywhere in the string.
+
+For example, if given the input 'stress', the function should return 't', since the letter t only occurs once in the string, and occurs first in the string.
+
+As an added challenge, upper- and lowercase letters are considered the same character, but the function should return the correct case for the initial letter. For example, the input 'sTreSS' should return 'T'.
+
+If a string contains all repeating characters, it should return an empty string ("") or None -- see sample tests.
+*/
+
+function firstNonRepeatingLetter(s) {
+  //We are given a string of characters that could be an empty
+  //We are returning the first character that is not repeated in the string and does not have a uppercase or lowercase value as well in the string
+  //('moonmen'), 'e')
+  //the first thing that comes to mind is filtering first index === last index and if it is, then it is the only char. We also need to make sure that that lowercase or uppercase version of the characters is not in the string as well. Will need to make sure it handles empty strings.
+  const lowerCaseString = s => s.toLowerCase()
+  return s.split("").filter((value, index, array) => array.map(lowerCaseString).indexOf(value.toLowerCase()) === array.map(lowerCaseString).lastIndexOf(value.toLowerCase()))[0] || ""
+}

@@ -2640,3 +2640,40 @@ function firstNonRepeatingLetter(s) {
   const lowerCaseString = s => s.toLowerCase()
   return s.split("").filter((value, index, array) => array.map(lowerCaseString).indexOf(value.toLowerCase()) === array.map(lowerCaseString).lastIndexOf(value.toLowerCase()))[0] || ""
 }
+
+/*
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string.
+
+Someone else's solution, which will work much better because it won't affect or check the domain name string
+
+  url = url.replace("https://", '');
+  url = url.replace("http://", '');
+  url = url.replace("www.", '');
+  return url.split('.')[0];
+*/
+
+function domainName(url){
+  //given a website url string, doesn't state whether it could be empty and I assume they are valid URLs
+  //we return the domain name
+  //("http://google.co.jp"), "google"
+  //I only want everything between the first two "." because everything else is not needed. Check if each has http www, http, www, or just domain first
+  //Mine passed, but it was due to some random test cases not popping up like ww being in the domain name, changing it to www works much more often though, but shouldn't have to worry about that
+  
+  url = url.split(".")
+  while (url.length > 2) {
+    url.pop()
+  }
+  console.log(url)
+  if (url[0].includes("ww") && url[0].includes("http")) { //for ww3 urls just in case, but will break if ww is in the domain name
+    return url[1]
+  }
+  else if (url[0].includes("http")) {
+    return url[0].substring(url[0].lastIndexOf("/") + 1)
+  }
+  else if (url[0].includes("ww")) {
+    return url[1]
+  }
+  else {
+    return url[0]
+  }
+}

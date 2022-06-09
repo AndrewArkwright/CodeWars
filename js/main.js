@@ -2658,7 +2658,7 @@ function domainName(url){
   //("http://google.co.jp"), "google"
   //I only want everything between the first two "." because everything else is not needed. Check if each has http www, http, www, or just domain first
   //Mine passed, but it was due to some random test cases not popping up like ww being in the domain name, changing it to www works much more often though, but shouldn't have to worry about that
-  
+
   url = url.split(".")
   while (url.length > 2) {
     url.pop()
@@ -2677,3 +2677,15 @@ function domainName(url){
     return url[0]
   }
 }
+
+/*
+Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case).
+*/
+
+//Given a string that has a "-" or "_" between each word
+//We return the string camelcased without characters between words and without changing camelcasing the first word
+//("The-Stealth-Warrior"), "TheStealthWarrior"
+//Since there are two different ways we will end up splitting the strings, we will want a conditional. After the split, we will map each value and capitalize it as long as it is not the first word
+const toCamelCase = str => str.indexOf("-") != -1 ?
+    str.split("-").map((value, index) => index != 0 ? value.split("").map((val, ind) => ind === 0 ? val.toUpperCase() : val).join("") : value).join("")
+    : str.split("_").map((value, index) => index != 0 ? value.split("").map((val, ind) => ind === 0 ? val.toUpperCase() : val).join("") : value).join("")

@@ -2689,3 +2689,75 @@ Complete the method/function so that it converts dash/underscore delimited words
 const toCamelCase = str => str.indexOf("-") != -1 ?
     str.split("-").map((value, index) => index != 0 ? value.split("").map((val, ind) => ind === 0 ? val.toUpperCase() : val).join("") : value).join("")
     : str.split("_").map((value, index) => index != 0 ? value.split("").map((val, ind) => ind === 0 ? val.toUpperCase() : val).join("") : value).join("")
+
+/*
+Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+
+array = [[1,2,3],
+         [4,5,6],
+         [7,8,9]]
+snail(array) #=> [1,2,3,6,9,8,7,4,5]
+For better understanding, please follow the numbers of the next array consecutively:
+
+array = [[1,2,3],
+         [8,9,4],
+         [7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9]
+
+NOTE: The idea is not sort the elements from the lowest value to the highest; the idea is to traverse the 2-d array in a clockwise snailshell pattern.
+
+NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
+
+Found another way to do it online that is more efficient
+function snail(array) {
+  var vector = [];
+  while (array.length) {
+    vector.push(...array.shift());
+    array.map(row => vector.push(row.pop()));
+    array.reverse().map(row => row.reverse());
+  }
+  return vector;
+}
+*/
+
+snail = function(array) {
+  //We are given a matrix that could have an array of one number or be completely empty
+  //We return an array with each number in the array, but we count them clockwise with the most outer numbers counted first like a spiral (snail)
+  //([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [1, 2, 3, 6, 9, 8, 7, 4, 5]
+  //I had some difficulties trying to find a way to count all the numbers on each side repeatively. I ended up keeping track of each end value and then counting each side separately
+  if (array[0].length === 0) {return array[0]}
+  
+  let length = 0
+  array.forEach(value => value.forEach(val => length++))
+  let answer = []
+  
+  if (length === 1) {
+    answer.push(array[0][0])
+    return answer
+  }
+  
+  let beginning = 0
+  let end = array.length - 1
+  let last = array[0].length - 1
+  let first = 0
+  
+  for (let i = 0; i < length/2; i++) { //keep doing until done, could be more efficient/specific
+    array[beginning].forEach((value, index) => index >= first && index <= last ? answer.push(value) : undefined)//push top row
+    beginning++
+    
+    array.forEach((value, index) => index >= beginning && index <= end ? answer.push(value[last]) : undefined) //push right side
+    last--
+    if (answer.length >= length) {return answer}
+    
+    for (let j = last; j >= first; j--) {//push bottom
+      answer.push(array[end][j])
+    }
+    end--
+    if (answer.length >= length) {return answer}
+    
+    for (let k = end; k >= beginning; k--) {//push left
+      answer.push(array[k][first])
+    }
+    first++
+  }
+}

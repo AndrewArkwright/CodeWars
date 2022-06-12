@@ -2761,3 +2761,69 @@ snail = function(array) {
     first++
   }
 }
+
+/*
+Your job is to write a function which increments a string, to create a new string.
+
+If the string already ends with a number, the number should be incremented by 1.
+If the string does not end with a number. the number 1 should be appended to the new string.
+Examples:
+
+foo -> foo1
+
+foobar23 -> foobar24
+
+foo0042 -> foo0043
+
+foo9 -> foo10
+
+foo099 -> foo100
+
+Attention: If the number has leading zeros the amount of digits should be considered.
+*/
+
+function incrementString (string) {
+  //We are given a string that could be empty, have letters, have numbers, or have letters and numbers
+  //We return the string with the number incremented. If there is no number, we add one
+  //("foobar099"), "foobar100"), ("foo"), "foo1")
+  //So the first thing I want to do is separate the numbers from the letters just to make some things a little easier to manage
+  //Will add a number if there isn't one, increment the first number if it is < 9, change 9s to 0s starting from the back until you reach another number or end of numbers and adjust
+  //Then concat string and adjusted number
+  
+  
+  string = string.split("").map(value => isNaN(Number(value)) ? value : Number(value))
+  const num = value => typeof value === "number";
+  
+  let number = [], count = 0
+  if (string.findIndex(num) != -1) { //if there is a number in the string
+    for (let i = string.findIndex(num); i < string.length; i++) {
+      number.push(string[i])
+      count++
+    }
+    for (let i = 0; i < count; i++) {
+      string.pop()
+    }
+  }
+  else{ //push 1 to the number array since there are no numbers in the string
+    number.push(1)
+    return string.concat(number).join("")
+  }
+  
+  if (number[number.length-1] < 9 || number.length === 1) { //if there is just one number and it is < 9, just increment it
+    number[number.length-1]++
+  }
+  else {
+    let length = number.length-1
+    while (number[length] > 8) { //change all 9's starting from the end of the string until you hit something that is not 9 or the end of the array
+      number[length] = 0
+      length--
+    }
+    if (number[length+1] === 0 && length + 1 === 0) {// if 999, then change the first number to 10 since all the other 9's are 0s now
+      number[length+1] = 10
+    }
+    else {//icrements the number befeore all the 9's so 003999 would be 004000 (9's are 0s now due to while loop)
+      number[length]++
+    }
+  }
+  return string.concat(number).join("")
+}

@@ -2827,3 +2827,31 @@ function incrementString (string) {
   }
   return string.concat(number).join("")
 }
+
+/*
+Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+
+N! = 1 * 2 * 3 * ... * N
+
+Be careful 1000! has 2568 digits...
+
+For more info, see: http://mathworld.wolfram.com/Factorial.html
+
+Hint: You're not meant to calculate the factorial. Find another way to find the number of zeros.
+*/
+
+function zeros (n) {
+  //Thank you Purple Math for the help, https://www.purplemath.com/modules/factzero.htm
+  //Given a number N that we need to find the number of trailing zeros of N!, can be 0
+  //We return a number
+  //(30), 7, "Testing with n = 30"
+  //After some searching, I found that the easiest way is to divide n by each power of 5, 5, 25, 125..etc until the 5^power > N, add the totals together and that's your answer
+  
+  if (n < 5) {return 0}
+  let power = 1, answer = 0
+  while (5**power <= n) {
+    answer += Math.floor(n/(5**power))
+    power++
+  }
+  return answer
+}

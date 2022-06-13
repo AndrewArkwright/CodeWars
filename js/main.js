@@ -2855,3 +2855,42 @@ function zeros (n) {
   }
   return answer
 }
+
+/*
+Greed is a dice game played with five six-sided dice. Your mission, should you choose to accept it, is to score a throw according to these rules. You will always be given an array with five six-sided dice values.
+
+ Three 1's => 1000 points
+ Three 6's =>  600 points
+ Three 5's =>  500 points
+ Three 4's =>  400 points
+ Three 3's =>  300 points
+ Three 2's =>  200 points
+ One   1   =>  100 points
+ One   5   =>   50 point
+ 
+A single die can only be counted once in each roll. For example, a given "5" can only count as part of a triplet (contributing to the 500 points) or as a single 50 points, but not both in the same roll.
+*/
+
+function score( dice ) {
+  //We are given an array of 5 numbers, which are the results of rolling a 6 sided die 5 times
+  //We count up the points made by rolling the dice according to the rules of Greed
+  //[2, 4, 4, 5, 4] ) == 450
+  //at first I was thinking of sorting it and checking that way, but I decided to just make an array and fill it up with the amount of times each number was rolled. I then checked if there were any 3's and if not, we just counted 1's and 5's
+  let diceCount = new Array(6).fill(0)
+  for(let i = 0; i < dice.length; i++) {
+    diceCount[dice[i]-1]++
+  }
+  //if there are any pairs of 3, then we add points
+  let score = 0
+  for ( let i = 0; i < diceCount.length; i++) {
+    if (diceCount[i] >= 3) {
+      if (i === 0) {score = 1000}
+      else {score += (i+1) * 100}
+      diceCount[i] = diceCount[i] - 3 //in case we roll 5 of one number, we can still count the other two
+    }
+  }
+  //any 1's or 5s's
+  score += diceCount[0] * 100
+  score += diceCount[4] * 50
+  return score
+}

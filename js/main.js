@@ -2867,7 +2867,7 @@ Greed is a dice game played with five six-sided dice. Your mission, should you c
  Three 2's =>  200 points
  One   1   =>  100 points
  One   5   =>   50 point
- 
+
 A single die can only be counted once in each roll. For example, a given "5" can only count as part of a triplet (contributing to the 500 points) or as a single 50 points, but not both in the same roll.
 */
 
@@ -2893,4 +2893,28 @@ function score( dice ) {
   score += diceCount[0] * 100
   score += diceCount[4] * 50
   return score
+}
+
+/*
+You need to return a string that looks like a diamond shape when printed on the screen, using asterisk (*) characters. Trailing spaces should be removed, and every line must be terminated with a newline character (\n).
+
+Return null/nil/None/... if the input is an even number or negative, as it is not possible to print a diamond of even or negative size.
+*/
+
+function diamond(n){
+  //We are given a number n, which could be positive, negative, or 0, but is a whole number
+  //We return a string that will create a diamond when put into a text document
+  //(5), "  *\n ***\n*****\n ***\n  *\n"
+  //At first I was going to just loop and create each each row, but instead chose to start from the middle since all I would need to do is remove two "*", add a space for each diamond row, and then add the new line
+
+  if (n < 0 || n % 2 === 0) {return null}
+  let midpoint = "*".repeat(n) + "\n", answer = midpoint, space = 1
+
+  while (midpoint.length >= 3) {
+    let next = " ".repeat(space) + midpoint.substring(2)
+    answer = next + answer + next
+    midpoint = midpoint.substring(2)
+    space++
+  }
+  return answer
 }

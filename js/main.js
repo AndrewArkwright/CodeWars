@@ -2918,3 +2918,79 @@ function diamond(n){
   }
   return answer
 }
+
+/*
+Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
+
+Negative numbers and duplicate numbers can and will appear.
+
+NOTE: There will also be lists tested of lengths upwards of 10,000,000 elements. Be sure your code doesn't time out.
+
+Saw this version online
+function sum_pairs(ints, s) {
+  let seen = new Set();
+  for (let i of ints) {
+    if (seen.has(s - i)) return [s - i, i];
+    seen.add(i);
+  }
+}
+*/
+
+function sumPairs(ints, s) {
+  //We are given an array of numbers that are whole numbers, but can be even or odd. We are given a number as well that is a whole number that is positive or negative
+  //we return the first two values in the array that add up to s, but both numbers must the lower than the max index of any answer (see below)
+  //[10, 5, 2, 3, 7, 5], 10), [3, 7] the second 5 is further out than both 3 and 7 so we choose 3 and 7
+  //Since order matters, we cannot sort the array. I tested it by just doing a loop to check all possible values and that worked for most test cases other than the large array ones
+  //After that, decided to remove all duplicate numbers, except for ones that are s/2 since they would add up to s
+  //I made two versions that worked, one that just ignores s/2 values when removing duplicates and one that keeps track of that value and removes all duplicates
+
+  let answers = []
+  
+  ints = ints.filter((value, index) => ints.indexOf(value) === index || value === s/2) //remove duplicates except if the duplicate is s/2 while keeping order
+  
+  for (let i = 0; i < ints.length; i++) {
+    for (let j = i + 1; j < ints.length; j++) {
+      if (ints[i] + ints[j] === s) {
+        answers.push([i, j])
+      }
+    }
+  }
+  
+  if (answers.length === 0) {return undefined}
+  answers = answers.sort((a, b) => a[1] - b[1], 0)
+  return [ints[answers[0][0]], ints[answers[0][1]]]
+}
+
+function sumPairs(ints, s) {
+  
+  let answers = [], mid
+  if (s % 2 === 0) { //if even
+    if (ints.indexOf(s/2) !== ints.lastIndexOf(s/2)) {//if s/2 exists twice, we add to answers
+      answers.push([ints.indexOf(s/2), ints.indexOf(s/2, s/2) ])
+      mid = ints.indexOf(s/2) //keep track of index of s/2 
+    }
+  }
+  ints = ints.filter((value, index) => ints.indexOf(value) === index) //remove duplicates
+  
+  for (let i = 0; i < ints.length; i++) {
+    for (let j = i + 1; j < ints.length; j++) {
+      if (ints[i] + ints[j] === s) {
+        answers.push([i, j])
+      }
+    }
+  }
+
+  if (answers.length === 0) {return undefined}
+  if (answers.length === 1) {
+    if (answers[0][0] === mid) {
+      return [s/2, s/2]
+    }
+    else {return [ints[answers[0][0]], ints[answers[0][1]]]}
+  }
+
+  answers = answers.sort((a, b) => a[1] - b[1], 0)
+  
+  if (answers[0][0] === mid) {return [s/2, s/2]}
+  
+  return [ints[answers[0][0]], ints[answers[0][1]]]
+}

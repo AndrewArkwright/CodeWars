@@ -2994,3 +2994,18 @@ function sumPairs(ints, s) {
   
   return [ints[answers[0][0]], ints[answers[0][1]]]
 }
+
+/*
+You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+*/
+
+function sortArray(array) {
+  //We are given an array of numbers or an empty array
+  //We are returning an array with the even numbers in the same spot, but odd numbers are sorted
+  //([5, 3, 2, 8, 1, 4]), [1, 3, 2, 8, 5, 4]
+  //So the easiest way I can think of is to first make an array of the odd numbers and sort them, and them map map each odd number and assigning it to the sorted.shift value
+  
+  let odd = array.filter(value => value % 2 !== 0)
+  odd = odd.sort((a, b) => a - b)
+  return array.map(value => value % 2 !== 0 ? value = odd.shift() : value)
+}

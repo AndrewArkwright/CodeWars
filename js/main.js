@@ -3070,3 +3070,42 @@ function high(x){
   let index = scores.indexOf(Math.max(...scores))
   return x[index]
 }
+
+/*
+#Find the missing letter
+
+Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+
+You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+The array will always contain letters in only one case.
+
+Saw online afterwards that someone else use charCodeAt and charCodeFrom to find where to start and just looped through the ASCII table
+*/
+
+function findMissingLetter(array) {
+  //We are given an array of letters that are either all uppercase or lowercase and will have at least two letters
+  //We need to find the missing letter and return it as uppercase if the array was uppercase, or lowercase if...
+  //(['O','Q','R','S']), 'P'
+  //The first thing I thought of was first checking was if array[0] === array[0].toUpperCase() to see if the array was lowercase or uppercase. After, I would remove all letters in an alphabet array until I reached array. Then I will .shift() each array until the first element is not equal to the first element in the other array and then return that difference in the alphabet array.
+  let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v" , "w", "x", "y", "z"]
+  if (array[0] === array[0].toUpperCase()) {
+    while (array[0] !== alphabet[0].toUpperCase()) {
+      alphabet.shift()
+    }
+    while (array[0] === alphabet[0].toUpperCase()) {
+      array.shift()
+      alphabet.shift()
+    }
+    return alphabet[0].toUpperCase()
+  }
+  else {
+    while (array[0] !== alphabet[0]) {
+      alphabet.shift()
+    }
+    while (array[0] === alphabet[0]) {
+      array.shift()
+      alphabet.shift()
+    }
+    return alphabet[0]
+  }
+}

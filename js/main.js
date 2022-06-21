@@ -3175,3 +3175,22 @@ function longestConsec(strarr, k) {
   
   return answers.reduce((a, b) => a.length >= b.length ? a : b)
 }
+
+/*
+The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+What if the string is empty? Then the result should be empty object literal, {}.
+*/
+
+function count (string) {
+  //We are given a string that can be empty
+  //We are returning an object that has each character of the string in it as the key and the value is the amount of time it occurs in the string
+  //("aba"), { a: 2, b: 1 }
+  //So what I want to do is create an empty object and then use split("").forEach() to check if a value is in the object and if it is, I'll increment it and if not, I'll add it
+  let Count = {}
+  string.split("").forEach(char => {
+      if (char in Count) {Count[char]++} //the in operator is great for single characters, but it checks prototypes as well so it can cause problems
+      else {Count[char] = 1}
+  })
+  return Count
+}

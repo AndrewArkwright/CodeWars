@@ -3194,3 +3194,27 @@ function count (string) {
   })
   return Count
 }
+
+/*
+Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have the "same" elements, with the same multiplicities (the multiplicity of a member is the number of times it appears). "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+*/
+
+function comp(array1, array2) {
+  //We are given two arrays of numbers that could be different sizes, null, or empty
+  //We return true if there array2 contains a unique index of each number in array1 squared, else return false
+  /*
+  a1 = [121, 144, 19, 161, 19, 144, 19, 11];
+  a2 = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19];
+  comp(a1, a2), true)  
+  */
+  //So what I want to do is use a for loop and check if array2 contains array1[i] and if it does, then we remove that index. We could remove it by sorting each array and using shift(), but I chose to just assign it as a empty string ""
+  if (array1 === null || array2 === null) {return false}
+  if (array1.length != array2.length) {return false}
+  
+  for (let i = 0; i < array1.length; i++) {
+    if (!array2.includes(array1[i] ** 2))  {return false}
+    array2[array2.indexOf(array1[i] ** 2)] = ""
+  }
+  
+  return true
+}

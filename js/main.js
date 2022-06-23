@@ -3218,3 +3218,29 @@ function comp(array1, array2) {
   
   return true
 }
+
+/*
+Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
+Beware: r must be without duplicates.
+
+Saw another example that would have worked in one line, return a1.filter( sub => a2.some( whole => whole.includes(sub))).sort()
+*/
+
+function inArray(array1,array2) {
+  //We are given two arrays of strings that will not be empty
+  //We return each string in array1 in alphabetical order if it is a substring of a string in array2
+  /*
+  a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+  a1 = ["xyz", "live", "strong"]
+  inArray(a1, a2), ["live", "strong"]
+  */
+  //What I want to do is filter array1 so that each value includes something in array2. array.includes only returns true if the entire value is in the array and not just a substring though so we need to loop through array2 instead to check and then sort everything
+  
+  return array1.filter(value => {
+    for (let i = 0; i < array2.length; i++) {
+      if (array2[i].includes(value)) {
+        return value
+      }
+    }
+  }).sort()
+}

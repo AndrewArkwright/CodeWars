@@ -3291,3 +3291,74 @@ function race(v1, v2, g) {
   timeArray.push(Math.floor(time*60*60%60))
   return timeArray
 }
+
+/*
+Having created a function NamedOne which takes first & last names as parameters and returns an object with firstName, lastName and fullName ( = firstName + a space + lastName ) properties which should be all accessibles, we discovered that "accessible" also means "mutable".
+
+If, for example, we've got a "NamedOne" like this :
+
+var namedOne = new NamedOne("Naomi","Wang")
+namedOne.firstName // -> "Naomi"
+namedOne.lastName  // -> "Wang"
+namedOne.fullName  // -> "Naomi Wang"
+...properties may be changed :
+
+namedOne.firstName = "John"
+namedOne.firstName // -> "John"
+namedOne.lastName = "Doe"
+namedOne.lastName  // -> "Doe"
+...but all properties are not updated !
+
+namedOne.fullName  // -> "Naomi Wang" 
+//-- Oh no ! we want fullName == "John Doe" now !
+Your mission:
+So the purpose of this kata is to create an object with accessible and "updatable" (can i say that?) properties.
+
+If .firstName or .lastName are changed, then .fullName should also be changed
+If .fullName is changed, then .firstName and .lastName should also be changed.
+Note : "input format" to .fullName will be firstName + space+ lastName. If given fullName isn't valid then no property is changed.
+
+Examples:
+var namedOne = new NamedOne("Naomi","Wang")
+
+namedOne.firstName = "John"
+namedOne.lastName = "Doe"
+// ...then...
+namedOne.fullName // -> "John Doe"
+
+// -- And :
+namedOne.fullName = "Bill Smith"
+// ...then...
+namedOne.firstName // -> "Bill"
+namedOne.lastName  // -> "Smith"
+
+// -- But :
+namedOne.fullName = "Tom" // -> no : lastName missing
+namedOne.fullName = "TomDonnovan" // -> no : no space between first & last names
+namedOne.fullName // -> "Bill Smith" (unchanged)
+Can you change our function to create such a NamedOne object ?
+*/
+
+class NamedOne {
+  //We are given the first and last name of someone and they will change the first name, last name, and possibly both by using NamedOne.firstName... etc
+  //We will return NamedOne.fullName if it they provided a new first and or last name (last name must be two words with a space between them)
+  //Named One("John". "Doe") NamedOne.fullName = "Juan Herrero" => "Juan Herrero"
+  //So the first thing I chose to do was to make everything into a class so I an use set and get. I then found out that they gave some names for fullName that were just one word and had to use an if statement to fix that
+
+  constructor(first, last) {
+    this.firstName = first;
+    this.lastName = last;
+  }
+  
+  get fullName() {
+    return this.firstName + " " + this.lastName
+  }
+  
+  set fullName(newName) {
+    let arrayName = newName.split(" ")
+    if (arrayName[1] != undefined) {
+      this.firstName = arrayName[0]
+      this.lastName = arrayName[1]
+    }
+  }
+}

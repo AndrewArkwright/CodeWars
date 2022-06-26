@@ -3362,3 +3362,14 @@ class NamedOne {
     }
   }
 }
+
+/*
+Your task is to add a new property usersAnswer to every object in the array questions. The value of usersAnswer should be set to null. The solution should work for array of any length.
+*/
+
+//We are given an array of objects
+//We return an array of objects, but we add the property usersAnswer : null to it
+//questions[0].usersAnswer === null   true
+//Decided to just use a forEach loop to add each to each index
+
+questions.forEach((value, index) => questions[index].usersAnswer = null)

@@ -3373,3 +3373,34 @@ Your task is to add a new property usersAnswer to every object in the array ques
 //Decided to just use a forEach loop to add each to each index
 
 questions.forEach((value, index) => questions[index].usersAnswer = null)
+
+/*
+Greetings, warrior! In this kata you will learn, how Object.create method does its job.
+
+First over, what does it do? The signature of Object.create is like this:
+
+//throws TypeError
+//returns newly created object
+Object.create(prototype, [properties])
+Object.create serves to create new object that inherits given prototype and has properties being defined by "properties" parameter set on it. Parameters values must meet following requirements:
+
+prototype parameter should be some object1 (i.e. a non-primitive value) or null (but not undefined!). If bad value passed for prototype, error TypeError must be thrown.
+
+properties parameter can be of any type or omitted at all.
+
+As a result of execution, Object.create will return a newly created object with inner property [[Prototype]]2 set to value of prototype parameter. If properties parameter is passed and is not undefined, then Object.create will make call Object.defineProperties(obj,properties), where obj is the object to be returned by Object.create.
+*/
+
+Object.create = function(prototype, properties) {
+  //We are given values prototype and properties that could be objects, null, or undefined
+  //We are making a function to replace Object.create and return an object with prototype and property values if they exist or we throw a type error if the prototype is not an object
+  //Look at description above for examples/details
+  //First thing we need to do is make sure the prototype is the correct type and then we can create an object, set the prototype, add the properties if any, and return
+  
+  if (typeof prototype !== "object") {throw new TypeError}
+  
+  let obj = new Object
+  Object.setPrototypeOf(obj, prototype)
+  if (properties !== undefined) {Object.defineProperties(obj, properties)}
+  return obj
+}

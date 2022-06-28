@@ -3404,3 +3404,45 @@ Object.create = function(prototype, properties) {
   if (properties !== undefined) {Object.defineProperties(obj, properties)}
   return obj
 }
+
+/*
+You're given a string containing a sequence of words separated with whitespaces. Let's say it is a sequence of patterns: a name and a corresponding number - like this:
+
+"red 1 yellow 2 black 3 white 4"
+
+You want to turn it into a different string of objects you plan to work with later on - like this:
+
+"[{name : 'red', id : '1'}, {name : 'yellow', id : '2'}, {name : 'black', id : '3'}, {name : 'white', id : '4'}]"
+
+Doing this manually is a pain. So you've decided to write a short function that would make the computer do the job for you. Keep in mind, the pattern isn't necessarily a word and a number. Consider anything separeted by a whitespace, just don't forget: an array of objects with two elements: name and id.
+
+As a result you'll have a string you may just copy-paste whenever you feel like defining a list of objects - now without the need to put in names, IDs, curly brackets, colon signs, screw up everything, fail searching for a typo and begin anew. This might come in handy with large lists.
+*/
+
+function wordsToObject(input) {
+  //We are given a string such that every two words (strings seperated by a space) are two different propreties for an object. We are also given a special string format similar to an array of objects that we must use to return as well
+  //We are returning a string in a specific format with the given properties in it
+  // "red 1" -> [{name : 'red', id : '1'}]
+  // The tags for this kata hint at using a regular expression, but I instead used a if statement. Since there can be multiple objects, I want to use a for loop and we will need a different if statement to add to the string depending on if it is the first object, a middle object, or the last object. I will need a special case as well if there will be only one object
+  
+  input = input.split(" ")
+  let string = ""
+  
+  if (input.length === 2) {
+    string = `[{name : '${input[0]}', id : '${input[1]}'` + "}]"
+    return string
+  }
+  
+  for (let i = 0; i < input.length; i += 2) {
+    if (i === 0) {
+      string += `[{name : '${input[i]}', id : '${input[i+1]}'`
+    }
+    else if (i === input.length - 2) {
+      string += `}, {name : '${input[i]}', id : '${input[i+1]}'` + "}]"
+    }
+    else {
+      string += `}, {name : '${input[i]}', id : '${input[i+1]}'`
+    }
+  }
+  return string
+}

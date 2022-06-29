@@ -3446,3 +3446,16 @@ function wordsToObject(input) {
   }
   return string
 }
+
+/*
+Write a function toWeirdCase (weirdcase in Ruby) that accepts a string, and returns the same string with all even indexed characters in each word upper cased, and all odd indexed characters in each word lower cased. The indexing just explained is zero based, so the zero-ith index is even, therefore that character should be upper cased and you need to start over for each word.
+
+The passed in string will only consist of alphabetical characters and spaces(' '). Spaces will only be present if there are multiple words. Words will be separated by a single space(' ').
+*/
+
+//We are given a string that can have multiple words seperated by a space
+//We are returning that same string such that every even indexed character is capitalized and odd ones are lowercase
+//'This is a test'), 'ThIs Is A TeSt'
+//So the first thing I thought of was using split() to sepearate each word and then split again to seperate each letter in the string. Then I would toUpperCase even indexes and toLowerCase odd characters
+
+const toWeirdCase = string => string.split(" ").map(word => word.split("").map((char, index) => index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join("")).join(" ")

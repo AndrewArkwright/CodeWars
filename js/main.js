@@ -3459,3 +3459,40 @@ The passed in string will only consist of alphabetical characters and spaces(' '
 //So the first thing I thought of was using split() to sepearate each word and then split again to seperate each letter in the string. Then I would toUpperCase even indexes and toLowerCase odd characters
 
 const toWeirdCase = string => string.split(" ").map(word => word.split("").map((char, index) => index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join("")).join(" ")
+
+/*
+Let us consider this example (array written in general format):
+
+ls = [0, 1, 3, 6, 10]
+
+Its following parts:
+
+ls = [0, 1, 3, 6, 10]
+ls = [1, 3, 6, 10]
+ls = [3, 6, 10]
+ls = [6, 10]
+ls = [10]
+ls = []
+The corresponding sums are (put together in a list): [20, 20, 19, 16, 10, 0]
+
+The function parts_sums (or its variants in other languages) will take as parameter a list ls and return a list of the sums of its parts as defined above.
+
+Notes
+Take a look at performance: some lists have thousands of elements.
+*/
+
+function partsSums(ls) {
+  //We are given an array of numbers that are >= 0 (pretty sure there were not any negative numbers)
+  //We are returning an array that contains the sum of all numbers in array[0] and array[1] will be the sum of all numbers except for the first number in the given array. Then you will continue until to remove each number from the sum and inserting it into the array you are returning
+  //[0, 1, 3, 6, 10], [20, 20, 19, 16, 10, 0]
+  //At first I was pushing 0 into my array and then adding each index to a sum and unshifting to the array, but it was too slow. Tried doing the reverse and calculating the largest number using Array.reduce() and then subtracting each index and pushing. That ended up being a lot faster
+  
+  let sum = ls.reduce((prev, curr) => prev + curr, 0)
+  let sumArray = [sum]
+
+  for (let i = 0; i < ls.length; i++) {
+    sumArray.push(sum -= ls[i])
+  }
+  
+  return sumArray
+}

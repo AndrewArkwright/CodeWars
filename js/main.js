@@ -3496,3 +3496,37 @@ function partsSums(ls) {
   
   return sumArray
 }
+
+/*
+The number 89 is the first integer with more than one digit that fulfills the property partially introduced in the title of this kata. What's the use of saying "Eureka"? Because this sum gives the same number.
+
+In effect: 89 = 8^1 + 9^2
+
+The next number in having this property is 135.
+
+See this property again: 135 = 1^1 + 3^2 + 5^3
+
+We need a function to collect these numbers, that may receive two integers a, b that defines the range [a, b] (inclusive) and outputs a list of the sorted numbers in the range that fulfills the property described above.
+
+Let's see some cases:
+
+sumDigPow(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+sumDigPow(1, 100) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+If there are no numbers of this kind in the range [a, b] the function should output an empty list.
+*/
+
+function sumDigPow(a, b) {
+  //We are given numbers a and b such that they are positive non zero numbers
+  //We return an array of numbers between (and including) a and b such that the sum of each digit to the power of it's index is the number itself.
+  //(1, 100), [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]      8 ^ 1 + 9 ^ 2 === 89
+  //So the first thing I thought was a for loop where I would take each number, make it a string, and then split it into an array where I can reduce the number. After that, I would just check if it is equal to i.
+  
+  let answer = []
+  
+  for (let i = a ; i <= b; i++) {
+    if (i === i.toString().split("").reduce((prev, curr, index) => prev + curr**(index+1), 0)) {answer.push(i)}
+  }
+  
+  return answer
+}

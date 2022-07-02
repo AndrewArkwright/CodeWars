@@ -3530,3 +3530,32 @@ function sumDigPow(a, b) {
   
   return answer
 }
+
+/*
+Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+Leading zeros (e.g. 01.02.03.04) are considered invalid
+Inputs are guaranteed to be a single string
+*/
+
+function isValidIP(str) {
+  //We are given a string
+  //We are returning true or false depending of if that string is a valid IP address
+  //("137.255.156.100"), true,  ('123.456.789.0'), false
+  //The first thing I thought of doing was string.split(".") and making sure there are only 4 octects. Next easiest thing was checking if the value was between 0 and 255. The last two checks we had to do was making sure there were no leading 0's before a character and that each character is a number.
+  
+  let array = str.split(".").map(value => {
+    let numCheck = value.split("")
+    if (numCheck[0] == 0 && numCheck[1] != undefined) {return false} //if 0 followed by another character
+    for (let i = 0; i < numCheck.length; i++) {
+      if (!numCheck[i].match(/[0-9]/)) {return false} //if value is not a number
+    }
+    return parseInt(value) >= 0 && value <= 255 ? true : false //using parseInt makes sure that values between each octet are not blank
+  })
+  
+  if (array.length != 4) {return false} //if there are more or less than 4 octets
+  
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === false) {return false}
+  }
+  return true
+}

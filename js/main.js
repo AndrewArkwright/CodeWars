@@ -3559,3 +3559,15 @@ function isValidIP(str) {
   }
   return true
 }
+
+/*
+Make a program that filters a list of strings and returns a list with only your friends name in it.
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+Note: keep the original order of the names in the output.
+*/
+
+//We are given an array of strings
+//We are return an array of strings such that the length of each string is only 4
+//(["Ryan", "Kieran", "Mark"]), ["Ryan", "Mark"]
+//Decided to just use an arrow function and the array method filter to get all the strings I need
+const friend = friends => friends.filter(value => value.length === 4)

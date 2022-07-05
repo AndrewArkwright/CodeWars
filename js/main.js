@@ -3594,3 +3594,16 @@ The second value in the first integer array is 0, since the bus is empty in the 
 var number = function(busStops){
   return busStops.map(value => value[0] - value[1]).reduce((prev, curr) => prev + curr, 0)
 }
+
+/*
+Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime'
+*/
+
+function divisors(integer) {
+  let answer = []
+  for (let i = 2; i <= integer/2; i++){
+    if (integer % i === 0) {answer.push(i)}
+  }
+  if (answer.length === 0) {return `${integer} is prime`}
+  return answer
+}

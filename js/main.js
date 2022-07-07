@@ -3639,3 +3639,72 @@ function revrot(str, sz) {
   
   return answer.join("")
 }
+
+/*
+Middle Earth is about to go to war. The forces of good will have many battles with the forces of evil. Different races will certainly be involved. Each race has a certain worth when battling against others. On the side of good we have the following races, with their associated worth:
+
+Hobbits: 1
+Men: 2
+Elves: 3
+Dwarves: 3
+Eagles: 4
+Wizards: 10
+On the side of evil we have:
+
+Orcs: 1
+Men: 2
+Wargs: 2
+Goblins: 2
+Uruk Hai: 3
+Trolls: 5
+Wizards: 10
+Although weather, location, supplies and valor play a part in any battle, if you add up the worth of the side of good and compare it with the worth of the side of evil, the side with the larger worth will tend to win.
+
+Thus, given the count of each of the races on the side of good, followed by the count of each of the races on the side of evil, determine which side wins.
+
+Input:
+The function will be given two parameters. Each parameter will be a string of multiple integers separated by a single space. Each string will contain the count of each race on the side of good and evil.
+
+The first parameter will contain the count of each race on the side of good in the following order:
+
+Hobbits, Men, Elves, Dwarves, Eagles, Wizards.
+The second parameter will contain the count of each race on the side of evil in the following order:
+
+Orcs, Men, Wargs, Goblins, Uruk Hai, Trolls, Wizards.
+All values are non-negative integers. The resulting sum of the worth for each side will not exceed the limit of a 32-bit integer.
+
+Output:
+Return "Battle Result: Good triumphs over Evil" if good wins, "Battle Result: Evil eradicates all trace of Good" if evil wins, or "Battle Result: No victor on this battle field" if it ends in a tie.
+
+Found a better result that I liked that used two arrays of the worths and just multiplied the value out in the reduce statement
+*/
+
+//We are given two strings of numbers separated by a space. Each number represents a unit type that has a worth in the army
+//We return a string depending on which side has the strongest army or if they are equal
+// ('1 1 1 1 1 1', '1 1 1 1 1 1 1'), 'Battle Result: Evil eradicates all trace of Good'
+//I decided to just split each string and use a if statement to modify the value of each number and then reduce it to get the total army power for each side and them compare them to see who the victor was.
+
+function goodVsEvil(good, evil){
+  
+  let goodArmy = good.split(" ").map((value, index) => {
+    value = Number(value)
+    if (index === 1) {value *= 2}
+    else if (index === 2 || index === 3) {value *= 3}
+    else if (index === 4) {value *= 4}
+    else if (index === 5) {value *= 10}
+    return value
+  }).reduce((prev, curr) => prev + curr, 0)
+  
+  let evilArmy = evil.split(" ").map((value, index) => {
+    value = Number(value)
+    if (index === 1 || index === 2 || index === 3) {value *= 2}
+    else if (index === 4) {value *= 3}
+    else if (index === 5) {value *= 5}
+    else if (index === 6) {value *= 10}
+    return value
+  }).reduce((prev, curr) => prev + curr, 0)
+  
+  if (goodArmy > evilArmy) {return "Battle Result: Good triumphs over Evil"}
+  if (goodArmy < evilArmy) {return "Battle Result: Evil eradicates all trace of Good"}
+  return "Battle Result: No victor on this battle field"
+}

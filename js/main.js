@@ -3708,3 +3708,36 @@ function goodVsEvil(good, evil){
   if (goodArmy < evilArmy) {return "Battle Result: Evil eradicates all trace of Good"}
   return "Battle Result: No victor on this battle field"
 }
+
+/*
+John has invited some friends. His list is:
+
+s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+Could you make a program that
+
+makes this string uppercase
+gives it sorted in alphabetical order by last name.
+When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.
+
+So the result of function meeting(s) will be:
+
+"(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+It can happen that in two distinct families with the same family name two people have the same first name too.
+*/
+
+//We are given a string of names
+//We need to return the string of names such that it is sorted by last name, the entire name is capitalized, and each name has a pair of parentheses around it
+//"Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill" => "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+//What I want to do is split up each person and each part of their name, push each string the way it is requried into an array, sort it, and then return it as a string
+
+function meeting(s) {
+  let names = s.split(";").map(value => value.toUpperCase()).map(value => value.split(":"))
+  
+  let newArray = []
+  
+  for(let i = 0; i < names.length; i++) {
+   newArray.push(`(${names[i][1]}, ${names[i][0]})`)
+  }
+
+  return newArray.sort().join("")
+}

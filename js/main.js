@@ -3741,3 +3741,22 @@ function meeting(s) {
 
   return newArray.sort().join("")
 }
+
+/*
+Your task is to split the chocolate bar of given dimension n x m into small squares. Each square is of size 1x1 and unbreakable. Implement a function that will return minimum number of breaks needed.
+
+For example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
+
+If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
+*/
+
+//We are given two numbers which are the length and width of a chocolate
+//We are to return the amount of times we much break chocolate in order to have each chocolate in a 1x1 square or 0 if we are not able to break the chocolate
+//(5, 5) , 24
+//After making the exeptions return 0, I was able to determine algorithm by looking at the test cases and answers and just had to return it after I did the math
+
+function breakChocolate(n,m) {
+  if (n <= 1 && m <= 1) {return 0}
+  if (n < 1 || m < 1) {return 0}
+  return (n * m) - 1
+}

@@ -3783,3 +3783,57 @@ All arrays or lists will always have at least one element, so you don't need to 
 function minMax(arr){
   return [Math.min(...arr), Math.max(...arr)]
 }
+
+/*
+It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.
+*/
+
+//We are given a string with at least two characters
+//We return the same string without the first and last character
+//('person'), 'erso'
+//Decided to use substring method and just adjust the length by 1 on each side
+
+function removeChar(str){
+  return str.substring(1, str.length-1)
+}
+
+/*
+Complete the solution so that it reverses the string passed into it.
+
+
+*/
+
+//We are given a string that could be empty
+//We return the string with the characters reversed
+//('world'), 'dlrow'
+//Decided to split it into an array, reverse it, and then join it back into a string to return
+
+function solution(str){
+  return str.split("").reverse().join("")
+}
+
+/*
+Complete the method that takes a boolean value and return a "Yes" string for true, or a "No" string for false.
+*/
+
+//We are given a boolean value
+//We return a string, "Yes" if true, "No" if false
+//See above for example
+//Used a ternary operator to return it in one line and since a boolean is truthy or falsey, just needed to use the value as the conditional and return the appropriate string
+
+function boolToWord( bool ){
+  return bool ? "Yes" : "No"
+}
+
+/*
+We need a function that can transform a number into a string.
+*/
+
+//We are given a number
+//We are returning that number as a string
+// 5, "5"
+//Just used a ${} to insert the variable
+
+function numberToString(num) {
+  return `${num}`
+}

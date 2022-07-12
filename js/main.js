@@ -3837,3 +3837,33 @@ We need a function that can transform a number into a string.
 function numberToString(num) {
   return `${num}`
 }
+
+/*
+Your task is to construct a building which will be a pile of n cubes. The cube at the bottom will have a volume of n^3, the cube above will have volume of (n-1)^3 and so on until the top which will have a volume of 1^3.
+
+You are given the total volume m of the building. Being given m can you find the number n of cubes you will have to build?
+
+The parameter of the function findNb (find_nb, find-nb, findNb, ...) will be an integer m and you have to return the integer n such as n^3 + (n-1)^3 + ... + 1^3 = m if such a n exists or -1 if there is no such n.
+
+Examples:
+findNb(1071225) --> 45
+
+findNb(91716553919377) --> -1
+*/
+
+//We are given m, the total volume of all cubes
+//We are to return how many cubes it takes to reach that volume exactly and if it is not exact, then we return -1
+//(4183059834009), 2022
+//So I decided to make a number that will accumulate all of the cube volumes and then used another number to increment for each cube until the volume reaches m. I would then return the amount of cubes if the accumulator is equal to m or -1 otherwise.
+
+function findNb(m) {
+
+  let num = 0
+  let cubes = 1
+  while (num < m) {
+    num += cubes * cubes * cubes
+    cubes++
+  }
+
+  return num === m ? cubes - 1 : -1
+}

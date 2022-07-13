@@ -3867,3 +3867,75 @@ function findNb(m) {
 
   return num === m ? cubes - 1 : -1
 }
+
+/*
+You get an array of numbers, return the sum of all of the positives ones.
+
+Example [1,-4,7,12] => 1 + 7 + 12 = 20
+
+Note: if there is nothing to sum, the sum is default to 0.
+*/
+
+//We are given an array of whole numbers or it can be empty
+//We return the sum of all positive numbers in the given array
+//[1,-2,3,4,5]),13
+//Decided to use filter to remove all of the numbers that are not positive and then reduce to add them all together
+
+function positiveSum(arr) {
+  return arr.filter(value => value > 0).reduce((prev, curr) => prev + curr, 0)
+}
+
+/*
+Very simple, given an integer or a floating-point number, find its opposite.
+
+Examples:
+
+1: -1
+14: -14
+-34: 34
+*/
+
+//We are given a number
+//We are to return the number as negative if it is positive or positive if it is negative
+//(-10) => 10
+//Just multipled the given number by -1 and returned it
+
+function opposite(number) {
+  return number * -1
+}
+
+/*
+Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
+*/
+
+//We are given a number
+//We must return the sum of all numbers from 1 to that number
+//(summation(8), 36
+//Decided to just use a for loop and make a variable to keep track of the sum to return
+
+var summation = function (num) {
+  let sum = 0
+  for (let i = 1; i <= num; i++) {sum += i}
+  return sum
+}
+
+/*
+Given an array of integers your solution should find the smallest integer.
+
+For example:
+
+Given [34, 15, 88, 2] your solution will return 2
+Given [34, -345, -1, 100] your solution will return -345
+You can assume, for the purpose of this kata, that the supplied array will not be empty.
+*/
+
+//We are given an array of numbers
+//We are returning the smallest number in the given array
+//[78,56,232,12,18], 12
+//Used Math.min and the spread operator to search throughout the array for the smallest number
+
+class SmallestIntegerFinder {
+  findSmallestInt(args) {
+    return Math.min(...args)
+  }
+}

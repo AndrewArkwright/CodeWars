@@ -3939,3 +3939,40 @@ class SmallestIntegerFinder {
     return Math.min(...args)
   }
 }
+
+/*
+Write a function that accepts a string, and returns true if it is in the form of a phone number.
+Assume that any integer from 0-9 in any of the spots will produce a valid phone number.
+
+Only worry about the following format:
+(123) 456-7890 (don't forget the space after the close parentheses)
+
+Found a regex version that would do the same thing: return /^\(\d{3}\) \d{3}\-\d{4}$/.test(phoneNumber)
+*/
+
+//We are given a string of characters
+//We are returning true or false if the string matches the correct format of a phone number, ie (123) 456-7890
+//(123) 456-7890"), true
+//Could use regex, but using if statments would probably be easier. Decided to just split the area code and phone number into two different strings for easier checks
+
+function validPhoneNumber(phoneNumber){
+  let areaCode = phoneNumber.substring(0, 6)
+  let number = phoneNumber.substring(6)
+  
+  //Area Code checking
+  areaCode = areaCode.split("")
+  if (areaCode[0] != "(" ) {return false}
+  if (areaCode[4] != ")" ) {return false}
+  if (areaCode[5] != " " ) {return false}
+  areaCode = phoneNumber.substring(1, 4)
+  if (Number.isNaN(Number(areaCode)) === true) {return false}
+  
+  //Phone Number checking
+  number = number.split("")
+  if (number.length < 8 || number.length > 8) {return false}
+  if (number[3] != "-" ) {return false}
+  number = phoneNumber.substring(6).split("-").map(value => Number(value))
+  if (Number.isNaN(number[0]) === true ) {return false}
+  if (Number.isNaN(number[1]) === true ) {return false}
+  return true
+}

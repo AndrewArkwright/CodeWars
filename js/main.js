@@ -3976,3 +3976,18 @@ function validPhoneNumber(phoneNumber){
   if (Number.isNaN(number[1]) === true ) {return false}
   return true
 }
+
+/*
+ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+
+If the function is passed a valid PIN string, return true, else return false.
+*/
+
+//We are given a string that could contain numbers or letters
+//we are returning true or false dependong on if the string is a 4 or 6 digit number using a regular expression
+//("12345"),false     ("1234"),true
+//We used \d{4} to match the number of digits we could use and then ^ and $ to make sure it starts and stops with only 4 or 6 digits.
+
+function validatePIN (pin) {
+  return (/^\d{4}$/.test(pin) || /^\d{6}$/.test(pin)) ? true : false
+}

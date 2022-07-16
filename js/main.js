@@ -3991,3 +3991,18 @@ If the function is passed a valid PIN string, return true, else return false.
 function validatePIN (pin) {
   return (/^\d{4}$/.test(pin) || /^\d{6}$/.test(pin)) ? true : false
 }
+
+/*
+Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+
+(In this case, all triangles must have surface greater than 0 to be accepted).
+*/
+
+//We are given three numbers
+//We are returning true if the numbers would make a triangle or false if not
+//(1,2,2), true    (7,2,2), false
+//A valid triangle is one wuch that every two sides added together will always be greater than the third side so I just checked that and returned true or false
+
+function isTriangle(a,b,c) {
+  return a + b > c && a + c > b && b + c > a ? true : false
+}

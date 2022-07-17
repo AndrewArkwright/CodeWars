@@ -4006,3 +4006,36 @@ Implement a function that accepts 3 integer values a, b, c. The function should 
 function isTriangle(a,b,c) {
   return a + b > c && a + c > b && b + c > a ? true : false
 }
+
+/*
+Your task is to write a function which returns the sum of following series upto nth term(parameter).
+
+Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+Rules:
+You need to round the answer to 2 decimal places and return it as String.
+
+If the given value is 0 then it should return 0.00
+
+You will only be given Natural Numbers as arguments.
+*/
+
+//We are given a number
+//We are returning a string of a number that follows the series given above
+//(3), "1.39"
+//I will make a few lines to deal with some of the exceptions like 0 returning 0.00. Will need to use toPrecision to make sure it returns the right amount of decimals. I will then make a number that I can add three to so I can keep track of the fraction I need to add each loop.
+
+function SeriesSum(n){
+  if (n === 0) {return 0.00.toPrecision(3).toString()}
+  if (n === 1) {return ((1).toPrecision(3)).toString()}
+  if (n === 2) {return 1.25.toString()}
+
+  let num = 1.25, fraction = 4
+  n -= 2
+  
+  for (let i = 0; i < n; i++) {
+    fraction += 3
+    num += (1/fraction)
+  }
+
+  return num.toPrecision(3).toString()
+}

@@ -4039,3 +4039,33 @@ function SeriesSum(n){
 
   return num.toPrecision(3).toString()
 }
+
+/*
+Write a function that takes a string of braces, and determines if the order of the braces is valid. It should return true if the string is valid, and false if it's invalid.
+
+This Kata is similar to the Valid Parentheses Kata, but introduces new characters: brackets [], and curly braces {}. Thanks to @arnedag for the idea!
+
+All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
+
+What is considered Valid?
+A string of braces is considered valid if all braces are matched with the correct brace.
+*/
+
+//We are given a string that has a random combination of braces
+//We return true or false on whether the string had valid braces or not
+//([{}])", true
+//I was going to use a loop to check and remove valid braces, but then I just decided to remove only remove valid braces and would just need to make sure I would break out of removing them if the remaining braces were not valid
+
+function validBraces(braces){
+  let temp = 0
+  
+  while (braces.length != 0) {
+    temp = braces.length
+    braces = braces.replace("()", "")
+    braces = braces.replace("[]", "")
+    braces = braces.replace("{}", "")
+    if (temp === braces.length) {break}
+  }
+  
+  return braces.length === 0 ? true : false
+}

@@ -4069,3 +4069,46 @@ function validBraces(braces){
   
   return braces.length === 0 ? true : false
 }
+
+/*
+Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.
+All of the strings in the array passed to your function will be different lengths, so you will not have to decide how to order multiple strings of the same length.
+*/
+
+//We are given an array of strings
+//We are returning the array sorted by string string length, smallest to largest
+//["Beg", "Life", "I", "To"]),["I", "To", "Beg", "Life"]
+//Easiest way is to just use a normal sort method, but instead of just comparing values, you compare the string length
+
+function sortByLength (array) {
+  return array.sort((a, b) => a.length - b.length)  
+}
+
+/*
+Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.
+
+Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero.
+
+Remember that there can't be more than 3 identical symbols in a row.
+*/
+
+//We are number
+//We are returning a string that is the number converted to Roman Numeral
+//(2007), 'MMVII'
+//After some researching, the best way I found to do it was to make a object I can use a search reference for each Roman Numeral. I added all Roman Numerals that I would need to add to the string including stuff like IV for 4 so it is cleaner. I then would loop each roman numeral starting from the largest and added to a string that we will return.
+
+function solution(number) {
+  
+  let table = {M:1000, CM:900, D:500, CD:400, C:100, XC:90, L:50, XL:40, X:10, IX:9, V:5, IV:4, I:1}
+  let roman = ""
+  let i = 0
+  
+   for ( i in table ) {
+     while ( number >= table[i] ) {
+       roman += i;
+       number -= table[i];
+     }
+   }
+   
+   return roman;
+}

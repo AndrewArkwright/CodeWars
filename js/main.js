@@ -4112,3 +4112,29 @@ function solution(number) {
    
    return roman;
 }
+
+/*
+Create a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don't need to validate the form of the Roman numeral.
+
+Modern Roman numerals are written by expressing each decimal digit of the number to be encoded separately, starting with the leftmost digit and skipping any 0s. 
+*/
+
+//We are given a string, which is a Roman Numeral
+//We return a number which is the Roman Numeral converted to a number
+//'XXI', 21
+//I decided to use a table of values that are possible in the string given and I put two character values first because we will be removing the values. Will make a loop to iterate the object and another loop to remove multiple characters of the same character. Will use the value of the key to add to the number that we return each time we do so.
+
+function solution (roman) {
+  let table = {CM:900, CD:400, XC:90, XL:40, IX:9, IV:4, M:1000, D:500, C:100, L:50, X:10, V:5, I:1}
+  let number = 0, i = 0
+  
+  for (i in table) {
+    while (roman.includes(i)) {
+      number += Number(table[i])
+      let ind = roman.indexOf(i)
+      roman = roman.substring(0, ind) + roman.substring(ind + i.length)
+    }
+  }
+
+   return number;
+}

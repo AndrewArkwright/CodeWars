@@ -4138,3 +4138,16 @@ function solution (roman) {
 
    return number;
 }
+
+/*
+Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or camelCase in Java) for strings. All words must have their first letter capitalized without spaces.
+*/
+
+//We are given a string, but we must use this.toString() to get the value since it is within an object that we get at runtime
+//We return that string with no spaces and the first letter capitalized of each word that had a space between it while everything else is lowercase
+//"test case".camelCase(), "TestCase"
+//Will just need to split it by " " to get each word and then by "" to get each letter, change the first letter to uppercase and rest to lower case, then join them all back together and return
+
+String.prototype.camelCase=function(){
+  return this.toString().split(" ").map(value => value.split("").map((val, ind) => ind === 0 ? val.toUpperCase() : val.toLowerCase()).join("")).join("")
+}

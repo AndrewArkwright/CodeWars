@@ -4882,3 +4882,17 @@ function digitize(n) {
 function maps(x){
   return x.map(value => value * 2)
 }
+
+/**
+* @Description - You are given an array and must return an array such that the first element is the count of positive numbers in the array and the second element is the sum of all of the negative numbers
+* @Parameter - We are given an array of numbers that could be empty, null, have only positive numbers, or have only negative numbers
+* @Return - We return an array following the rules above. If it is null, has no positive numbers, has no negative numbers, or is empty, we return an empty array
+* @Example - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15] => [10, -65]
+* @Pseudo - I used filter to filter out positive and negative numbers of the array and then return the length of the positive numbers array and used reduce to add the negative numbers together. I chose to add a if statement before the return to handle some of the exceptions.
+*/
+
+function countPositivesSumNegatives(input) {
+  if (input === null) {return []}
+  if (input.length === 0 && input.filter(value => value > 0).length === 0 && input.filter(value => value < 0).length === 0) {return []}
+  return [input.filter(value => value > 0).length, input.filter(value => value < 0).reduce((prev, curr) => prev + curr, 0)]
+}

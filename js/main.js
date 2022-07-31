@@ -4911,3 +4911,30 @@ function checkExam(array1, array2) {
   if (points < 0) {return 0}
   return points
 }
+
+/**
+* Description - You are given a string that contains dots on either side of a math operator (+,-,*,//) and must return a string with the resulting amount of dots
+* Parameters - We are given a string wuch that there is at least one dot on either side of a math operator and there is a space on each side of the math operator as well
+* Return - We return a string of dots that is the result of the math calculation
+* Example - "... + ....." => "........"
+* Pseudo - I chose to put it in an array instead of using a loop to count because it is easy to use split to separate the two rows of dots, get the length, and do the math. After I got the result, I just used repeat to return the correct amount of dots.
+*/
+
+function dotCalculator (equation) {
+	if (equation.indexOf("+") != -1) {
+    equation = equation.split(" + ")
+    return ".".repeat((equation[0].length) + (equation[1].length))
+  }
+  else if (equation.indexOf("-") != -1) {
+    equation = equation.split(" - ")
+    return ".".repeat((equation[0].length) - (equation[1].length))
+  }
+  else if (equation.indexOf("*") != -1) {
+    equation = equation.split(" * ")
+    return ".".repeat((equation[0].length) * (equation[1].length))
+  }
+  else {
+    equation = equation.split(" // ")
+    return ".".repeat((equation[0].length) / (equation[1].length))
+  }
+}

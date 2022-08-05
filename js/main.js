@@ -4938,3 +4938,18 @@ function dotCalculator (equation) {
     return ".".repeat((equation[0].length) / (equation[1].length))
   }
 }
+
+/**
+* @Description - We are given a url and must remove everything after the anchor tag if it is present and return the url. If there is not an anchor tag, just return the url
+* @Parameter - We are given a string. It does not state what should happen if it is empty or if it may give an empty one.
+* @Return - We a string that is the url of the website without anything after the anchor tag.
+* @Example - 'www.codewars.com#about' => 'www.codewars.com'
+* @Pseudo - Since the url might not have to be changed, I can use a if statement and check if there is an index of "#" and if not, return it. Else I could use slice to grab the part of the url I want and return it.
+*/
+
+function removeUrlAnchor(url){
+  if (url.indexOf("#") != -1) {
+    url = url.slice(0, url.indexOf("#"))
+  }
+  return url
+}

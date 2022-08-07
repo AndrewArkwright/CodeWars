@@ -5004,3 +5004,13 @@ function alphabetWar(fight) {
 */
 
 const removeDuplicateWords = s => s.split(" ").filter((word, index, array) => array.indexOf(word) === index).join(" ")
+
+/**
+* @Description - We are given a string and must return an array where the first element is each even numbers character being uppercase and the second element having each odd character being uppercase.
+* @Parameter - We are given a string. It does not state it can be empty or if all elements are lowercase.
+* @Return - We need to return an array of two strings following the rules above.
+* @Example - "codewars" => ['CoDeWaRs', 'cOdEwArS']
+* @Pseudo - The first way I thought to do this was to map and check the index to see if it is even or odd and return the correct value as needed
+*/
+
+const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? value.toUpperCase() : value.toLowerCase()).join(""), s.split("").map((value, index) => index % 2 === 1 ? value.toUpperCase() : value.toLowerCase()).join("")]

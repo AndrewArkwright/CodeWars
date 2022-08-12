@@ -5014,3 +5014,13 @@ const removeDuplicateWords = s => s.split(" ").filter((word, index, array) => ar
 */
 
 const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? value.toUpperCase() : value.toLowerCase()).join(""), s.split("").map((value, index) => index % 2 === 1 ? value.toUpperCase() : value.toLowerCase()).join("")]
+
+/**
+ * @Description - given an array and value, check to see if the value is in the array and return true or false.
+ * @Parameter - We are given an array and value. Does not state whether than can be empty or null.
+ * @Return - We return true or false.
+ * @Example - [66, 101], 66 => true
+ * @Pseudo - Used include since it would be easy to use for this situation.
+ */
+
+ const check = (a, x) => a.includes(x)

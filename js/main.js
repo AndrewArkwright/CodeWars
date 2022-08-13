@@ -5016,7 +5016,7 @@ const removeDuplicateWords = s => s.split(" ").filter((word, index, array) => ar
 const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? value.toUpperCase() : value.toLowerCase()).join(""), s.split("").map((value, index) => index % 2 === 1 ? value.toUpperCase() : value.toLowerCase()).join("")]
 
 /**
- * @Description - given an array and value, check to see if the value is in the array and return true or false.
+ * @Description - Given an array and value, check to see if the value is in the array and return true or false.
  * @Parameter - We are given an array and value. Does not state whether than can be empty or null.
  * @Return - We return true or false.
  * @Example - [66, 101], 66 => true
@@ -5024,3 +5024,13 @@ const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? val
  */
 
  const check = (a, x) => a.includes(x)
+
+/**
+ * @Description - Given a string, reverse all the words of the string and return it.
+ * @Parameter - We are given a string. Does not say if it could be empty or null.
+ * @Return - We return a string.
+ * @Example - "hello world!" => "world! hello"
+ * @Pseudo - Since reverse would be an easy way to adjust the words, I decided to convert the string to an array, use reverse, and then change it back to a string.
+ */
+
+ const reverseWords = str => str.split(" ").reverse().join(" ")

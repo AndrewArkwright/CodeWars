@@ -5044,3 +5044,13 @@ const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? val
  */
 
  const areYouPlayingBanjo = name => name.charAt(0).toLowerCase() === "r" ? `${name} plays banjo` : `${name} does not play banjo`
+
+/**
+ * @Description - We are given a number and a boolean value. If the boolean value is true, we return the the number * 10 with the European currency character or just the salary with the character
+ * @Parameter - We are given a number and a boolean value. Both values seem to always be valid in the given tests
+ * @Return - We return the salary * 10 if the boolean is true or just the salaray otherwise. You also add the European currency character before the number as well
+ * @Example - 10000, true => '£100000'
+ * @Pseudo - If bonus, then return character + salary * 10, else character + salary
+*/
+
+ const bonusTime = (salary, bonus) => bonus ? `£${salary*10}` : `£${salary}`

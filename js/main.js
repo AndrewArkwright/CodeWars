@@ -4953,3 +4953,18 @@ function removeUrlAnchor(url){
   }
   return url
 }
+
+/**
+* @Description - We are given two strings that coudl be empty. We return the first string as if it is a title (first letter only capitalized), but we do not capitalize words if they are in the second string.
+* @Parameters - We are given two strings that may be empty
+* @Return - We return the first string as a title following the rules above
+* @Example - 'THE WIND IN THE WILLOWS', 'The In' => 'The Wind in the Willows'
+* Pseudo - Since they can be empty, I will need a couple of checks since I want to use string and array methods. I will first change it so all words are title cased using map. Then I will check if the second string includes a word in the first string and if it does, will change it to all lowercase.
+*/
+
+function titleCase(title, minorWords) {
+  if (title.length === 0) {return title}
+  title = title.split(" ").map(word => word.split("").map((letter, index) => index === 0 ? letter.toUpperCase() : letter.toLowerCase()).join(""))
+  if (!minorWords) {return title.join(" ")}
+  return title.map((word, index) => minorWords.toLowerCase().split(" ").includes(word.toLowerCase()) && index != 0 ? word.toLowerCase() : word).join(" ")
+}

@@ -4870,3 +4870,15 @@ const abbrevName = name => name.split(" ").map(names => names.split("").map((val
 function digitize(n) {
   return String(n).split("").map(value => Number(value)).reverse()
 }
+
+/**
+* @Description - Given an array integers, return each number in the array * 2
+* @Parameter - An array of integers
+* @Return - An array of integers following the rules above
+* @Example - [4, 1, 1, 1, 4] => [8, 2, 2, 2, 8]
+* @Pseudo - I chose to use map since I could easily adjust every value in an array with the method
+*/
+
+function maps(x){
+  return x.map(value => value * 2)
+}

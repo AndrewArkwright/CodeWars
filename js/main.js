@@ -4151,3 +4151,31 @@ Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or c
 String.prototype.camelCase=function(){
   return this.toString().split(" ").map(value => value.split("").map((val, ind) => ind === 0 ? val.toUpperCase() : val.toLowerCase()).join("")).join("")
 }
+
+/**
+* @Description Assume that "#" is a backspace and return the string after all backspaces are removed
+* @Parameter We are given a string
+* @Return We are returning a string
+* @Example "abc#d##c"      ==>  "ac"
+* @Prototype I am going to loop through it multiple times and remove the character before each "#" until there are no "#" left
+*/
+
+function cleanString(s) {
+  while (s.includes("#")) {
+        for (let i = 0; i < s.length; i++) {
+          if (s.charAt(i + 1) === "#") {
+            if (i === 0) {
+              s = s.slice(2, s.length)
+            }
+            else {
+              s = s.slice(0, i) + s.slice(i+2, s.length)
+              i-=2
+            }
+          }
+          else if (s.charAt(0) === "#") {
+            s = s.slice(1, s.length)
+          }
+        }
+  }
+  return s
+}

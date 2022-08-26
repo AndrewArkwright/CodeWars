@@ -4179,3 +4179,13 @@ function cleanString(s) {
   }
   return s
 }
+
+/**
+* @Description - Create the function that takes as a parameter a sequence of numbers represented as strings and outputs a sequence of numbers.
+* @Parameter - We are given an array of strings are actually number. Doesn't say if it could be empty, but it does include float numbers
+* @Return - We are returning an array of numbers such that the strings are converted to numbers
+* @Example - ["1.1","2.2","3.3"]) => [1.1,2.2,3.3]
+* @Prototype - Number() can convert a string to a number and I'll use Array.map() since I want to return an array
+*/
+
+const toNumberArray = stringarray => {return stringarray.map(value => value = Number(value))}

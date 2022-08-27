@@ -4189,3 +4189,23 @@ function cleanString(s) {
 */
 
 const toNumberArray = stringarray => {return stringarray.map(value => value = Number(value))}
+
+/**
+* @Description - Given a string of numbers and characters, return the largest group of numbers in the string
+* @Parameters - string. Does not say if it could be empty.
+* @Return - number
+* @Example - 'gh12cdy695m1' => 695
+* @Prototype - Was thinking of converting to an array and then filtering, but would have to still go through each element to gather the full number and would need to make sure the numbers do not combine. Decided to just loop through the string and keep track of the largest number. Regex would probably be good for this.
+*/
+
+function solve(s){
+  let answer = "", temp = ""
+  for(let i = 0; i < s.length; i++) {
+    if (!isNaN(Number(s.charAt(i)))) {
+      temp += s.charAt(i)
+      if (temp > answer) {answer = Number(temp)}
+    }
+  else {temp = ""}
+  }
+  return answer
+};

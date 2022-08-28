@@ -4209,3 +4209,24 @@ function solve(s){
   }
   return answer
 };
+
+/**
+* Description - If there are more uppercase letters in the string, return the string with all characters as uppercase, else have all characters be lowercase
+* Parameters - string of letters, doesn't say if it can be empty
+* Return - string of characters as all lowercase or uppercase depending on how many of each was in the original string
+* Example - "COde" => "code"
+* Prototype - Decided to use a forEach loop to increment a value for each uppercase and lowercase value and then return the correct string based on the result. Could make it more efficient by incrementing until there one of the values is equal to string.length.
+*/
+
+function solve(s){
+  let upper = 0, lower = 0
+  s.split("").forEach(value => value === value.toLowerCase() ? lower++ : upper++)
+
+  if (upper > lower){
+    return s.split("").map(value => value = value.toUpperCase()).join("")
+  }
+
+  else {
+    return s.split("").map(value => value = value.toLowerCase()).join("")
+  }
+}

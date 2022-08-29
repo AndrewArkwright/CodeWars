@@ -4230,3 +4230,13 @@ function solve(s){
     return s.split("").map(value => value = value.toLowerCase()).join("")
   }
 }
+
+/**
+* @Description - Given a string, reverse every other word in the string and remove any whitespace before and after the string.
+* @Parameters - We are given a string that can just be spaces
+* @Return - We return the resulting string after following the info above
+* @Example - "I really don't like reversing strings!" => "I yllaer don't ekil reversing !sgnirts"
+* @Prototype - Can use trim() to remove any extra white space before and after the string. Can check if the index is even and then change the string into an array and reverse it to get the correct strings.
+*/
+
+const reverse = str => str.trim().split(" ").map((value, index) => index % 2 === 0 ? value : value.split("").reverse().join("")).join(" ")

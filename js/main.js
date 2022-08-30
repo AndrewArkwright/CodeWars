@@ -4240,3 +4240,17 @@ function solve(s){
 */
 
 const reverse = str => str.trim().split(" ").map((value, index) => index % 2 === 0 ? value : value.split("").reverse().join("")).join(" ")
+
+/**
+* Description - Given a string s. You have to return another string such that even-indexed and odd-indexed characters of s are grouped and groups are space-separated.
+* Parameter - Given a string that has no spaces in it and are valid strings
+* Return - String that follows the above rules
+* Example - "CodeWars" => "CdWr oeas"
+* Prototype - Chose to just make two filters and add them together
+*/
+
+function sortMyString(S) {
+  let even = S.split("").filter((value, index) => index % 2 === 0).join("")
+  let odd = S.split("").filter((value, index) => index % 2 === 1).join("")
+  return even + " " + odd
+}

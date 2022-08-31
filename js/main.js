@@ -4254,3 +4254,25 @@ function sortMyString(S) {
   let odd = S.split("").filter((value, index) => index % 2 === 1).join("")
   return even + " " + odd
 }
+
+/**
+* @Description - Given a hex string, convert it to rgb and return it as an object
+* @Parameters - We are given a hex string that has a # in front
+* @Return - We are return an object that has the letter of each color of rgb and the number value for it
+* @Example - "#FF9933" => {r:255, g:153, b:51}
+* @Prototype - I first converted my string into an array because it is easier to access the values. I then would take each two numbers/characters and convert it from base 16 (hex) to base 10 (normal numbering system). Will then put each of those in an object to return.
+*/
+
+function hexStringToRGB(hexString) {
+  hexString = hexString.split("")
+  let red = parseInt((hexString[1] + hexString[2]), 16)
+  let green = parseInt((hexString[3] + hexString[4]), 16)
+  let blue = parseInt((hexString[5] + hexString[6]), 16)
+  
+  const Rgb = {}
+  Rgb.r = red
+  Rgb.g = green
+  Rgb.b = blue
+  
+  return Rgb
+}

@@ -4276,3 +4276,22 @@ function hexStringToRGB(hexString) {
   
   return Rgb
 }
+
+/**
+* @Description - given a string of words, return the string such that each word is turned inside out (the left and right sides are reversed).
+* @Parameters - we are given a string of words
+* @Return - we return a string of words
+* @Example - 'take me to semynak' => 'atek me to mesykan'
+* @Prototype - What I chose to do was change the entire string to an array and map it. I then took each element and then sliced, split, reversed, and joined each side and then recombined it into a single string. Would need to just make sure I check if the string has an odd or even number of characters since we would have to add the middle character if it is odd.
+*/
+
+function insideOut(x){
+  return x.split(" ").map(value => {
+    if (value.length % 2 === 0) {
+      return value.slice(0, Math.floor(value.length/2)).split("").reverse().join("") + value.slice(value.length/2).split("").reverse().join("")
+    }
+    else {
+      return value.slice(0, Math.floor(value.length/2)).split("").reverse().join("") + value.charAt(Math.ceil(value.length/2) - 1) + value.slice(Math.ceil(value.length/2)).split("").reverse().join("")
+    }
+  }).join(" ")
+}

@@ -4295,3 +4295,28 @@ function insideOut(x){
     }
   }).join(" ")
 }
+
+/**
+* @Description - Given an array of strings, remove all duplicate consecutive characters in the string.
+* @Parameters - We are given an array of strings.
+* @Return - We return an array of strings following the description.
+* @Example - ["ccooddddddewwwaaaaarrrrsssss","piccaninny","hubbubbubboo"] => ['codewars','picaniny','hubububo']
+* @Prototype - At first I thought about filtering out the duplicates, but instead I just made a temp array and pushed each character in the string into it and I would change the character I am looking at until it is not the previous character push.
+*/
+
+function dup(s) {
+  for(let i = 0; i < s.length; i++) { //for each string in s array
+    let temp = []
+    s[i] = s[i].split("")
+    
+    for (let j = 0; j < s[i].length; j++) { //for each char in each string
+      temp.push(s[i][j]) //Push it once
+      if (s[i][j] === s[i][j+1]) { //if next char is equal to current char, change spot we are looking at in the array
+        while (s[i][j+1] === temp[temp.length-1]) {j++}
+      }
+    }
+    
+    s[i] = temp.join("")
+  }
+  return s
+}

@@ -4320,3 +4320,32 @@ function dup(s) {
   }
   return s
 }
+
+/**
+* @Description - Convert a PascalCase String to snake_case
+* @Parameters - We are given a stirng in the format of PascalCase, but we can also just be given a number
+* @Return - We return the given information as a string in snake_case, including if it is a number
+* @Example - "App7Test" => "app7_test"
+* @Prototype - Instead of making it a little messy with slicing the string up, I decided to change the string into an array and then push each character into a an array that we would return until we reached an uppercase letter, in which we would push "_" and the value as lowercase. Would then return the temp array as a string.
+
+Found this solution that was pretty cool
+  var toUnderscore;
+
+  toUnderscore = function(string) {
+    return string.toString().split(/(?=[A-Z])/).join('_').toLowerCase();
+  };
+*/
+
+function toUnderscore(string) {
+  if (Number.isInteger(string)) {return string.toString()}
+  string = string.split("")
+  let snakeString = []
+  for(let i = 0; i < string.length; i++) {
+    if (string[i] === string[i].toUpperCase() && !Number.isInteger(Number(string[i]))) {
+      if (i === 0) {snakeString.push(string[i].toLowerCase())}
+      else {snakeString.push("_" + string[i].toLowerCase())}
+    }
+    else {snakeString.push(string[i])}
+  }
+  return snakeString.join("")
+}

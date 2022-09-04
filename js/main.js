@@ -4349,3 +4349,27 @@ function toUnderscore(string) {
   }
   return snakeString.join("")
 }
+
+/**
+* @Description - Given a string, return that string as a number
+* @Parameters - We are given a string
+* @Return - We return a number
+* @Example - "437" => 437
+* @Prototype - Decided to use the Number method to change the string into a number
+*/
+
+const stringToNumber = function(str){
+  return Number(str)
+}
+
+/**
+* @Description - Given a boolean value, covert it to a string
+* @Parameters - We are given a boolean value
+* @Return - We return the string "true" or "false" depending on the boolean value
+* @Example - true => "true"
+* @Prototype - Decided to just use a ternary operator to return the correct value since we only had two options that it could be
+*/
+
+function booleanToString(b){
+  return b ? "true" : "false"
+}

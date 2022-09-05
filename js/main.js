@@ -4373,3 +4373,34 @@ const stringToNumber = function(str){
 function booleanToString(b){
   return b ? "true" : "false"
 }
+
+/**
+* @Description - We are given a string that could be empty and need to return the sum of both numbers in the string as a string
+* @Parameters - We are given two strings that could be empty, in which we would treat them as 0
+* @Return - We return the string that contains both numbers given to us added together
+* @Example - ("4","5") => "9"
+* @Prototype - I decided to use Nummber() to change the string into a number and use || 0 in case it is empty. Then I added them together, changed them to a string, and returned it
+*/
+
+function sumStr(a,b) {
+  return ((Number(a) || 0 ) + (Number(b) || 0)).toString()
+}
+
+/**
+* @Description - We are given a string inside an object and must return true if the entire string is uppercase or false otherwise
+* @Parameters - Technically there isn't a parameter since we are making a prototype, but we are using a string that can contain any character
+* @Return - We return true if all characters are uppercase or false otherwise
+* @Example - '#lovewins' => false, 'BOB WALKS HIS DOG EVERY DAY." => true
+* @Decided to use a loop and change the string into an array. I checked to see if each letter matched the lowercase equivelent. Then I checked if the lowercase matched the uppercase equivelent to determine if the character was a special character so we could ignore it. If any loop failed, it returned false or it would return true at the end.
+*/
+
+String.prototype.isUpperCase = function() {
+  let temp = this.split("")
+
+  for (let i = 0; i < temp.length; i++) {
+    if (temp[i].toLowerCase() === temp[i] && temp[i].toLowerCase() != temp[i].toUpperCase()) {
+      return false
+    }
+  }
+  return true
+}

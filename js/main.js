@@ -4404,3 +4404,13 @@ String.prototype.isUpperCase = function() {
   }
   return true
 }
+
+/**
+* @Description - Given a string, return it such that all uppercase letters are lowercase and vise versa and that the words are in the reverse order. You will hae to handle extra spaces and spaces that are trailing or leading as well.
+* @Parameters - We are given a string. Description did not say if it could be empty or not
+* @Return - We return the same string following the description above
+* @Example - 'Example string' => 'STRING eXAMPLE'
+* @Prototype - So the first thing I thought of was just switching the string to an array so I can map it and return the value as lowercase if it is uppercase and vice versa. Then I would just reverse the array before I join it back into a string.
+*/
+
+const stringTransformer = str => str.split(" ").map(value => value.split("").map(val => val === val.toUpperCase() ? val.toLowerCase() : val.toUpperCase()).join("")).reverse().join(" ")

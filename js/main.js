@@ -4414,3 +4414,31 @@ String.prototype.isUpperCase = function() {
 */
 
 const stringTransformer = str => str.split(" ").map(value => value.split("").map(val => val === val.toUpperCase() ? val.toLowerCase() : val.toUpperCase()).join("")).reverse().join(" ")
+
+/**
+* @Description - We are given an array of numbers and need sort them such that the first value is the max value, the second value is the min value, the third value is the second max value, and so on
+* @Parameters - We are given an array of numbers
+* @Return - We return that same array of numbers sorted
+* @Example - [15,11,10,7,12] => [15,7,12,10,11]
+* @Prototype - I was going to just loop and find the min and max multiple times, but that would be costly so I just sorted the array and grab values from it. I ended up using a if statement to determine if there was an even or odd amount and them popped and pushed the values appropriately depending on the amount of values in the array into a new array that I would return.
+*/
+
+function solve(arr){
+  arr = arr.sort((a, b) => a - b)
+  let answerArr = []
+  
+  if (arr.length % 2 === 0) {
+    while (arr.length > 0) {
+      answerArr.push(arr.pop())
+      answerArr.push(arr.shift())
+    }
+  }
+  else {
+    while (arr.length > 1) {
+      answerArr.push(arr.pop())
+      answerArr.push(arr.shift())
+    }
+    answerArr.push(arr.pop())
+  }
+return answerArr
+}

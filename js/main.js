@@ -4442,3 +4442,25 @@ function solve(arr){
   }
 return answerArr
 }
+
+/**
+* @Description - We are given two arrays and need to return the sum of both arrays added together as if the entire array was the number we added
+* @Parameters - We are given two arrays that can be empty
+* @Return - We return an array following the info above. If the number is negative, the first number in the array would be negative
+* @Example - [3,2,9], [1,2] => [3,4,1]
+* @Prototype - I decided to first get the number I needed to put into an array. I then just change the number into a string and split it to return postiive numbers. I did the same thing for negative numbers, but I had to change it to a positive number first and then change the first value in the array to negative before returning. Also had to add a check for empty array to return [].
+*/
+
+function addArrays(array1, array2) {
+  if (array1.length === 0 && array2.length === 0) {return []}
+  let array = Number(array1.join("")) + Number(array2.join(""))
+  if (array < 0) {
+    array *= -1
+    array = array.toString().split("").map(value => Number(value))
+    array[0] *= -1
+    return array
+  }
+  else {
+    return array.toString().split("").map(value => Number(value))
+  }
+}

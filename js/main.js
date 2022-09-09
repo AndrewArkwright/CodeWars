@@ -4464,3 +4464,13 @@ function addArrays(array1, array2) {
     return array.toString().split("").map(value => Number(value))
   }
 }
+
+/**
+* @Description - Given two arrays, return them merged together, sorted, and without duplicates
+* @Parameteres - We are given two arrays of numbers that can be empty
+* @Return - We return one sorted array without any duplicates
+* @Example - [1,2,3,4], [5,6,7,8] => [1,2,3,4,5,6,7,8]
+* @Prototype - I will use concat to merge them together. I will use the filter method to filter out any duplicates by checking if current index is the first index of the value. Then I will use the sort method, which will take a little less time since we removed the duplicates first.
+*/
+
+const mergeArrays = (arr1, arr2) => arr1.concat(arr2).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => a - b)

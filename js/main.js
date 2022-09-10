@@ -4474,3 +4474,13 @@ function addArrays(array1, array2) {
 */
 
 const mergeArrays = (arr1, arr2) => arr1.concat(arr2).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => a - b)
+
+/**
+* @Description - given an array, sort it in lexicographical order
+* @Parameters - We are given an array of strings
+* @Return - We return that same array of strings sorted as stated above
+* @Example - ['one', 'two', 'three' ] => ["one", "three", "two"]
+* @Prototype - At first I thought localecompare would work when using sort, but it is not exactly the same. Found out that the normal sort method actually sorted it in lexicographical order and used that.
+*/
+
+const sortme = names => names.sort()

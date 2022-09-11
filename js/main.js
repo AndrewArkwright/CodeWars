@@ -4483,4 +4483,22 @@ const mergeArrays = (arr1, arr2) => arr1.concat(arr2).filter((value, index, arra
 * @Prototype - At first I thought localecompare would work when using sort, but it is not exactly the same. Found out that the normal sort method actually sorted it in lexicographical order and used that.
 */
 
-const sortme = names => names.sort()
+/**
+* @Description - Write a function that determines whether the passed in arrays are similar. Similar means they contain the same elements, and the same number of occurrences of elements.
+* @Parameters - two arrays of characters that can most likely be empty
+* @Return - true or false depending on if the arrays are similar or not
+* @Example - [1, 2, 3, "4"], [1, 2, 3, 4] => false
+* @Prototype - So I thought about making a hash map for each array, but I don't think it wouldn't be much more efficient with the way I'm thinking and it would take up more memory so I just sorted each array and checked if the index of both arrays were equal and if not, we would return false.
+*/
+
+function arraysSimilar(arr1, arr2) {
+  arr1 = arr1.sort()
+  arr2 = arr2.sort()
+  if (arr1.length != arr2.length) {return false}
+  let i = 0
+  while (arr1[i] === arr2[i]) {
+    if (i === arr1.length) {return true}
+    i++
+  }
+  return false
+}

@@ -4502,3 +4502,25 @@ function arraysSimilar(arr1, arr2) {
   }
   return false
 }
+
+/**
+* @Description - given a string in the format name-yymm, and we must sort it by yymm (four numbers) and then by name (random string), but keep the original format
+* @Parameters - We are given an array of strings in the format name-yymm
+* @Return - We return that same array of strings, but sorted by yymm and then by name
+* @Example - ["web-1305","site-1305","web-1304","site-1304"] => ["site-1304", "web-1304", "site-1305", "web-1305"]
+* @Pseudo - The first thing i thought of was changing thing string around, sorting it, and then readjusting the string. I was able to do that, but the sort was not quite right due to the string having uppercase and lowercase values. I changed them all to lowercase during the sort comparison to fix that. Found out later that the localecompare() method did the same thing.
+*/
+
+const sortme = function( courses ){
+  courses = courses.map(value => value.split("-").reverse().join("-"))
+  courses = courses.sort((a, b) => {
+  if (a.toLowerCase() < b.toLowerCase()) {
+    return -1;
+  }
+  if (a.toLowerCase() > b.toLowerCase()) {
+    return 1;
+  }
+    return 0;
+  })
+  return courses.map(value => value.split("-").reverse().join("-"))
+}

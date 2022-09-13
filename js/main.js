@@ -4524,3 +4524,120 @@ const sortme = function( courses ){
   })
   return courses.map(value => value.split("-").reverse().join("-"))
 }
+
+/**
+* @Description - Given a mathematical expression as a string, you must return the result as a number. Given string will always be a valid expression. Negative numbers will have no white space between the "-" and the number itself.
+* @Parameters - We are given a string that represents a valid mathmatical expression
+* @Return - We return a number, which is the result of the mathmatical expression
+* @Example - '2 / (2 + 3) * 4.33 - -6' => 7.732
+* @Pseudo Code - So at first I started with just single digits and one operator. I then slowly added more things like numbers with more than one digit, negative numbers, decimal numbers, etc. Once I got that handles, I added parentheses and found some problems with some special test cases. Fixed that and eventually got it working.
+*/
+
+var calc = function (expression) {
+  function doMath(expression) {
+  //mult and div first
+    while (expression.indexOf("*") != -1 || expression.indexOf("/") != -1) { 
+      if (expression.indexOf("*") != -1) { //if we can *
+        if (expression.indexOf("/") < expression.indexOf("*") != -1 && expression.indexOf("/") != -1) { //check for / and if it is before mult
+          //do /
+          expression[expression.indexOf("/") - 1] = (Number(expression[expression.indexOf("/") - 1]) / Number(expression[expression.indexOf("/") + 1])).toString()
+          expression[expression.indexOf("/") + 1] = " "
+          expression[expression.indexOf("/")] = " "
+        }
+        else { //do * 
+          expression[expression.indexOf("*") - 1] = (Number(expression[expression.indexOf("*") - 1]) * Number(expression[expression.indexOf("*") + 1])).toString()
+          expression[expression.indexOf("*") + 1] = " "
+          expression[expression.indexOf("*")] = " "
+        }
+      }
+      else { //only do /
+        expression[expression.indexOf("/") - 1] = (Number(expression[expression.indexOf("/") - 1]) / Number(expression[expression.indexOf("/") + 1])).toString()
+        expression[expression.indexOf("/") + 1] = " "
+        expression[expression.indexOf("/")] = " "
+      }
+      expression = expression.filter(value => value != " ")
+    }
+  
+    //add and sub next
+    while (expression.length != 1) {
+      //just stay on left side and check for + or -
+      if (expression[1] === "+") {
+        expression[0] = (Number(expression[0]) + Number(expression[2])).toString()
+        expression[1] = " "
+        expression[2] = " "
+      }
+      else {
+        expression[0] = (Number(expression[0]) - Number(expression[2])).toString()
+        expression[1] = " "
+        expression[2] = " "
+      }
+      expression = expression.filter(value => value != " ")
+    }
+    return expression[0]
+  }
+    
+  //get rid of white space
+  expression = expression.split("").filter(value => value != " ")
+    
+  //add numbers together as strings so "123" will not be ["1", "2", "3"]
+  for (let i = 0; i < expression.length; i++) {
+    if (!isNaN(Number(expression[i]))) {
+      let j = i+1
+      while (!isNaN(Number(expression[j])) || expression[j] === ".") { //for decimals
+        expression[i] += expression[j]
+        expression[j] = " "
+        j++
+      }
+    }
+    expression = expression.filter(value => value != " ")
+  }
+    
+  //adjust negative numbers
+  for (let i = 0; i < expression.length; i++) {
+    if (expression[i] === "-") {
+      if (expression[i+1] === "-" && !isNaN(Number(expression[i + 1]))) { //if - - 1 and not - -(-4)
+        expression[i+1] = " "
+        expression[i+2] *= -1
+      }
+      else if(expression.length === 2) { //if single negative
+        expression[i+1] *= -1
+        expression[i] = " "
+      }
+      else if(!isNaN(Number(expression[i + 1]))) { //-5 + 2 and not (1 - 2)   (-5 + 2)
+        if (isNaN(Number(expression[i - 1]))) {
+          expression[i] = expression[i + 1] * -1
+          expression[i + 1] = " "
+        }
+      }
+      else if(expression[i - 1] === "+" || expression[i - 1] === "*" || expression[i - 1] === "/") { // 12 * - 1 etc
+        if (!isNaN(Number(expression[i+ 1]))) { //"12* 123/-(-5 + 2)" so it doesn't mess with a (
+          expression[i] = expression[i + 1] * -1
+          expression[i + 1] = " "
+        }
+      }
+    }
+  }
+  expression = expression.filter(value => value != " ")
+  
+  while (expression.indexOf("(") != -1) {
+    let i = expression.lastIndexOf("(")
+    let j = i + 1
+    let temp = []
+    while (expression[j] != ")") {
+      temp.push(expression[j])
+      expression[j] = " "
+      j++
+    }
+    expression[j] = " " //to remove the )
+    expression[i] = doMath(temp) //do math inside of ()
+    if (expression[i - 1] === "-") { //if -(num)
+      if (expression[i - 2] === "+" || expression[i - 2] === "-" || expression[i - 2] === "*" || expression[i - 2] === "/" || expression[i - 2] === "(") { // so (-2.5+ 11.5)-2028.25) / 20) + 11/ 11 and (1 - 2) + -(-(-(-4))) 
+      expression[i] *= -1
+      expression[i - 1] = " "
+      }
+    }
+    expression = expression.filter(value => value != " ") 
+  } 
+  
+    return Number(doMath(expression))
+}

@@ -4658,3 +4658,13 @@ function keysAndValues(data){
   }
   return[value, key]
 }
+
+/**
+* Description - Given an array and a function that returns the array without its' last element, find out why some tests work and do not work and adjust the code to work
+* Parameters - We are given an array
+* Return - We return the given array without the last element
+* Example - [1, 2, 3, 4, 5] => [1, 2, 3, 4]
+* Pseudo - So the idea behind what pop does is correct, but I knew that the way pop() altered the array was the problem. pop() mutates the array causing two different variables to rely on a single variable, which can have issues in certain use cases. I decided to use slice instead to remove the last element.
+*/
+
+const withoutLast = (arr) => arr.slice(0, -1)

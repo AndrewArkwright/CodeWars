@@ -4641,3 +4641,20 @@ var calc = function (expression) {
   
     return Number(doMath(expression))
 }
+
+/**
+* Description - We are given an object and must return an array of each property and value inside of another array.
+* Parameters - We are given an object named data.
+* Return - We return an array of values of each key and an array of each property name both nested in another array.
+* Example - {a: 1, b: 2, c: 3}) => [['a', 'b', 'c'], [1, 2, 3]]
+* Pseudo - Just used a for in loop to access the data inside of the object and pushed them into an array and returned both arrays inside of another array.
+*/
+
+function keysAndValues(data){
+  let key = [], value = []
+  for(const property in data) {
+    value.push(property)
+    key.push(data[property])
+  }
+  return[value, key]
+}

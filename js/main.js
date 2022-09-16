@@ -4668,3 +4668,16 @@ function keysAndValues(data){
 */
 
 const withoutLast = (arr) => arr.slice(0, -1)
+
+/**
+* @Description - Return the missing element between two given arrays such that the second array is a copy of the first array without one element.
+* @Parameters - We are given two arrays and the second one can be empty
+* @Return - We return the value that is missing from array two
+* @Example - [1, 2, 3], [1, 3]) => 2
+* @Pseudo - I sorted both arrays so I can easily loop through them and find out which index does not match the first index. I used the filter method to return the array when they first do not equal each other and the first element will always be the one that is missing since I filter array1.
+*/
+
+function findMissing(arr1, arr2) {
+  arr2 = arr2.sort()
+  return arr1.sort().filter((value, index) => value != arr2[index])[0]
+}

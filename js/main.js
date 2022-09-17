@@ -4681,3 +4681,23 @@ function findMissing(arr1, arr2) {
   arr2 = arr2.sort()
   return arr1.sort().filter((value, index) => value != arr2[index])[0]
 }
+
+/**
+* @Description - given an array of arrays, return a array of nested arrays that contain only one data type, which will be a number or string
+* @Parameters - An array of arrays. Nested arrays can be empty, in which we do not include them
+* @Return - An array of arrays followed the rules above
+* @Example - [[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]] => [[1, 5, 4], ['b']]
+* @Pseudo - The first thing I thought of using was the map and every methods so I can test all nested arrays to see if they are all the same type. I made two versions. One is just a one liner and the other one just spreads it out more so it is easier to read/understand.
+*/
+
+function filterHomogenous(arrays) {
+  return arrays.map(val => val.every(value => typeof value === "string") || val.every(value => typeof value === "number") ? val : "").filter(value => value.length != 0)
+  
+  //or
+  
+  let temp = []
+  for(let i = 0; i < arrays.length; i++) {
+    arrays[i].every(value => typeof value === "string") || arrays[i].every(value => typeof value === "number") ? temp.push(arrays[i]) : undefined
+  }
+  return temp.filter(value => value.length != 0)
+}

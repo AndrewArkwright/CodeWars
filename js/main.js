@@ -4701,3 +4701,31 @@ function filterHomogenous(arrays) {
   }
   return temp.filter(value => value.length != 0)
 }
+
+/**
+* @Description - Add the values of the nested arrays together starting at the shift parameter for each array and return the resulting array
+* @Parameters - We are given an array of arrays that are all of the same length and contain at least one number
+* @Return - We return an array following the steps in the description
+* @Example - [[1,2,3,4,5,6], [7,7,7,7,7,7]], 3 => [1,2,3,11,12,13,7,7,7]
+* @Pseudo - I think there may be an easier way to use reduce to calculate it, but I ended up making a nested for loop to iterate each array. I just calculated the starting point after each array that we added and made sure we edited or made a new number when adding the next array.
+*/
+
+function addingShifted (arrayOfArrays, shift) {
+  let size = arrayOfArrays[0].length //keep track of current size for calculations
+  let start = shift //assign starting value for each time we add a new array
+  
+  for(let i = 1; i < arrayOfArrays.length; i++) { //for each nested array other than the first one that we use to return
+    let k = 0 //used to determine if we added all of the elements in the nested array
+    for(let j = start; j < size + start; j++) { //Start a insert postion and until we added the next nested array
+      if (k + shift < size) { //if the value we are updating is currently in the array, we update it
+        arrayOfArrays[0][j] += arrayOfArrays[i][k]
+      }
+      else { //We add a new element since the array does not have an element at that length
+        arrayOfArrays[0].push(arrayOfArrays[i][k])
+      }
+      k++
+    }
+    start += shift //adjust starting position
+  }
+  return arrayOfArrays[0]
+}

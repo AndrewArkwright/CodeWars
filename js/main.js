@@ -4729,3 +4729,13 @@ function addingShifted (arrayOfArrays, shift) {
   }
   return arrayOfArrays[0]
 }
+
+/**
+* @Description - given a function that uses splice to remove the element n, find a new way to remove the element and figure out why splice does not work in some cases.
+* @Parameters - We are given an array. Given information does not state if it can be empty.
+* @Return - we return an array with the element at index n removed.
+* @Example - [1, 2, 3, 4, 5], 4 => [1, 2, 3, 4]
+* @Pseudo - The reason why it does not work is because splice mutates the array and can cause problems to sometimes occur since it is editing this. I used filter, which creates a new array so we don't have to worry about mutations.
+*/
+
+const removeNthElement = (arr, n) => arr.filter((value, index) => index != n)

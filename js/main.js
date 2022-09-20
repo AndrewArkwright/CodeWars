@@ -4739,3 +4739,52 @@ function addingShifted (arrayOfArrays, shift) {
 */
 
 const removeNthElement = (arr, n) => arr.filter((value, index) => index != n)
+
+/**
+* @Description - We are given two arrays of strings and must return if they have the same number of unique values regardless of the value itself.
+* @Parameters - We are given two arrays of strings that could be empty it seems
+* @Return - We return true or false depending on the info above
+* @Example - ["a","a","a","a","a","b","b","b"], ["c","c","c","c","c","d","d","d"] => true
+* @Pseudo - So the first thing I needed to do is get the number of times each string occurs. I used two objects as maps to keep track of that information. I then looped both objects and pushed the value of each property into an array. I then sorted and looped through each array and if they did not equal the same value at the same index, I return false. Otherwise I returned true. Had to include a if statement in the beginning to just return false if the given arrays were of different size
+
+Found an example online that actually used a map that was easier
+  if(arr1.length !== arr2.length) return false;  
+   return new Set(arr1).size == new Set(arr2).size ? true : false
+*/
+
+function balance (arr1, arr2){
+  if (arr1.length != arr2.length) {return false}
+  
+  //obj map
+  let objOne = {}, objTwo = {}
+  
+  arr1.forEach(value => {
+    if (value in objOne) {objOne[value]++}
+    else {objOne[value] = 1}
+  })
+    arr2.forEach(value => {
+    if (value in objTwo) {objTwo[value]++}
+    else {objTwo[value] = 1}
+  })
+  
+  //shove values in an array
+  let arrOne = []
+  for (const property in objOne) {
+    arrOne.push(objOne[property])
+  }
+  
+  let arrTwo = []
+  for (const property in objTwo) {
+    arrTwo.push(objTwo[property])
+  }
+  
+  //reduce and checking length won't work because 3,3 and 2,4 would be true. Just loop both sorted arrays and make sure they are ===
+  arrOne = arrOne.sort((a, b) => a - b)
+  arrTwo = arrTwo.sort((a, b) => a - b)
+  
+  
+  for (let i = 0; i < arrOne.length; i++) {
+    if (arrOne[i] != arrTwo[i]) {return false}
+  }
+  return true
+}

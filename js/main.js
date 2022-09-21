@@ -4788,3 +4788,25 @@ function balance (arr1, arr2){
   }
   return true
 }
+
+/**
+* @Description - We are given an array of values and must return the sum of all numbers in the array
+* @Parameter - We are given an array that can have nested arrays of any depth and values that are not numbers
+* @Return - We return the sum of all numbers in the array
+* @Example - [1, "apple", 2, [1, 2]] => 6
+* @Pseudo - So the first thing I needed to do was find a way to recursively flatten the array and I needed to keep track of the sum. There may be a shorter way to do it with map and reduce, but it would be quite complex. Ending up figuring out that I can recursively do it if I keep flatteneing it by one level when I loop through the original array and then I would just need to keep track of the sum.
+
+Found a recursive answer: return arr.reduce((n, x) => n + (Array.isArray(x) ? arraySum(x) : isNaN(x) ? 0 : x), 0)
+*/
+
+function arraySum(arr) {
+  let sum = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === "number") {sum += arr[i]} //only add numbers
+    else if (Array.isArray(arr[i])) {
+      arr = arr.reduce((prev, curr) => prev.concat(curr), []) //if value is an array, add it and reduce i by 1 to start at the front of the added array. If multiple nested arrays, the next array will just be another element later in the loop.
+      i--
+    }
+  }
+  return sum
+}

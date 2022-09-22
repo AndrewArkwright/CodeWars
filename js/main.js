@@ -4810,3 +4810,19 @@ function arraySum(arr) {
   }
   return sum
 }
+
+/**
+* @Description - make two array methods range and sum. Range will return an array starting at a specific number and will increment count times. Sum will return a number that is the sum of all of the numbers in your array
+* @Parameters - we are given two numbers that can be 0 or negative for the range method. we are given an array of numbers for the Sum array that can be empty.
+* @Return - we return an array for the range method. We return a number for the sum method.
+* @Example - Array.range(-3,5) => [-3,-2,-1,0,1] , [-3,-2,-1,0,1,2,3].sum() => 0
+* @Pseudo - The sum method was easy to make since it can be done with the reduce method, but there would need to be adjustments made if the array has anything that is not a number. The range function was a little tricky since the problem added a extra challenge of not using for loop if possible. I used Array to generate an empty array of the correct size. I used fill to give it some numbers, most importantly the starting number. Then I used map to properly increment the values after the start value.
+*/
+
+Array.range = function(start, count) {
+  return Array(count).fill(start, 0, count).map((value, index) => index != 0 ? value += index : value);
+}
+
+Array.prototype.sum = function() {
+  return this.reduce((prev, curr) => prev + curr, 0);
+}

@@ -4826,3 +4826,26 @@ Array.range = function(start, count) {
 Array.prototype.sum = function() {
   return this.reduce((prev, curr) => prev + curr, 0);
 }
+
+/**
+ * @Description - Write a function that combines two arrays by alternatingly taking elements from each array in turn
+ * @Parameters - We are given two arrays a and b that each have at least one element and only contain numbers
+ * @Return - We return an array following the information above
+ * @Example - ['a', 'b', 'c', 'd', 'e'], [1, 2, 3, 4, 5] => ['a', 1, 'b', 2, 'c', 3, 'd', 4, 'e', 5]
+ * @Pseudo - The easiest way I thought of was just using a for loop and then pushing each element at i into a new array while pushing in the correct order
+ */
+
+function mergeArrays(a, b) {
+  let length
+
+  if (a.length >= b.length) {length = a.length}
+  else {length = b.length}
+
+  let mergedArray = []
+
+  for (let i = 0; i < length; i++) {
+    if (i <= a.length - 1) {mergedArray.push(a[i])}
+    if (i <= b.length - 1) {mergedArray.push(b[i])}
+  }
+  return mergedArray
+}

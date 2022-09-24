@@ -4849,3 +4849,13 @@ function mergeArrays(a, b) {
   }
   return mergedArray
 }
+
+/**
+* @Description - We are given a first and last name as a string and must return the initials of the name capitalized with a "." in between them
+* @Parameter - We are given a string with a space inbetween some characters
+* @Return - We return a string following the rules above
+* @Example - "Sam Harris" => "S.H"
+* @Pseudo - I know I could do this on one line by using split and map so I did. I would just need to use map to change the first character of the names into uppercase and then filter out everything that is not uppercase. Then I would just join it back into a string and return it.
+*/
+
+const abbrevName = name => name.split(" ").map(names => names.split("").map((value, index) => index === 0 ? value.toUpperCase() : value.toLowerCase()).filter(value => value === value.toUpperCase()).join("")).join(".")

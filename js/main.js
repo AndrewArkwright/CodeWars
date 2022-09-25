@@ -4859,3 +4859,14 @@ function mergeArrays(a, b) {
 */
 
 const abbrevName = name => name.split(" ").map(names => names.split("").map((value, index) => index === 0 ? value.toUpperCase() : value.toLowerCase()).filter(value => value === value.toUpperCase()).join("")).join(".")
+
+/**
+* @Description - We are given a number and must return the number reversed in an array
+* @Parameter - We are given a number that is not negative, but can be 0
+* @Return - We return an array following the rules above
+* @Example - 35231 => [1,3,2,5,3]
+* @Pseud - I decided to change the number into a string so I can use split to separate each number into an array element and then I used the reverse method to reverse the order
+*/
+function digitize(n) {
+  return String(n).split("").map(value => Number(value)).reverse()
+}

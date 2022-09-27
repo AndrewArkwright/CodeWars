@@ -4896,3 +4896,18 @@ function countPositivesSumNegatives(input) {
   if (input.length === 0 && input.filter(value => value > 0).length === 0 && input.filter(value => value < 0).length === 0) {return []}
   return [input.filter(value => value > 0).length, input.filter(value => value < 0).reduce((prev, curr) => prev + curr, 0)]
 }
+
+/**
+* @Description - We are given two arrays that are not empty and of the same length. The first array is the answer key to the second array. The string in each element of the key array will be a single letter string. The second array will have a letter for each element of the array or a "". Return the score they student has such that they get 4 points for each correct answer, -1 for each incorrect answer, and +0 for no answers. If the score is below 0, return 0.
+* @Parameter - We are given two arrays of strings. The second array can have empty strings
+* @Return - We return a number, which is calculated by the amount of answers in array2 that match array1
+* @Example - ["a", "a", "c", "b"], ["a", "a", "b",  ""] => 7
+* @Pseudo - The first thing that came to mind was using a variable to keep track of the points and then using a for loop or forEach method to add the points depending the values in the array. Will use a if statement to make sure we do not return anything less than 0
+*/
+
+function checkExam(array1, array2) {
+  let points = 0
+  array1.forEach((value, index) => value === array2[index] ? points += 4 : array2[index] === "" ? points += 0 : points -= 1)
+  if (points < 0) {return 0}
+  return points
+}

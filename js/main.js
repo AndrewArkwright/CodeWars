@@ -4913,11 +4913,11 @@ function checkExam(array1, array2) {
 }
 
 /**
-* Description - You are given a string that contains dots on either side of a math operator (+,-,*,//) and must return a string with the resulting amount of dots
-* Parameters - We are given a string wuch that there is at least one dot on either side of a math operator and there is a space on each side of the math operator as well
-* Return - We return a string of dots that is the result of the math calculation
-* Example - "... + ....." => "........"
-* Pseudo - I chose to put it in an array instead of using a loop to count because it is easy to use split to separate the two rows of dots, get the length, and do the math. After I got the result, I just used repeat to return the correct amount of dots.
+* @Description - You are given a string that contains dots on either side of a math operator (+,-,*,//) and must return a string with the resulting amount of dots
+* @Parameters - We are given a string wuch that there is at least one dot on either side of a math operator and there is a space on each side of the math operator as well
+* @Return - We return a string of dots that is the result of the math calculation
+* @Example - "... + ....." => "........"
+* @Pseudo - I chose to put it in an array instead of using a loop to count because it is easy to use split to separate the two rows of dots, get the length, and do the math. After I got the result, I just used repeat to return the correct amount of dots.
 */
 
 function dotCalculator (equation) {
@@ -4970,11 +4970,11 @@ function titleCase(title, minorWords) {
 }
 
 /**
-* Description - given a string, each player gets points depending on each character in the string. Can use the resulting code for the table on which letters give points and how many points. Return who wins or if it is a tie
-* Parameter - We are given a string. It does not state that it could be empty, but that case is handled anyway. Characters that do not give any points may be in the string.
-* Return - We return "Left side wins!"m "Right side wins!", or "Let's fight again!" depending on the result
-* Example "zdqmwpbs" => "Let's fight again!"
-* Pseudo - Since there are so many options, I chose to do for loop and check each character since I would have to use a couple of different methods at least to give the result and that would result in quite a bit more memory being used
+* @Description - given a string, each player gets points depending on each character in the string. Can use the resulting code for the table on which letters give points and how many points. Return who wins or if it is a tie
+* @Parameter - We are given a string. It does not state that it could be empty, but that case is handled anyway. Characters that do not give any points may be in the string.
+* @Return - We return "Left side wins!"m "Right side wins!", or "Let's fight again!" depending on the result
+* @Example "zdqmwpbs" => "Let's fight again!"
+* @Pseudo - Since there are so many options, I chose to do for loop and check each character since I would have to use a couple of different methods at least to give the result and that would result in quite a bit more memory being used
 */
 
 function alphabetWar(fight) {
@@ -4994,3 +4994,13 @@ function alphabetWar(fight) {
   else if(right > left) {return "Right side wins!"}
   else {return "Let's fight again!"}
 }
+
+/**
+* @Description - Given a string of words separated by a space, remove all duplicate words
+* @Parameter - We are given a string of words that is not empty
+* @Return - We return the same string without any duplicate words
+* @Example - 'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta' => 'alpha beta gamma delta'
+* @Pseudo - I have done this before and one of the neat ways I figured out how to do it was using indexOf in an array and making sure it matches the current index and if not, then it is a duplicate
+*/
+
+const removeDuplicateWords = s => s.split(" ").filter((word, index, array) => array.indexOf(word) === index).join(" ")

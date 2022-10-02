@@ -4968,3 +4968,29 @@ function titleCase(title, minorWords) {
   if (!minorWords) {return title.join(" ")}
   return title.map((word, index) => minorWords.toLowerCase().split(" ").includes(word.toLowerCase()) && index != 0 ? word.toLowerCase() : word).join(" ")
 }
+
+/**
+* Description - given a string, each player gets points depending on each character in the string. Can use the resulting code for the table on which letters give points and how many points. Return who wins or if it is a tie
+* Parameter - We are given a string. It does not state that it could be empty, but that case is handled anyway. Characters that do not give any points may be in the string.
+* Return - We return "Left side wins!"m "Right side wins!", or "Let's fight again!" depending on the result
+* Example "zdqmwpbs" => "Let's fight again!"
+* Pseudo - Since there are so many options, I chose to do for loop and check each character since I would have to use a couple of different methods at least to give the result and that would result in quite a bit more memory being used
+*/
+
+function alphabetWar(fight) {
+  let left = 0, right = 0
+  for (let i = 0; i < fight.length; i++) {
+    if (fight.charAt(i) === "w") {left += 4}
+    else if (fight.charAt(i) === "p") {left += 3}
+    else if (fight.charAt(i) === "b") {left += 2}
+    else if (fight.charAt(i) === "s") {left += 1}
+    else if (fight.charAt(i) === "m") {right += 4}
+    else if (fight.charAt(i) === "q") {right += 3}
+    else if (fight.charAt(i) === "d") {right += 2}
+    else if (fight.charAt(i) === "z") {right += 1}
+  }
+   
+  if (left > right) {return "Left side wins!"}
+  else if(right > left) {return "Right side wins!"}
+  else {return "Let's fight again!"}
+}

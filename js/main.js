@@ -5034,3 +5034,13 @@ const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? val
  */
 
  const reverseWords = str => str.split(" ").reverse().join(" ")
+
+/**
+ * @Description - Given a name, return whether or not the person play bangjo if the first character is "r" or "R"
+ * @Parameter - We are given a valid string
+ * @Return - We return the name and whether that person plays a banjo or not
+ * @Example - "Adam" => "Adam does not play banjo"
+ * @Pseudo - I will check to see if the first character of the string starts with an r with charAt and toLowerCase and then return the string dependong on that info
+ */
+
+ const areYouPlayingBanjo = name => name.charAt(0).toLowerCase() === "r" ? `${name} plays banjo` : `${name} does not play banjo`

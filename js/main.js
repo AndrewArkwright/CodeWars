@@ -5054,3 +5054,13 @@ const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? val
 */
 
  const bonusTime = (salary, bonus) => bonus ? `£${salary*10}` : `£${salary}`
+
+ /**
+  * @Description - Given a year, return the century it is in.
+  * @Parameters - a whole number, no funny business
+  * @Return - a century the number is in
+  * @Example - 1901 => 19, 2000 => 20
+  * @Pseudo - Since a century is the year / 100 rounded up, I used basic math to do the calculations and then used Math.ceil to round up to the nearest whole number, which also does not round up a number that is already whole
+*/
+
+const century = year => Math.ceil(year/100)

@@ -5064,3 +5064,35 @@ const capitalize = s => [s.split("").map((value, index) => index % 2 === 0 ? val
 */
 
 const century = year => Math.ceil(year/100)
+
+/**
+ * @Description - We are given the length and width of a rectangle and must reutrn all squares within that triangle. If the length and width do not make a rectangle, return null.
+ * @Parameters - We are given two numbers. They will always be numbers, but they may not always make a rectangle.
+ * @Return - We return an array of numbers such that each number is the length and width of the square inside the given rectangle.
+ * @Example - 5, 3, => [3, 2, 1, 1]
+ * @Pseudo - Look at code below
+ */
+
+ function sqInRect(lng, wdth){
+  if (lng === wdth) {return null}
+  let smallTotal = Math.min(lng, wdth) //to keep track of the largest square we can have in the rectangle at the moment
+  let largestSquare = Math.max(lng, wdth) //largest square/rectangle, smallTotal must fit inside of it. If the two values are equal, then there are no more squares left
+  let small = smallTotal //smallest square that we can have inside of the rectangle
+  
+  let answer = []
+  while (smallTotal != largestSquare) { //While the rectangle is not a square
+    if (smallTotal + small > largestSquare) { //if you cannot fit any more squares inside the rectangle, we need to change the largest square
+      answer.push(small)
+      let tempLarge = largestSquare
+      largestSquare = answer[answer.length-1]
+      smallTotal = tempLarge - smallTotal
+      small = smallTotal
+    }
+    else { //push another small square in since it can fit
+      answer.push(small)
+      smallTotal += small
+    }
+  }
+  answer.push(small) //Need to push one last time since the while loop ends on the final square
+  return answer
+}

@@ -5096,3 +5096,14 @@ const century = year => Math.ceil(year/100)
   answer.push(small) //Need to push one last time since the while loop ends on the final square
   return answer
 }
+
+/**
+ * @Description - We are given three numbers n, x, and y and must return true or false on whether or not n is evenly divisible by x and y.
+ * @Parameters - Three numbers with no funny business.
+ * @Return - True or false depending on the above conditions.
+ * @Example - 12,3,4 => true
+ * @Pseduo - I chose to use % since I can just check if the remainder is just 0 and I can use && to check both at the same time and return whether it is true or false
+ */
+
+ const isDivisible = (n, x, y) =>
+ n%x === 0 && n%y === 0 ? true : false

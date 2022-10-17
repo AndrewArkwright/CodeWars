@@ -5101,9 +5101,64 @@ const century = year => Math.ceil(year/100)
  * @Description - We are given three numbers n, x, and y and must return true or false on whether or not n is evenly divisible by x and y.
  * @Parameters - Three numbers with no funny business.
  * @Return - True or false depending on the above conditions.
- * @Example - 12,3,4 => true
- * @Pseduo - I chose to use % since I can just check if the remainder is just 0 and I can use && to check both at the same time and return whether it is true or false
+ * @Example - 12,3,4 => true.
+ * @Pseduo - I chose to use % since I can just check if the remainder is just 0 and I can use && to check both at the same time and return whether it is true or false.
  */
 
  const isDivisible = (n, x, y) =>
  n%x === 0 && n%y === 0 ? true : false
+
+ /**
+  * @Description - We are given two numbers and a string that is the operator. Depending on the value of the stirng (operator), return a and b using that operator.
+  * @Parameters - We have a and b that are always a number and operator that will always be "add", "subtract", "multiply", or "divide"
+  * @Return - We return a number that is caclulated based off of the info above
+  * @Example - (5, 6, "add") => 11
+  * @Pseudo - I decided to use an if statement for each operation to make the code look cleaner and just checked what the value of the operator was and return the appropriate value.
+  */
+
+  function arithmetic(a, b, operator){
+    if (operator === "add") {return a + b}
+    else if (operator === "subtract") {return a - b}
+    else if (operator === "multiply") {return a * b}
+    return a / b
+  }
+
+  /**
+   * @Description - A bookseller has lots of books classified in 26 categories labeled A, B, ... Z. Each book has a code c of 3, 4, 5 or more characters. The 1st character of a code is a capital letter which defines the book category. In the bookseller's stocklist each code c is followed by a space and by a positive integer n (int n >= 0) which indicates the quantity of books of this code in stock. Your task is to find all the books of L with codes belonging to each category of M and to sum their quantity according to each category.
+   * @Parameters - We are given two arrays that can be empty. Each value in the first array is a string consisting of 3-5 characters all capitalized, a space, and then a number. The second array is an array of strings, which are all just a single letter and capitalized.
+   * @Return - We return a string containing all of the values of the categories in the second array. It is also in the same order of the array. The format of the string is in Haskell/Clojure/Racket/Prolog list of pairs ((A : 20) - (B : 114) - (C : 50) - (W : 0)).
+   * @Example - 
+   * listOfArt = ["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"]
+    listOfCat = ["A", "B", "C", "D"]
+    Result => "(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
+   * 
+   */
+
+   function stockList(listOfArt, listOfCat){
+    //Handle empty arrays
+    if (listOfArt.length === 0 || listOfCat.length === 0) {return ""}
+    
+    //separate book info
+    let books = []
+    listOfArt.forEach(value => value.split(" ").forEach(val => books.push(val)))
+    
+    //sum all values by mapping and store in object
+    let bookObj = {}
+    books.forEach((value, index, array) => {
+      if (index % 2 === 0) {
+        if (value.slice(0,1) in bookObj) {bookObj[value.slice(0,1)] += Number(array[index+1])}
+        else {bookObj[value.slice(0,1)] = Number(array[index+1])}
+      }
+    })
+    
+    //return all values in string
+    let answer = ""
+    for(let i = 0; i < listOfCat.length; i++) {
+      if (listOfCat[i] in bookObj) {answer += `(${listOfCat[i]} : ${bookObj[listOfCat[i]]})`}
+      else {answer += `(${listOfCat[i]} : 0)`}
+      
+      if (i != listOfCat.length - 1) {answer += " - "}
+    }
+    
+    return answer
+  }

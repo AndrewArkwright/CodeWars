@@ -5131,7 +5131,6 @@ const century = year => Math.ceil(year/100)
    * listOfArt = ["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"]
     listOfCat = ["A", "B", "C", "D"]
     Result => "(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
-   * 
    */
 
    function stockList(listOfArt, listOfCat){
@@ -5161,4 +5160,26 @@ const century = year => Math.ceil(year/100)
     }
     
     return answer
+  }
+
+  /**
+   * @Description - Given the start, end, and accumulator of a sequence, return the sum of the sequence. If the start of the sequence is greater than the end, return 0
+   * @Parameter - We have three parameters that are all numbers and will always be numbers
+   * @Return - We will return a number that is the sum of the sequence
+   * @Example - (2,6,2) => 12
+   */
+
+   const sequenceSum = (begin, end, step) => {
+    //If we do not need to loop, just return begin
+    if (begin === end) {return begin}
+    //Invalid sequence
+    if (begin > end) {return 0}
+    
+    //Sum the sequence
+    let sum = 0
+    for (let i = begin; i <= end; i += step) {
+      sum += i
+    }
+    
+    return sum
   }

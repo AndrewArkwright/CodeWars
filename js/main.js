@@ -5183,3 +5183,19 @@ const century = year => Math.ceil(year/100)
     
     return sum
   }
+
+/**
+ * @Description - We are given an array of ages that has at least two values. We must return the two oldest people from the list
+ * @Parameters - We are given an array of at least length 2. Description did not say if the values could be invalid, but test cases did not have any invalid data
+ * @Return - We return an array of the two oldest people with the first element being the second oldest and the oldest person being the second element
+ * @Example - [1, 5, 87, 45, 8, 8] => [45, 87]
+ */
+
+ function twoOldestAges(ages){
+  //Could check to verify all ages are greater than zero
+  //Gather oldest
+  let oldest = Math.max(...ages)
+  //Set oldest to invalid age value
+  ages[ages.indexOf(oldest)] = -1
+  return [Math.max(...ages), oldest]
+}

@@ -5199,3 +5199,45 @@ const century = year => Math.ceil(year/100)
   ages[ages.indexOf(oldest)] = -1
   return [Math.max(...ages), oldest]
 }
+
+/**
+ * @Description - Return the name of the winner in the fight when given two objects that are fighters with the name, health, and damage they deal. We are also given another variable that contains the name of who attacks first
+ * @Parameters - We are given two objects, each with a name, health, and damage properties. They also have a method that returns the name. The third parameter is just a string that will match the name in one of the objects for who attacks first
+ * @Return - We return the name of the person who wins, which the string in the object
+ * @Example - Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew") => "Lew"
+ * 
+ * My solution is of complexity O(N), the following example I found as well that is of complexity O(1)
+ * function declareWinner(fighter1, fighter2, firstAttacker) {
+  var fac1 = Math.ceil( fighter1.health / fighter2.damagePerAttack );
+  var fac2 = Math.ceil( fighter2.health / fighter1.damagePerAttack );
+  if(fac1 < fac2) {
+    return fighter2.name;
+  } else if(fac2 < fac1) {
+    return fighter1.name;
+  } else {
+    return firstAttacker;
+  }
+}
+ * 
+ */
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  //If fighter 1 is first to attack
+  if(fighter1.name === firstAttacker) {
+    while (fighter1.health > 0) { //Breaks when fighter 1 loses
+      fighter2.health -= fighter1.damagePerAttack //Fighter 1 attacks first
+      if (fighter2.health <= 0) {return fighter1.name} //Check if fighter 2 lost
+      fighter1.health -= fighter2.damagePerAttack
+    }
+    return fighter2.name
+  }
+  //If fighter 2 is first to attack
+  else {
+    while (fighter2.health > 0) {
+      fighter1.health -= fighter2.damagePerAttack
+      if (fighter1.health <= 0) {return fighter2.name}
+      fighter2.health -= fighter1.damagePerAttack
+    }
+    return fighter1.name
+  }
+}

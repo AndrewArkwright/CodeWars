@@ -5241,3 +5241,24 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
     return fighter1.name
   }
 }
+
+/**
+ * @Description - Return true or false whether the two strings are anagrams of each other. Test as if they are case insensitive.
+ * @Parameters - We are given two strings. Test is usually random jumble of letters where original is the actual word. They may random capitalization. Doesn't state whether they will ever be empty
+ * @Return - We return true or false depending on the info above
+ * @Example - ("foefet", "toffee") => true, ("apple", "pale") => false
+ */
+
+ var isAnagram = function(test, original) {
+  //changed to arrays because slice and charAt are O(n) compared to being able to use constant time with arrays
+  original = original.toLowerCase().split("")
+  test = test.toLowerCase().split("")
+  for (let i = 0; i < original.length; i++) { //original.length because it may be shorter than test.length
+    let isChar = test.indexOf(original[i])
+    if (isChar === -1) {return false}
+    else {
+      test[isChar] = 0 //so we can filter it and see if there are any extra characters given. Could just do a length check in the beginning though.
+    }
+  }
+  return test.filter(value => value != 0).length === 0 ? true : false //if test has more characters in it, return false, else true.
+}

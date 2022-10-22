@@ -5262,3 +5262,13 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
   }
   return test.filter(value => value != 0).length === 0 ? true : false //if test has more characters in it, return false, else true.
 }
+
+/**
+ * @Description - When given an array of numbers, return them sorted in ascending order
+ * @Parameters - We are given an array or some falsey value
+ * @Return - We return an array of sorted numbers or an empty array if the parameter was falsey
+ * @Example - [4,2,3,1,5] => [1,2,3,4,5], null => []
+ * @Pseudo - Chose to just use an arrow function. When using sort, had to use a - b or stuff like [1, 2, 3, 11] would be [1, 11, 2, 3]. Returned [] if the value was falsey.
+ */
+
+ const solution = nums => nums ? nums.sort((a, b) => a - b) : []

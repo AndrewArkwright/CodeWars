@@ -5272,3 +5272,13 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
  */
 
  const solution = nums => nums ? nums.sort((a, b) => a - b) : []
+
+ /**
+  * @Description - Given an array of numbers and a limit, return true or false on whether or not all values are below or equal to the limit
+  * @Parameter - We are given an array of numbers and a limit that is a number. Array is never empty. All values are numbers. No funny business
+  * @DReturn - We return true or false if all values are below or equal to the value
+  * @Example - [66, 101], 200 => true, [120, 10, 50], 100 => false
+  * @Pseudo - I used every to make sure each value in the array is <= limit
+  */
+
+  const smallEnough = (a, limit) => a.every(value => value <= limit)

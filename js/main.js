@@ -5282,3 +5282,13 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
   */
 
   const smallEnough = (a, limit) => a.every(value => value <= limit)
+
+/**
+ * @Description - We are given an array of arrays that each have two numbers. The first number is the customer's age and the second is their handicap in croquet. We need to return an array of strings Open or Senior depending on if they meet the requirements. To be Senior, you must have a handicap of 8 or greater and be at least 55 or greater in age. Else you are part of Open
+ * @Parameters - An array of arrays. The nested arrays each have to values that are numbers. No funny business or falsey values
+ * @Return - We return an array of strings that are either Senior or Open
+ * @Example - [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]] => ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+ * @Pseudo - I used map to check each value and checked the info. I would then return return the proper string afterwards and return the mapped array 
+ */
+
+  const openOrSenior = data => data.map(value => value[0] >= 55 && value[1] > 7 ? "Senior" : "Open")

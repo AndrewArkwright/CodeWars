@@ -5292,3 +5292,22 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
  */
 
   const openOrSenior = data => data.map(value => value[0] >= 55 && value[1] > 7 ? "Senior" : "Open")
+
+  /**
+   * @Description - We are given a string. For each i you increment the number. For each d you decrement the number. For each s you square the number. For each o you push the current number to an array.
+   * @Parameter - We are given a string. We were not told what to do if it was empty and just that we ignore any other characters
+   * @Return - We return an array of values. We were not told what to do if there was nothing outputed to the array. Right now it just returns an empty array.
+   * @Example - ("iiisdoso") => [ 8, 64 ]
+   */
+
+   function parse( data ) {
+    let answerArray = [] //store answers
+    let num = 0 //initial number
+    data = data.split("").forEach(value => { //ignore all other characters from the giving string
+      if (value === "i") {num++}
+      else if (value === "d") {num--}
+      else if (value === "s") {num = num**2}
+      else if (value === "o") {answerArray.push(num)}
+    })
+     return answerArray
+   }

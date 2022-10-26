@@ -5311,3 +5311,18 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
     })
      return answerArray
    }
+
+   /**
+    * @Description - Given an array of arrays and must return the number of unique arrays that can be formed by picking exactly one element from each subarray.
+    * @Parameters - We are given an array of arrays. We are not told whether or not it could be empty or have any other special conditions
+    * @Return - We return the numer of unique arrays that can be formed by picking one element from each sub array, which will be a number
+    * @Example - ([[1,2],[4,4],[5,6,6]]) => 4
+    * Another way of doing it - const solve = (arr) => arr.reduce((res, a) => res * new Set(a).size, 1)
+    */
+
+    function solve(arr) {
+      let sum = 1
+      //Chose to use filter to filter out any duplicates. I then used forEach to multiply the length of each sub array since each value was unique
+      arr.map(arrays => arrays.filter((val, index, nestedArray) => index === nestedArray.indexOf(val))).forEach(val => sum *= val.length)
+      return sum 
+    };

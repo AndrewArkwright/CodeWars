@@ -5326,3 +5326,13 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
       arr.map(arrays => arrays.filter((val, index, nestedArray) => index === nestedArray.indexOf(val))).forEach(val => sum *= val.length)
       return sum 
     };
+
+    /**
+     * @Description - Given an array/list of integers, find the Nth smallest element in the array.
+     * @Parameters - The given array will always be a number and of size 3. The second parameter seems to always be a number.
+     * @Return - We return the smallest Nth number
+     * @Example - [2,169,13,-5,0,-1], 4 => 2
+     * @Pseudo - I chose to use the sort method since it most likely is O(log(n)) at least. Then I just accesed the array at constant time to return the correct value
+     */
+
+     const nthSmallest = (arr, pos) => arr.sort((a, b) => a - b)[pos-1]

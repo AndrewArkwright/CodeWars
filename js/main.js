@@ -5336,3 +5336,12 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
      */
 
      const nthSmallest = (arr, pos) => arr.sort((a, b) => a - b)[pos-1]
+
+     /**
+      * @Description - Given a string, return a string such that if the character only shows up once in the string, replace it with (. If it appears more than once, replace it with ). The checks are not case sensative
+      * @Parameters - We are given a string. We are not told whether or not it can be empty.
+      * @Return - We return a string of parentheses following the above information
+      * @Example - "recede" => "()()()"
+      * @Pseudo - I change the string to lowercase first so it is case insensative. I then change it to an array and map it since it is easier to work with and check if the first index is equal to the last index and if it is, we return ( or we return ). Then we just join it back into a string.
+      */
+     const duplicateEncode = word => word.toLowerCase().split("").map((value, index, array) => array.indexOf(value) === array.lastIndexOf(value) ? "(" : ")").join("")

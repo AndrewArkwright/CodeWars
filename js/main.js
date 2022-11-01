@@ -5345,3 +5345,18 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
       * @Pseudo - I change the string to lowercase first so it is case insensative. I then change it to an array and map it since it is easier to work with and check if the first index is equal to the last index and if it is, we return ( or we return ). Then we just join it back into a string.
       */
      const duplicateEncode = word => word.toLowerCase().split("").map((value, index, array) => array.indexOf(value) === array.lastIndexOf(value) ? "(" : ")").join("")
+
+     /**
+      * @Description - Given a string that holds an operation, return the result of the first value and the second value using that operation 
+      * @Paramters - We are given a string that will never be empty and only have one character, which is the operator +, -, *, or /. We are also given two variables that are two numbers and will never be empty
+      * @Return - We return the result of the two given values using the given operation
+      * @Example - ("+", 5, 4) => 9
+      * @Pseudo - I just used 3 conditionals for three of the operators and an else statement for the last one and return the value produced using the two values and operator
+      */
+
+      function basicOp(operation, value1, value2) {
+        if (operation === "+") {return value1 + value2}
+        else if (operation === "-") {return value1 - value2}
+        else if (operation === "*") {return value1 * value2}
+        else {return value1 / value2}
+      }

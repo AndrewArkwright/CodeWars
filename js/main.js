@@ -5360,3 +5360,21 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
         else if (operation === "*") {return value1 * value2}
         else {return value1 / value2}
       }
+
+/**
+ * @Description - We are given a divisor and a max number. We are to return the highest number > 0 and <= the highest bound such that the remainder is 0.
+ * @Parameters - We are given two numbers that are whole numbers. No tricky business.
+ * @Return - We return a number following the info above
+ * @Example - (2, 7) => 6
+ * @Pseudo - Even though it is not required, I made a default case to return false if a divisor was not found. I made a loop that started from the highest number to see if it can evenly divide by the divisor and I decrement until it does and return the number.
+ * 
+ * Found that you can also just use the math below
+ * return bound - bound % divisor
+ */
+
+ function maxMultiple(divisor, bound){
+  for (let i = bound; i > 0; i--) {
+    if (i % divisor === 0) {return i}
+  }
+  return false
+}

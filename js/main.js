@@ -5378,3 +5378,13 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
   }
   return false
 }
+
+/**
+ * @Description - given a string, reverse the string and remove any non-alphabetic characters
+ * @Parameters - We are given a string. No information about what to do when it is empty
+ * @Return - We return the string reversed and with all non-alphabetic characters removed
+ * @Example - "ultr53o?n" => "nortlu"
+ * @Pseudo - All test cases only included lowercase letters, but I made sure to include upper and lower cased letters in my regex when removing non-alphabetic characters. After that, I just changed it to an array to reverse the characters and then return it as a string.
+ */
+
+const reverseLetter = str => str.replace(/[^a-zA-Z]/gi, '').split("").reverse().join("")

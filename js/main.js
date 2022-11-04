@@ -5388,3 +5388,25 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
  */
 
 const reverseLetter = str => str.replace(/[^a-zA-Z]/gi, '').split("").reverse().join("")
+
+/**
+ * @Description - We are given a number and must return the factorial of it. If the number is 0, return 1. If the number is greater than 12 or less than 0, throw RangeError
+ * @Paramter - We are given a number. No funny business
+ * @Return - We return the factorial of the given number, return 1 if it is 0, or return RangeError is the value is > 12 or < 0
+ * @Example - (5) => 120, (13) => RangeError(), (0) => 1
+ * @Pseudo - I used a couple of if statements to handle the exceptions. I then used a while loop that started at n - 1 until > 1 and returned the factorial that way
+ */
+
+function factorial(n) {
+  if (n === 0) {return 1}
+  if (n < 0 || n > 12) {throw RangeError()}
+  let sum = n
+  n--
+  
+  while (n > 1) {
+    sum *= n
+    n--
+  }
+  
+  return sum
+}

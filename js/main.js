@@ -5410,3 +5410,15 @@ function factorial(n) {
   
   return sum
 }
+
+/**
+ * @Description - Given an array of numbers, return the smallest number that contains all of the numbers in the array excluding dupliates
+ * @Parameters - We are given an array of numbers. The numbers that are given seem to be only single digit. There can be duplicates in the array, but we need to ignore them
+ * @Return - We return a the smallest number made of the numbers in the array, ignoring duplicates
+ * @Example - ([1, 3, 1]) => 13
+ * @Pseudo - So the first thing I wanted to do was filtering out the duplicate numbers. Then I sorted it so have the smallest numbers first. Then I just changed it to a number instead of having an array.
+ */
+
+ function minValue(values){
+  return Number(values.filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => a - b).join(""))
+}

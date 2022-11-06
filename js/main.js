@@ -5422,3 +5422,16 @@ function factorial(n) {
  function minValue(values){
   return Number(values.filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => a - b).join(""))
 }
+
+/**
+ * @Description - We are given a number and must return the sum of each digit. If the number is negative, we just ignore it and sum up the digits as normal 
+ * @Parameter - We are given a number that is a whole number. It can be negative, 0, or positive
+ * @Return - We return a number that is the sum of all of the digits of the given number
+ * @Example - -345 => 12
+ * @Pseudo - I first had to make sure that we changed any negative numbers to positive numbers so I can just change my number to an array and then reduce it to get the sum.
+ */
+
+ function sumDigits(number) {
+  return number < 0 ? (number * -1).toString().split("").reduce((prev, current) => prev + Number(current), 0) :
+  number.toString().split("").reduce((prev, current) => prev + Number(current), 0)
+}

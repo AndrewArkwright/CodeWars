@@ -5435,3 +5435,27 @@ function factorial(n) {
   return number < 0 ? (number * -1).toString().split("").reduce((prev, current) => prev + Number(current), 0) :
   number.toString().split("").reduce((prev, current) => prev + Number(current), 0)
 }
+
+/**
+ * @Description - We are given a string of numbers and need to return the largest substring of 5 digits.
+ * @Parameter - We are given a string of at least five digits and nothing else.
+ * @Return - We return a number, which is the largest substring of numbers in the given string.
+ * @Example - ("731674765") => 74765
+ * @Pseudo - I used a for loop to search every 5 values of the string that I changed into an array and check if it is greater than the current total. This code is not efficient. If I needed to make it efficient, I would use findIndex and find the largest number in the string and then check if there is a substring of 5 starting from that index. If there is, then I would check the string for any more values of the largest number and only compare those strings and ingore any other checks. This would get me the largest number since starting with a 9 will be greater than anything starting with a lesser number. We would just make the max number decrement if there is no index starting with a 9 and indexOf can have a second parameter to start the search from.
+ */
+
+function solution(digits){
+  let total = 0
+  digits = digits.split("")
+  
+  for (let i = 0; i < digits.length; i++) {
+    let temp = []
+    for (let j = i; j < i + 5; j++) {
+      temp.push(digits[j])
+    }
+    let tempTotal = Number(temp.reduce((prev, current) => prev + current, ""))
+    
+    if (tempTotal > total) {total = tempTotal}
+  }
+  return total
+}

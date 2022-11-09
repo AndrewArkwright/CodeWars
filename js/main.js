@@ -5454,8 +5454,29 @@ function solution(digits){
       temp.push(digits[j])
     }
     let tempTotal = Number(temp.reduce((prev, current) => prev + current, ""))
-    
+
     if (tempTotal > total) {total = tempTotal}
   }
   return total
+}
+
+/**
+ * @Description - We are given an array of numbers from 1 to N and another array of the same numbers with the exception that one is removed and the values are mixed up. You are to return the number missing from the second array compared to the first array.
+ * @Parameter - We are given two arrays of numbers. No funny business. The arrays can be empty.
+ * @Return - We return the missing number or 0 if the arrays are empty or if an item was not deleted.
+ * @Example - ([1, 2, 3, 4, 5], [2, 4, 1, 5]) => 3
+ * @Pseudo - Made a couple of different versions. First version was just a brute force where I sorted the fixed array and then looped through it until I found the missing index. Second one actually just added up the two arrays and then return the different between the difference.
+ */
+
+ function findDeletedNumber(arr, mixArr) {
+  if (arr.length === mixArr.length) {return 0}
+  mixArr = mixArr.sort((a, b) => a - b)
+  for (let i = 1; i < arr.length + 1; i++) {
+    if (mixArr[i - 1] != i) {return i}
+  }
+}
+
+function findDeletedNumber(arr, mixArr) {
+  if (arr.length === mixArr.length) {return 0}
+  return arr.reduce((prev, curr) => prev + curr, 0) - mixArr.reduce((prev, curr) => prev + curr, 0)
 }

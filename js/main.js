@@ -5494,3 +5494,26 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
   if (new Date(currentDate).getTime() > new Date(expirationDate).getTime()) {return false}
   return true
 }
+
+/**
+ * @Description - We are given an array of bytes and must return an array of the bytes reversed as well as the bits reversed. (8 bits === 1 byte)
+ * @Parameters - We are given an array of bytes. The total number of bits will always be a multiple of 8. Assuming that means it could be empty as well due to that.
+ * @Return - We return an array such that the order of bits and bytes are reversed.
+ * @Example - ([0,0,1,1,0,1,1,0,0,0,1,0,1,0,0,1]) => [0,0,1,0,1,0,0,1,0,0,1,1,0,1,1,0]
+ */
+
+ function dataReverse(data) {
+  let tempArr = []
+  let answer = []
+  for (let i = data.length - 1; i >= 0; i--) {
+    
+    tempArr.unshift(data[i]) //store the reversed 8 bits and they are reversed by starting at the end of the array and unshifting
+    
+    if (i % 8 === 0) { //used this way to reverse the order of 8 bit strings
+      answer = answer.concat(tempArr)
+      tempArr = []
+    }
+    
+  }
+  return answer
+}

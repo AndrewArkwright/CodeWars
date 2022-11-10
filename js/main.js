@@ -5480,3 +5480,17 @@ function findDeletedNumber(arr, mixArr) {
   if (arr.length === mixArr.length) {return 0}
   return arr.reduce((prev, curr) => prev + curr, 0) - mixArr.reduce((prev, curr) => prev + curr, 0)
 }
+
+/**
+ * @Description - We need to check if the coupon code is correct and not expired when given the code and expiration date.
+ * @Paramters - All parameters are a string. The coupon code seems to only be numbers. No empty strings or funny business. Date format: Month Day, Year. See example below for info.
+ * @Return - We return true or false on whether or not the coupon is valid
+ * @Example - ("123", "123", "July 9, 2015", "July 2, 2015")  =>  false
+ * @Pseudo - For the first two paramters, you just need to check if they are equal to or not. For the date, you need to convert it to a Date object in order to use operators to compare them using getTime. Otherwise you could parse the string, but it would be a lot of overhead. Return false if the current date is > expiration date. 
+*/
+
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+  if (enteredCode !== correctCode) {return false}
+  if (new Date(currentDate).getTime() > new Date(expirationDate).getTime()) {return false}
+  return true
+}

@@ -5517,3 +5517,46 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
   }
   return answer
 }
+
+/**
+ * @Description - We are given an array of strings that represent what people voted for. We must return the winner of the vote, but if there is a tie or if the winner does not have more than half of the votes, we return null.
+ * @Parameter - We are given a list of strings. Doesn't seem to be empty. If it is, we can just return null.
+ * @Return - We return the winner of the vote, which is a string, or null if there is no winner
+ * @Example - (["A", "A", "A", "B", "B", "B", "A"]) => "A", (["A", "A", "A", "B", "B", "B", "C"]) => null
+ */
+
+ function getWinner(listOfBallots) {
+  let cache = {}
+  
+  //sum up the ballots
+  for (let i = 0; i < listOfBallots.length; i++) {
+    if (listOfBallots[i] in cache) {
+      cache[listOfBallots[i]]++
+    }
+    else {
+      cache[listOfBallots[i]] = 1
+    }
+  }
+  
+  let max = 0
+  let winner = ""
+  
+  //determine max
+  for (const property in cache) {
+    if (cache[property] > max) {
+      max = cache[property]
+      winner = property
+    }
+  }
+
+  //Check for majority (ie max > half of the array), do here because it doesn't matter if there is a tie or not if it is not the majority
+  if (max <= listOfBallots.length/2) {return null}
+  
+  //make sure there are no ties for first place
+  for (const property in cache) {
+    if (cache[property] === max && winner !== property) {
+      return null}
+  }
+  
+  return winner
+}

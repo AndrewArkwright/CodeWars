@@ -5560,3 +5560,18 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
   
   return winner
 }
+
+/**
+ * @Description - We are given an array and must return whether or not the array of numbers is in ascending order or not
+ * @Parameter - We are given an array of numbers that could be empty, but always contains numbers.
+ * @Return - We return true if the array is sorted in ascending order or false if not. An array that is empty or of 1 element does count as a sorted array.
+ * @Example - ([1, 2, ,3 ,4 ,5]) => true, ([1, 2, 3, 2, 5]) => false
+ * @Pseudo - Could use arr.every, but I just used a for loop to check each value and the for loop lets you start with index 1 instead of 0 
+ */
+
+ function inAscOrder(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < arr[i-1]) {return false} //If they are equal to, would still be ascending order
+  }
+  return true
+}

@@ -5575,3 +5575,35 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
   }
   return true
 }
+
+/**
+ * @Description - Given two arrays, find the largest length difference of string lengths between the arrays.
+ * @Parameter - We are given two arrays that could be empty. Otherwise they are valid strings.
+ * @Return - We return a number. It will either being the max of a1 - min of a2 or max of a2 - min of a1. If one of the arrays is empty, we return -1
+ * @Example - (["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"], ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"] => 13)
+ * @Pseudo - There are ways to do this with less code, but it seems to have a more comples Big O. One option is to adjust the arrays using map and replace the string with the length of the string and just use Math.max(...a1), but that would require two loops for each array.
+ */
+
+ function mxdiflg(a1, a2) {
+  if (a1.length === 0 || a2.length === 0) {return -1}
+  
+  //Declare min and max for both arrays
+  let min1 = a1[0].length, max1 = 0
+  let min2 = a2[0].length, max2 = 0
+    
+  //Set min and max for array 1
+  for (let i = 0; i < a1.length; i++) {
+    if (a1[i].length > max1) {max1 = a1[i].length}
+    if (a1[i].length < min1) {min1 = a1[i].length}
+  }
+  
+  //Set min and max for array 2
+  for (let i = 0; i < a2.length; i++) {
+    if (a2[i].length > max2) {max2 = a2[i].length}
+    if (a2[i].length < min2) {min2 = a2[i].length}
+  }
+  
+  //Return largest difference
+  if (max1 - min2 > max2 - min1) {return max1 - min2}
+  else {return max2 - min1}
+}

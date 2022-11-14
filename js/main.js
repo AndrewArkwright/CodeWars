@@ -5607,3 +5607,15 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
   if (max1 - min2 > max2 - min1) {return max1 - min2}
   else {return max2 - min1}
 }
+
+/**
+ * @Description - When given an array that contains arrays of numbers, return the sum of all of the minimum values in the nested arrays. 
+ * @Parameters - We are given an array of nested arrays. The nested arrays contains numbers only. No funny business in any of the test cases of this question.
+ * @Return - We return a number, which is the sum of the min values in the nested arrays.
+ * @Example - ([[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]) => 9).
+ * @Pseudo - There's not really a way to make this too efficent since the nested arrays are not sorted. I used map to adjust the value in the original array to just be the min values and then I used reduce to add them together.
+ */
+
+ function sumOfMinimums(arr) {
+  return arr.map(val => Math.min(...val)).reduce((prev, curr) => prev + curr, 0)
+}

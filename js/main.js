@@ -5619,3 +5619,15 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
  function sumOfMinimums(arr) {
   return arr.map(val => Math.min(...val)).reduce((prev, curr) => prev + curr, 0)
 }
+
+/**
+ * @Description - Given an array that contains arrays of numbers, return the array flattened and sorted.
+ * @Parameter - We are given an array that contains an undefined amount of nested arrays with numbers. It doesn't say if anything could be empty. It always be 2 dimensional.
+ * @Return - We return an array of numbers sorted.
+ * @Example - ([[3, 2, 1], [7, 9, 8], [6, 4, 5]]) => [1, 2, 3, 4, 5, 6, 7, 8, 9]
+ * @Pseudo - I used the flat method to put it into a 1d array and sorted it. If it was was greater than 2d, I could just use .flat(infinity) and that would flat from any depth.
+ */
+
+ function flattenAndSort(array) {
+  return array.flat().sort((a, b) => a - b)
+}

@@ -5631,3 +5631,22 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
  function flattenAndSort(array) {
   return array.flat().sort((a, b) => a - b)
 }
+
+/**
+ * @Description - Given a number, create a N x N mutliplication table and return it
+ * @Paramter - We are given a number. No funny business.
+ * @Return - We return an array of arrays match a N x N multiplication table
+ * @Example - (3) => [[1,2,3], [2,4,6], [3,6,9]]
+ */
+
+ multiplicationTable = function(size) {
+  let answer = []
+  
+  for (let i = 1; i <= size; i++) { //create an array for each number until size
+    let temp = [] //set array to empty
+    for (let k = 1; k <= size; k++) {temp.push(i * k)} //multiply the current number for each number until size and store it in temp
+    answer.push(temp) //add to answer array
+  }
+  
+  return answer
+}

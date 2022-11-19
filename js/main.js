@@ -5650,3 +5650,15 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
   
   return answer
 }
+
+/**
+ * @Description - Given an array of numbers, return only even numbers and using the filter method.
+ * @Parameters - You are given an array of numbers. No funny business
+ * @Return - We return an array of numbers taht are even, if any
+ * @Example - [1, 2, 3] => [2]
+ * @Pseudo - I used the modulo operator to check if 2 can evenly go into the number
+ */
+
+ function getEvenNumbers(numbersArray){
+  return numbersArray.filter(value => value % 2 === 0)
+}

@@ -5662,3 +5662,21 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
  function getEvenNumbers(numbersArray){
   return numbersArray.filter(value => value % 2 === 0)
 }
+
+/**
+ * @Description - Given an array, return whether or not the array is sorted in ascending order, descending order, or not sorted. It will always be one of these three answers.
+ * @Parameter - We are given an array of numbers. Assuming they should not be empty since it must be one of three options. No funny business with it not being a number.
+ * @Return - We return a string depending on how it is sorted or if it is not sorted in one of those ways.
+ * @Example - [3, 6] => "yes, ascending"
+ * @Pseudo - I just sorted an array to check if the string of it will be equal to the string of original array and returned based on that answer.
+ */
+
+ function isSortedAndHow(array) {
+  let cloneArray = [...array].join("") //used because sort() alters the original array
+  let ascString = array.sort((a, b) => a - b).join("")
+  let descString = array.sort((a, b) => b - a).join("")
+
+  if (ascString === cloneArray) {return "yes, ascending"}
+  else if (descString === cloneArray) {return "yes, descending"}
+  else {return "no"}
+}

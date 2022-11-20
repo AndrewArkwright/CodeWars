@@ -5680,3 +5680,15 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
   else if (descString === cloneArray) {return "yes, descending"}
   else {return "no"}
 }
+
+/**
+ * @Description - Given an array of numbers, return only the even numbers and in the same order as they were given.
+ * @Parameters - We are given an array of numbers. It will always have numbers and will only be numbers.
+ * @Return - We return an array of numbers following the instructions above
+ * @Example - [1, 2, 3, 4, 5] => [2, 4]
+ * @Pseudo - I used filter since it removes items and does not change the order of the items
+ */
+
+function noOdds( values ){
+  return values.filter(val => val % 2 === 0)
+}

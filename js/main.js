@@ -5692,3 +5692,23 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
 function noOdds( values ){
   return values.filter(val => val % 2 === 0)
 }
+
+/**
+ * @Description - Given an array and a length, return the last numbers of the given length that are even in the array. The array will always have the given length of even numbers. The order of numbers in the given array must be in the same order.
+ * @Parameter - We are given an array of numbers and a number representing the length of the array we will return. I suppose the length could be 0 and the given array could be empty or have no even numbers.
+ * @Return - We return an array of numbers of the given length
+ * @Example - ([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6, 8]
+ * @Pseudo - It is a waste to go through the entire array if it is not needed so I started from the end and used my while statement to determine when my new array is the correct length to return. I also used unshift to put the items in the correct order in my new array.
+ */
+
+function evenNumbers(array, number) {
+  let answerArr = []
+  
+  let i = array.length - 1
+  while (answerArr.length != number) {
+    if (array[i] % 2 === 0) {answerArr.unshift(array[i])}
+    i--
+  }
+  
+  return answerArr
+}

@@ -5712,3 +5712,13 @@ function evenNumbers(array, number) {
   
   return answerArr
 }
+
+/**
+ * @Description - Given a string of words separated by a space, remove any duplicate consecutive words in the string.
+ * @Parameter - We are given a string of words separated by a space. No funny business.
+ * @Return - We return a string following the rules above
+ * @Example - "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta" => "alpha beta gamma delta alpha beta gamma delta"
+ * @Pseudo - I used filter to remove any values that are equal to the next value.
+ */
+
+ const removeConsecutiveDuplicates = s => s.split(" ").filter((val, ind, arr) => val != arr[ind + 1]).join(" ")

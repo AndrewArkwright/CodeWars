@@ -5722,3 +5722,35 @@ function evenNumbers(array, number) {
  */
 
  const removeConsecutiveDuplicates = s => s.split(" ").filter((val, ind, arr) => val != arr[ind + 1]).join(" ")
+
+ /**
+  * @Description - Given an array of at least two numbers, return the largest sum of two numbers.
+  * @Parameter - We are given an array of at least two numbers. They will always be numbers.
+  * @Return - We return a number, which is the largest sum of two numbers in the given array.
+  * @Example - [10, 14, 2, 23, 19] =>  42
+  * @Pseudo - I chose to just make a for loop to keep track of the largest numbers because using sort or Math.max will most likely take longer.
+  */
+
+  function largestPairSum (numbers) {
+  
+    if (numbers[0] > numbers[1]) {
+      var num1 = numbers[0]
+      var num2 = numbers[1]
+    }
+    else {
+      var num1 = numbers[1]
+      var num2 = numbers[0]
+    }
+    
+    for (let i = 2; i < numbers.length; i++) {
+      if (numbers[i] > num1) {
+        num2 = num1
+        num1 = numbers[i]
+      }
+      else if (numbers[i] > num2) {
+        num2 = numbers[i]
+      }
+    }
+    
+    return num1 + num2
+  }

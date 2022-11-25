@@ -5754,3 +5754,35 @@ function evenNumbers(array, number) {
     
     return num1 + num2
   }
+
+  /**
+   * @Description - Given an array of numbers, return an object with two arrays such that one array is the list of every peak in the given array and the second array is the index of that peak. If that peak is a plateu, return the index of the first peak number. 
+   * @Parameters - We are given an array of numbers that can be empty or will always have numbers in it
+   * @Return - We return an object like shown below in the example. The arrays can be empty if the given array is empty.
+   * @Example - [1,2,3,6,4,1,2,3,2,1]) => {pos:[3,7], peaks:[6,3]}
+   */
+
+   function pickPeaks(arr){
+    let position = []
+    let peaksArr = []
+    
+    for (let i = 1; i < arr.length-1; i++) { //First element cannot be a peak so we just start with 1
+      if (arr[i - 1] < arr[i] && arr[i + 1] < arr[i]) { //if a peak
+        position.push(i)
+        peaksArr.push(arr[i])
+      }
+      else if (arr[i - 1] < arr[i] && arr[i + 1] === arr[i]) { //check for possible plateu [1, 2, 2, 2, 1]
+        let tempVal = arr[i]
+        let tempIndex = i
+        while (arr[i + 1] === tempVal) { //go to end of plateu
+          i++
+        }
+        if (arr[i + 1] < arr[i]) { //if plateu
+          position.push(tempIndex)
+          peaksArr.push(tempVal)
+        }
+      }
+    }
+    
+    return {pos:position, peaks:peaksArr}
+  }

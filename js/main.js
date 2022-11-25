@@ -5786,3 +5786,13 @@ function evenNumbers(array, number) {
     
     return {pos:position, peaks:peaksArr}
   }
+
+  /**
+   * @Description - How many liters would someone drink if they drink .5 litres per hour rounded down.
+   * @Parameters - We are given a number that could be a float, but never seems to be negative or any other value.
+   * @Return - We return a number following the rules above
+   * @Example - (12.3) => 6
+   * @Pseudo - I just used multiplication to find the number and Math.floor to round it down.
+   */
+
+   function litres(time) {return Math.floor(time*.5)}

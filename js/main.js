@@ -5796,3 +5796,15 @@ function evenNumbers(array, number) {
    */
 
    function litres(time) {return Math.floor(time*.5)}
+
+  /**
+   * @Description - Given multiple numbers as parameters, return the number after they have all been multiplied by 2, added together, square reooted, and divided by 2
+   * @Parameter - We are gievn 8 numbers. No funny business
+   * @Return - We return a number following the steps above in order.
+   * @Example - (65,60,75,55,60,63,64,45) => 86
+   * @Pseudo - I used ...arguments to put all of them into an array so I can easily manipulate it with methods. Everything was pretty straight forwards, but when you square rooted the number, it gives a decimal most of the time. I learned after a few tests that they wanted the final number rounded down after everything was done or it would give the incorrect answer.
+   */
+
+   function predictAge(age1,age2,age3,age4,age5,age6,age7,age8){
+    return Math.floor(Math.sqrt([...arguments].map(value => value *= value).reduce((prev, curr) => prev + curr, 0))/2)
+  }

@@ -5808,3 +5808,26 @@ function evenNumbers(array, number) {
    function predictAge(age1,age2,age3,age4,age5,age6,age7,age8){
     return Math.floor(Math.sqrt([...arguments].map(value => value *= value).reduce((prev, curr) => prev + curr, 0))/2)
   }
+
+  /**
+   * @Description - Given an array of objects that contains at least two properties continent and language, return the amount of people with the continent being Europe and language being JavaScript.
+   * @Parameter - We are given an array of objects. Doesn't say whether or not it can be empty.
+   * @Return - We return a number following the rules above.
+   * @Exmaple - [
+    { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
+    { firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
+    { firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
+    { firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
+  ] => 1
+   * @Psuedo - Could use filter, but decided to just use a for loop to make it a little easier to read
+   */
+
+   function countDevelopers(list) {
+    let euroPeople = 0
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].continent === "Europe" && list[i].language === "JavaScript") {
+        euroPeople++
+      }
+    }
+    return euroPeople
+  }

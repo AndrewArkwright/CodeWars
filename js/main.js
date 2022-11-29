@@ -5831,3 +5831,25 @@ function evenNumbers(array, number) {
     }
     return euroPeople
   }
+
+  /**
+   * @Description - Given a string of "_" and "n", return "Car Dead" if you hit more than 15 "n"s or return "Woohoo!"
+   * @Parameters - We are given a string. We are not told whether it can be empty. It does not seem to test any other characters.
+   * @Return - We return a string depending on the given string.
+   * @Example - "n_n_n_n" => "Woohoo!"
+   * @Pseudo - You can filter it and just check if the length is <= 15 to return the results, but I used a while loop to possibly shorten it so you may not have to go through the entire string.
+   */
+
+   function bump(x){
+    let bumps = 0
+    x = x.split("")
+    let i = 0
+    
+    while (bumps <= 15 && i < x.length) {
+      if (x[i] === "n") {bumps++}
+      i++
+    }
+  
+    if (bumps <= 15) {return "Woohoo!"}
+    return "Car Dead"
+  }

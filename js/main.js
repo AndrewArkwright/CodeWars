@@ -5853,3 +5853,27 @@ function evenNumbers(array, number) {
     if (bumps <= 15) {return "Woohoo!"}
     return "Car Dead"
   }
+
+  /**
+   * @Description - We are given a string of characters and must return a number dependng on which vowel is missing in the string.
+   * @Parameter - We are given a string that will always result in one answer.
+   * @Return - We return a number depending on the vowel missing, a = 0, e = 1, i = 2, o = 3, u = 4.
+   * @Example - "Bb Smith sent us six neatly arranged range bicycles" => 3
+   * @Pseudo - There are a few different ways to do it, but I think my code is quite efficient. I don't loop through the string multiple times for each letter. I used an array to store the vowels so I can remove vowels that I have found and don't have to search for them still. Then the last vowel remaining will be my answer. This allows me to just go through the string one time to get the answer and it may be less than the length of string as well.
+   */
+
+   function absentVowel(x){
+    let vowelArray = ["a", "e", "i", "o", "u"]
+    
+    let i = 0
+    while (vowelArray.length != 1) {
+      if (vowelArray.includes(x.charAt(i))) {vowelArray = vowelArray.filter(val => val != x.charAt(i))}
+      i++
+    }
+      
+    if (vowelArray[0] === "a") {return 0}
+    else if (vowelArray[0] === "e") {return 1}
+    else if (vowelArray[0] === "i") {return 2}
+    else if (vowelArray[0] === "o") {return 3}
+    else {return 4}
+  }

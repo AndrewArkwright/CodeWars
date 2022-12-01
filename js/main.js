@@ -5877,3 +5877,23 @@ function evenNumbers(array, number) {
     else if (vowelArray[0] === "o") {return 3}
     else {return 4}
   }
+
+  /**
+   * @Description - Given a string, return an array of the vowel indexes.
+   * @Parameters - We are given a string. No specific rules when it is empty. Will always be a string.
+   * @Return - We return an array of numbers that are indexes of the words. The index that we return starts with 1 and not 0. so we return 1 instead of 0 if the first character is a vowel. It is not case sensative either.
+   * @Example - "orange" => [1,3,6]
+   * @Pseudo - I chose to make an array of vowels to make it cleaner to search if the current character is a string. Make all the characters lowercase as well and then looped through them. I pushed them into a new array, which automatically puts the index numbers in order as well since I started at index of 0 on the string with my loop.
+   */
+
+   function vowelIndices(word){
+    word = word.toLowerCase()
+    let vowelArray = ["a", "e", "i", "o", "u", "y"]
+    let answerArray = []
+    
+    for (let i = 0; i < word.length; i++) {
+      if (vowelArray.includes(word.charAt(i))) {answerArray.push(i + 1)}
+    }
+    
+    return answerArray
+  }

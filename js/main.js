@@ -5897,3 +5897,19 @@ function evenNumbers(array, number) {
     
     return answerArray
   }
+
+  /**
+   * @Description - Given a string, return that string reversed without use the reverse method. This is not a CodeWars problem.
+   * @Paramter - We are given a string, no funny business.
+   * @Return - We return a string following the rules above
+   * @Example - "Hello" => "olleH"
+   * @Pseudo - I decided to use a loop starting at the last index to add each character to another string that I return.
+   */
+
+   function reverseString(str) {
+    let answer = ""
+    for (let i = str.length-1; i >= 0; i--) {
+      answer += str.charAt(i)
+    }
+    return answer
+  }

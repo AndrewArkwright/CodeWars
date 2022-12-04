@@ -5913,3 +5913,37 @@ function evenNumbers(array, number) {
     }
     return answer
   }
+
+  /**
+   * @Description - Given a string jewels and stones, return how many jewels are in your stones.
+   * @Paramters - We are given two strings of English letters between the length of 1 and 50. All characters in jewels are unique so if the string is "aA", there are two total jewels "a" and "A".
+   * @Return - We return a number following the rules above.
+   * @Example - ("aA", "aAAbbbb") => 3
+   * @Pseudo - I made a couple of different programs. The one where I changed jewels into an array was actually faster when using includes, but that is probably due to the small amounts of data.
+   */
+
+   var numJewelsInStones = function(jewels, stones) {
+    let jewelsArray = jewels.split("")
+    let answer = 0
+
+    for(let i = 0; i < stones.length; i++) {
+        if (jewelsArray.includes(stones.charAt(i))) {answer++}
+    }
+    
+    return answer
+};
+
+var numJewelsInStones = function(jewels, stones) {
+  let answer = 0  
+  const jewelObj = {}
+
+  for (let i = 0; i < jewels.length; i++) {
+    jewelObj[jewels.charAt(i)] = true
+  }
+
+  for(let i = 0; i < stones.length; i++) {
+      if (jewelObj[stones.charAt(i)]) {answer++}
+  }
+
+  return answer
+}

@@ -5947,3 +5947,31 @@ var numJewelsInStones = function(jewels, stones) {
 
   return answer
 }
+
+/**
+ * @Description - We are given a string of characters and return the character that repeats the most.
+ * @Parameter - We are given a string of characters.
+ * @Return - We return a character that repeats the most
+ * @Example - "Hello World" => "l"
+ * @Pseudo - I made an object to keep track of each character in the string since it is quick and easy to use. Then I just looped through the object to find the character with the largest number and return it.
+ */
+
+function maxChar(str) {
+  const cache = {}
+
+  for (const i of str) {
+    if (cache[i]) {cache[i]++}
+    else {cache[i] = 1}
+  }
+
+  let char = "", count = 0
+
+  for (const i in cache) {
+    if (cache[i] > count) {
+      count = cache[i]
+      char = i
+    }
+  }
+  
+  return char
+}

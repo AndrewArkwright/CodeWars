@@ -5975,3 +5975,22 @@ function maxChar(str) {
   
   return char
 }
+
+/**
+ * @Description - Given an array of at least two numbers, return the max product of numbers next to each other.
+ * @Parameter - We are given an array of numbers that can be negative, 0, or positive and will be at least of length two.
+ * @Return - We return a number, which is the largest product of numbers next to each other.
+ * @Example - [1, 2, 3] => 6, [2, 1, 3] => 3
+ * @Pseudo - I used a loop to check i and i + 1 until the end of the loop and if it is bigger than the largest product so far, I make it the largest product.
+ */
+
+function adjacentElementsProduct(array) {
+  let maxNum = array[0] * array[1]
+  
+  for (let i = 1; i < array.length - 1; i++) {
+    let tempMax = array[i] * array[i + 1]
+    if (tempMax > maxNum) {maxNum = tempMax}
+  }
+  
+  return maxNum
+}

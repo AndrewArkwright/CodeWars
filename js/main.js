@@ -5994,3 +5994,30 @@ function adjacentElementsProduct(array) {
   
   return maxNum
 }
+
+/**
+ * @Description - Non CodeWars problem. Given a string (magazine) and another string (str), return whether or not you can make each word in a ransom note (str) from the words in the magazine. It is not case sensative and we ignore spaces. The words from the string must be exactly the same and not just part of the word in the magazine.
+ * @Paramters - We are given two strings that are not empty.
+ * @Return - We return true to false whether or not you can make the string from the magazine
+ * @Example - "Hello World", "world" => true, "Hello World", "or" => false
+ * @Pseudo - I used an object to keep track of all of the words in the magazine. Then I looped through each word of the string and if it did not exist in the object or there was not enough word available, I returned false.
+ */
+
+function ransom(magazine, str) {
+  note = magazine.toLowerCase().split(" ")
+  str = str.toLowerCase().split(" ")
+
+  const magazineMap = {}
+
+  for (const i in magazine) {
+    if (magazineMap[note[i]]) {magazineMap[note[i]]++}
+    else {magazineMap[note[i]] = 1}
+  }
+
+  for (const i in str) {
+    if (magazineMap[str[i]] && magazineMap[str[i]] > 0) {magazineMap[str[i]]--}
+    else {return false}
+  }
+
+  return true
+}

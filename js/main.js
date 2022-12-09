@@ -6021,3 +6021,24 @@ function ransom(magazine, str) {
 
   return true
 }
+
+/**
+ * @Description - Given a number, return an array from 1 to that number and if the number is divisable by 5 and 3, the value is FizzBuzz, if divisiable by 5, the value is Buzz, and if the value is divisable by 3, the value is Fizz. Else the value is just the number itself.
+ * @Parameter - We are given a number that will be 1 or larger.
+ * @Return - We return an array of numbers and possibly strings.
+ * @Example - 5 => [1, 2, Fizz, 4, Buzz]
+ * @Pseudo - Just look at the code.
+ */
+
+function fizzbuzz(n) {
+  let array = []
+  
+  for (let i = 1; i <= n; i++) {
+    if (i % 5 === 0 && i % 3 === 0) {array.push("FizzBuzz")}
+    else if (i % 5 === 0) {array.push("Buzz")}
+    else if (i % 3 === 0) {array.push("Fizz")}
+    else {array.push(i)}
+  }
+  
+  return array
+}

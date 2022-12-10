@@ -6042,3 +6042,39 @@ function fizzbuzz(n) {
   
   return array
 }
+
+/**
+ * @Description - We are given a two numbers and must return 1 if there is a single digit number that is repeated three times next to each other in the first number AND two times next to each other in the second number. It must be the same single digit number repeated in both numbers. Else return a 0.
+ * @Parameters - We are given two numbers that are not negative.
+ * @Return - We return 1 or 0 depending on the rules above.
+ * @Example - 10560002, 100 => 1
+ * @Pseudo - I decided to use loop through both arrays once. I used an array to keep track of which numbers are three in a row in the first number and then checked every double repeats in the second number and see if they existed in the array of triplets. I made sure to return right away if I found any that were. Probably should have used an object instead of an array to keep track of the numbers that were triplets.
+ */
+
+function tripledouble(num1, num2) {
+  num1 = num1.toString().split("")
+  num2 = num2.toString().split("")
+  
+  let triple = 0
+  let tripleArr = []
+  
+  for (let i = 0; i < num1.length; i++) {
+    if (num1[i] === num1[i+1]) {
+      if (num1[i] === num1[i+2]) {
+        triple = 1
+        if (!tripleArr.includes(num1[i])) {tripleArr.push(num1[i])} //if not already in the array of triples
+        i += 2 //increment since we checked these already
+      }
+    }
+  }
+  
+  if (triple === 0) {return 0}
+  
+  for (let i = 0; i < num2.length; i++) {
+    if (num2[i] === num2[i+1]) {
+      if (tripleArr.includes(num2[i])) {return 1} //if a double and the number is in the triples array
+    }
+  }
+  
+  return 0
+}

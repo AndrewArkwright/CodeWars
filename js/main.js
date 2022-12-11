@@ -6098,3 +6098,15 @@ function past(h, m, s){
   
   return total
 }
+
+/**
+ * @Description - We are given an array of numbers and must return the inverse of each number in the array.
+ * @Parameter - We are given an array of numbers that can be negative, positive, or 0.
+ * @Return - We return an array of numbers following the rules above.
+ * @Example - [1, -2, 3] => [-1, 2, -3]
+ * @Pseudo - Not really needed
+ */
+
+function invert(array) {
+  return array.map(val => val * -1)
+}

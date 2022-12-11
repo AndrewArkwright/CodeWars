@@ -6078,3 +6078,23 @@ function tripledouble(num1, num2) {
   
   return 0
 }
+
+/**
+ * @Description - We are given three numbers that represent hours, minutes, and seconds and return the amount of milliseconds that equals.
+ * @Parameter - We are given three numbers. The numbers are seem to be in 24 hour format, but it is not specifically said.
+ * @Return - We are return a number depending on the numbers given.
+ * @Example - 0, 1, 0 => 60000
+ * @Pseudo - I chose to convert each number separately and add them together.
+ */
+
+function past(h, m, s){
+  let total
+  
+  total = s * 1000
+  
+  total = total + m * 60 * 1000
+  
+  total = total + h * 60 * 60 * 1000
+  
+  return total
+}

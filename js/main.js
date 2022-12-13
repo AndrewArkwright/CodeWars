@@ -6110,3 +6110,13 @@ function past(h, m, s){
 function invert(array) {
   return array.map(val => val * -1)
 }
+
+/**
+ * @Description - Given an array of numbers (your class's scores) and a number (your score), return true if the number is greater than the average of the numbers in the array.
+ * @Parameters - We are given an array of numbers and a number. We are not told whether the array can be empty or not. All test cases did not test whether there could be some other variable.
+ * @Return - We return true or false depending on the rules above.
+ * @Example - [50, 40, 30], 80 => true
+ * @Pseudo - I used reduce to sum all the numbers in the array and divided it by the length to get the average to compare the numbers.
+ */
+
+const betterThanAverage = (classPoints, yourPoints) => classPoints.reduce((prev, curr) => prev + curr, 0) / classPoints.length > yourPoints ? false : true

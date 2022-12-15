@@ -6120,3 +6120,17 @@ function invert(array) {
  */
 
 const betterThanAverage = (classPoints, yourPoints) => classPoints.reduce((prev, curr) => prev + curr, 0) / classPoints.length > yourPoints ? false : true
+
+/**
+ * @Description - Given two numbers, return the numbers multiplied together if both numbers are positive. Otherwise, return 0.
+ * @Parameters - We are given two numbers that can be positive, 0, or negative.
+ * @Return - We return a number depending on the rules above.
+ * @Example - 5, -5 => 0
+ * @Pseudo - I handled the special case with two negatives that would be > 0 when returning m * n. Otherwise I return m * n as long as it is > 0.
+ */
+
+function paperwork(n, m) {
+  if (n < 0 && m < 0) {return 0}
+  let num = n * m
+  return num > 0 ? num : 0
+}

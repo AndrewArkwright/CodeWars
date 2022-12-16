@@ -6134,3 +6134,14 @@ function paperwork(n, m) {
   let num = n * m
   return num > 0 ? num : 0
 }
+
+/**
+ * @Description - Make a function and return a string that says "hello world!" 
+ * @Parameter - There are no parameters that are given.
+ * @Return - We return a string no matter what
+ * @Example - "hello world!"
+ */
+
+function greet() {
+  return "hello world!"
+}

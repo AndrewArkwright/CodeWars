@@ -6145,3 +6145,14 @@ function paperwork(n, m) {
 function greet() {
   return "hello world!"
 }
+
+/**
+ * @Description - Given an array of numbers, return the average of the numbers. If the array is empty, return 0.
+ * @Parameters - We are given an array of numbers that may be empty.
+ * @Return - We return a number following the rules above.
+ * @Example - [1, 2, 3, 4, 5] => 3
+ */
+
+function findAverage(array) {
+  return array.length === 0 ? 0 : array.reduce((prev, curr) => prev + curr) / array.length
+}

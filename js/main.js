@@ -6156,3 +6156,20 @@ function greet() {
 function findAverage(array) {
   return array.length === 0 ? 0 : array.reduce((prev, curr) => prev + curr) / array.length
 }
+
+/**
+ * @Description - Given a number, return an array of numbers starting from that number until 1.
+ * @Parameters - We are given a number. Number always seems to be positive or 0.
+ * @Return - We return an array of numbers.
+ * @Example - 5 => [5, 4, 3, 2, 1]
+ */
+
+const reverseSeq = n => {
+  let reverseArr = []
+  
+  for (let i = n; i > 0; i--) {
+    reverseArr.push(i)
+  }
+  
+  return reverseArr
+};

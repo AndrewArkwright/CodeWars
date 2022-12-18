@@ -6173,3 +6173,14 @@ const reverseSeq = n => {
   
   return reverseArr
 };
+
+/**
+ * @Description - Given a non-empty array of numbers, return a number such that each number of the array is multiplied in ascending order.
+ * @Parameter - We are given an array of numbers that will not be empty.
+ * @Return - We return a number following the rules above.
+ * @Example - [1, 2, 3, 4] => 24
+ */
+
+function grow(x){
+  return x.reduce((prev, curr) => prev * curr)
+}

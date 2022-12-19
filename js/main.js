@@ -6184,3 +6184,14 @@ const reverseSeq = n => {
 function grow(x){
   return x.reduce((prev, curr) => prev * curr)
 }
+
+/**
+ * @Description - Given an string, return the string capitalized.
+ * @Parameter - We are given a string. No funny business.
+ * @Return - We return a string following the rules above
+ * @Example - "Hello World" => "HELLO WORLD"
+ */
+
+function makeUpperCase(str) {
+  return str.toUpperCase()
+}

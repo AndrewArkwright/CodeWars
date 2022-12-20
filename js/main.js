@@ -6195,3 +6195,14 @@ function grow(x){
 function makeUpperCase(str) {
   return str.toUpperCase()
 }
+
+/**
+ * @Description - Given three numbers, distance to the pump, mpg, and gallons left, return true or false on whether or not you can make it to the gas station. 
+ * @Parameter - We are given three numbers. All numbers in given tests are >= 0.
+ * @Return - We return true or false depending on whether or not you will make it to the gas station with the given inforamtion.
+ * @Example - (50, 25, 2) => true
+ */
+
+const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+  return fuelLeft * mpg >= distanceToPump ? true : false
+ };

@@ -6206,3 +6206,14 @@ function makeUpperCase(str) {
 const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
   return fuelLeft * mpg >= distanceToPump ? true : false
  };
+
+ /**
+  * @Description - When given two numbers that represents the number of bullets you have and the amount of dragons you must defeat, return true or false on whether or not you can defeat all the dragons if each dragon takes two bullets to defeat.
+  * @Parameters - We are given two numbers. The given tests only show cases where the number is 0 or greater and that they are only numbers.
+  * @Return - We return true or false depending on the info above
+  * @Example - (6, 2) => true
+  */
+
+ function hero(bullets, dragons){
+  return bullets / 2 >= dragons ? true : false
+}

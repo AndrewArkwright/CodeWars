@@ -6217,3 +6217,15 @@ const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
  function hero(bullets, dragons){
   return bullets / 2 >= dragons ? true : false
 }
+
+/**
+ * @Description - When given a name return a specific string when the name is a certain name, else it returns another string for everyone else.
+ * @Parameters - We are given a string. No funny business.
+ * @Return - We return a string depending on the given string.
+ * @Example - "Bob" => "Hello, Bob!", "Johnny" => "Hello, my love!"
+ */
+
+function greet(name){
+  if(name === "Johnny") {return "Hello, my love!"}
+  else {return "Hello, " + name + "!"}
+}

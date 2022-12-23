@@ -6229,3 +6229,14 @@ function greet(name){
   if(name === "Johnny") {return "Hello, my love!"}
   else {return "Hello, " + name + "!"}
 }
+
+/**
+ * @Description - When given a string of DNA values, change the DNA values to RNA values.
+ * @Parameter - We are given a string of letters that are capitalized and it could be an empty string.
+ * @Return - We return a string that converts the "T" values (DNA) to "U" (RNA) since that is the only change.
+ * @Example - "GCAT" => "GCAU"
+ */
+
+function DNAtoRNA(dna) {
+  return dna.split("").map(val => val === "T" ? "U" : val).join("")
+}

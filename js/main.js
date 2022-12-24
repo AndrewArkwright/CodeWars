@@ -6240,3 +6240,16 @@ function greet(name){
 function DNAtoRNA(dna) {
   return dna.split("").map(val => val === "T" ? "U" : val).join("")
 }
+
+/**
+ * @Description - When given a number, return a string repeated that many times where i would be the amount of times repeated so far. `${i} sheep...`
+ * @Parameter - We are given number that will be >= 0
+ * @Return - We return a string that varies depending on the given parameter.
+ * @Example - 3 => "1 sheep...2 sheep...3 sheep..."
+ */
+
+var countSheep = function (num){
+  let str = ""
+  for(let i = 1; i <= num; i++) {str += `${i} sheep...`}
+  return str
+}

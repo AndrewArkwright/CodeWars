@@ -6253,3 +6253,14 @@ var countSheep = function (num){
   for(let i = 1; i <= num; i++) {str += `${i} sheep...`}
   return str
 }
+
+/**
+ * @Description - Given an array of numbers, return the average of the numbers combined rounded down.
+ * @Parameter - We are given an array of numbers. The array will never be empty. No funny business from the test cases we are given.
+ * @Return - We return a number following the rules above.
+ * @Example - [1,2,3,4,5] => 3
+ */
+
+function getAverage(marks){
+  return Math.floor(marks.reduce((prev, curr) => prev + curr) / marks.length)
+}

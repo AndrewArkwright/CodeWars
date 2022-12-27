@@ -6264,3 +6264,14 @@ var countSheep = function (num){
 function getAverage(marks){
   return Math.floor(marks.reduce((prev, curr) => prev + curr) / marks.length)
 }
+
+/**
+ * @Description - We are given two arrays of numbers and must return the sum of both arrays together.
+ * @Parameter - We are given two arrays of numbers. No funny business.
+ * @Return - We return a number, which is the sum of all numbers in both arrays.
+ * @Example - [1, 2, 3, 4], [1, 2, 3, 4] => 20
+ */
+
+function arrayPlusArray(arr1, arr2) {
+  return arr1.reduce((prev, curr) => prev + curr, 0) + arr2.reduce((prev, curr) => prev + curr, 0)
+}

@@ -6275,3 +6275,18 @@ function getAverage(marks){
 function arrayPlusArray(arr1, arr2) {
   return arr1.reduce((prev, curr) => prev + curr, 0) + arr2.reduce((prev, curr) => prev + curr, 0)
 }
+
+/**
+ * @Description - We are playing a game of rock, paper, scissors and must return the winner or if they drawed.
+ * @Parameter - We are given two strings. No funny business.
+ * @Return - We return a string depending on who wins or if it is a draw.
+ * @Example - "rock", "paper" => "Player 2 won!"
+ */
+
+const rps = (p1, p2) => {
+  if (p1 === p2) {return "Draw!"}
+  else if (p1 === "scissors" && p2 === "paper") {return "Player 1 won!"}
+  else if (p1 === "rock" && p2 === "scissors") {return "Player 1 won!"}
+  else if (p1 === "paper" && p2 === "rock") {return "Player 1 won!"}
+  else {return "Player 2 won!"}
+};

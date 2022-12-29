@@ -6290,3 +6290,24 @@ const rps = (p1, p2) => {
   else if (p1 === "paper" && p2 === "rock") {return "Player 1 won!"}
   else {return "Player 2 won!"}
 };
+
+/**
+ * @Description - We are given an array of strings that are formatted as "x:y" where x is your team's points and y is your opponents team's points. If x > y, you gain 3 points towards the championship. If x === y, you gain 1 point towards the championship. Else you gain no points. Return how many points you have towards the championship after 10 games.
+ * @Parameters - We are given an array of strings of length 10. The strings are formatted as x:y where x is your points and y is your oppenent's points.
+ * @Return - We return a number following the rules above.
+ * @Example ["1:0","2:0","3:0","4:0","2:1","1:3","1:4","2:3","2:4","3:4"] => 15
+ */
+
+function points(games) {
+  let total = 0
+  
+  for (let i = 0; i < 10; i++) {
+    let team1 = games[i].charAt(0)
+    let team2 = games[i].charAt(2)
+    
+    if (team1 > team2) {total += 3}
+    else if (team1 === team2) {total++}
+  }
+  
+  return total
+}

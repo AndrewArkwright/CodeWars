@@ -6311,3 +6311,20 @@ function points(games) {
   
   return total
 }
+
+/**
+ * @Description - Given a number, return an array from 1 to that number.
+ * @Parameters - We are given a number. It always seems to be greater than 1.
+ * @Return - We return an array of numbers.
+ * @Example - 3 => [1, 2, 3]
+ */
+
+function monkeyCount(n) {
+  let arr = []
+  
+  for(let i = 1; i <= n; i++) {
+    arr.push(i)
+  }
+  
+  return arr
+}

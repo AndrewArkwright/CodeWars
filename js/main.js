@@ -6328,3 +6328,14 @@ function monkeyCount(n) {
   
   return arr
 }
+
+/**
+ * @Description - When given an array of numbers and strings that contain digits, return the sum of all digits as if they are numbers. 
+ * @Parameters - We are given an array of numbers and string that are digits. No funny business otherwise.
+ * @Return - We return the sum of all of the numbers.
+ * @Example - [9, 3, '7', '3'] => 22
+ */
+
+function sumMix(x){
+  return x.reduce((prev, curr) => prev + Number(curr), 0)
+}

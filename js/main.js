@@ -6339,3 +6339,20 @@ function monkeyCount(n) {
 function sumMix(x){
   return x.reduce((prev, curr) => prev + Number(curr), 0)
 }
+
+/**
+ * @Description - Given three numbers that are your grades on tests, return the letter grade based on the average of the three scores. A >= 90, B >= 80 && < 90, C >= 70 && < 80, D >= 60 && < 70, or F if lower. 
+ * @Parameters - We are given three numbers. No funny business.
+ * @Return - We return a string depending on the average of the three given numbers.
+ * @Example - 70,70,100 => 'B'
+ */
+
+function getGrade (s1, s2, s3) {
+  let avg = (s1 + s2 + s3) / 3
+  
+  if (avg >= 90) {return "A"}
+  else if (avg >= 80) {return "B"}
+  else if (avg >= 70) {return "C"}
+  else if (avg >= 60) {return "D"}
+  else {return "F"}
+}

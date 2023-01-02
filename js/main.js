@@ -6356,3 +6356,15 @@ function getGrade (s1, s2, s3) {
   else if (avg >= 60) {return "D"}
   else {return "F"}
 }
+
+/**
+ * @Description - We are given two strings, a visitor name and the bosses name. If the visitor's === the bosses name, return "Hello boss", else return "Hello guest" 
+ * @Parameter - We are given two strings. Names are case sensative. No funny business otherwise.
+ * @Return - We return a string depending on the names given.
+ * @Example - "Bob", "Bob" => "Hello boss"
+ */
+
+function greet (name, owner) {
+  if (name === owner) {return `Hello boss`}
+  else {return "Hello guest"}
+}

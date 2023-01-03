@@ -6368,3 +6368,14 @@ function greet (name, owner) {
   if (name === owner) {return `Hello boss`}
   else {return "Hello guest"}
 }
+
+/**
+ * @Description - We are given two numbers that represent the length and width of a quadrilateral. If the quadrilateral is a sqaure, return the area of it, else return the perimiter.
+ * @Parameter - We are given two numbers. No funny business.
+ * @Return - We return a number depending on the values of the given numbers.
+ * @Example - 3, 3 => 9
+ */
+
+const areaOrPerimeter = function(l , w) {
+  return l === w ? l * w : l * 2 + w * 2
+};

@@ -6379,3 +6379,14 @@ function greet (name, owner) {
 const areaOrPerimeter = function(l , w) {
   return l === w ? l * w : l * 2 + w * 2
 };
+
+/**
+ * @Description - Given an string of characters, return the string without any exclamation points in it. 
+ * @Parameters - We are given a string. No funny business with it.
+ * @Return - We return the given string without any exclamation points.
+ * @Example - "!Hello!!" => "Hello"
+ */
+
+function removeExclamationMarks(s) {
+  return s.split("!").join("")
+}

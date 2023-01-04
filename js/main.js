@@ -6390,3 +6390,14 @@ const areaOrPerimeter = function(l , w) {
 function removeExclamationMarks(s) {
   return s.split("!").join("")
 }
+
+/**
+ * @Description - We are given two strings, an animal and a food dish. If the first and last letter of the animal and dish is the same, return true, else false
+ * @Paramters - We are given two strings. The first one is the name of an animal and the other is a food dish. No funny business.
+ * @Return - We return true or false following the instructions above.
+ * @Example - "bear", "macaroni and cheese" => false     "chickadee", "chocolate cake" => true
+ */
+
+function feast(beast, dish) {
+  return (beast.charAt(0) === dish.charAt(0) && beast.charAt(beast.length - 1) === dish.charAt(dish.length - 1))
+}

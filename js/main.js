@@ -6401,3 +6401,18 @@ function removeExclamationMarks(s) {
 function feast(beast, dish) {
   return (beast.charAt(0) === dish.charAt(0) && beast.charAt(beast.length - 1) === dish.charAt(dish.length - 1))
 }
+
+/**
+ * @Description - We are given a number of days that you will be renting a car. We need to return the total cost of the rental if each day it costs $40 dollars to rent it. In addition, if it is rented for 3 or more days, they get a $20 discount. Also, if it is rented for 7 or more days, they get a $50 discount. If you get the $50 dollar discount, you do not get the $20 discount.
+ * @Parameters - We are given a number. It does not say it is >= 0, but all tests were.
+ * @Return - We return a number following the instructions above.
+ * @Example - 7 => 230
+ */
+
+function rentalCarCost(d) {
+  let total = d * 40
+  if (d > 2 && d < 7) {total -= 20}
+  if (d >= 7) {total -= 50}
+  
+  return total
+}

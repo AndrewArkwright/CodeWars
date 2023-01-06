@@ -6416,3 +6416,16 @@ function rentalCarCost(d) {
   
   return total
 }
+
+/**
+ * @Description - We are given a string that is the current state of a stop light. We need to return the next state of the light.
+ * @Parameters - We are given a string that seems to always be lowercase and will always be a correct state of the light.
+ * @Return - We return a string that is the next state of the light.
+ * @Example - "red" => "green"
+ */
+
+function updateLight(current) {
+  if (current === "green") {return "yellow"}
+  else if (current === "yellow") {return "red"}
+  else {return "green"}
+}

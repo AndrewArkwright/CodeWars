@@ -6454,3 +6454,14 @@ const quarterOf = (month) => {
   else if (month <= 9) {return 3}
   else {return 4}
 }
+
+/**
+ * @Description - We are given an array of values and must return the array such that every even indexed value is removed. 
+ * @Parameter - We are given an array. It will always be an array.
+ * @Return - We return an array following the rules.
+ * @Example - [1, 2, 3, 4, 5] => [1, 3, 5]
+ */
+
+function removeEveryOther(arr){
+  return arr.filter((val, ind) => ind % 2 === 0)
+}

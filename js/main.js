@@ -6429,3 +6429,14 @@ function updateLight(current) {
   else if (current === "yellow") {return "red"}
   else {return "green"}
 }
+
+/**
+ * @Description - Given a string of characters, return that string such that each character is repeated twice right after it. 
+ * @Paramater - We are given a string of characters that may be empty, but otherwise no funny business.
+ * @Return - We return a string following the rules above.
+ * @Example - "Hello" => "HHeelllloo"
+ */
+
+function doubleChar(str) {
+  return str.split("").map(val => val + val).join("")
+}

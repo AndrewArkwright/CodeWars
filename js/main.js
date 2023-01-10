@@ -6440,3 +6440,17 @@ function updateLight(current) {
 function doubleChar(str) {
   return str.split("").map(val => val + val).join("")
 }
+
+/**
+ * @Description - We are given a number that represents the current month it is and must return a number that represents the quarter of the year it is part of.
+ * @Parameter - We are given a number between 1 and 12. No funny business.
+ * @Return - We return a number follwing the rules above.
+ * @Example - 5 => 2
+ */
+
+const quarterOf = (month) => {
+  if (month <= 3) {return 1}
+  else if (month <= 6) {return 2}
+  else if (month <= 9) {return 3}
+  else {return 4}
+}

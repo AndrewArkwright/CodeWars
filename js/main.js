@@ -6465,3 +6465,17 @@ const quarterOf = (month) => {
 function removeEveryOther(arr){
   return arr.filter((val, ind) => ind % 2 === 0)
 }
+
+/**
+ * @Description - When given an array, return the value of the first non consecutive number in the array. If they are all consecutive numbers, return null.
+ * @Parameter - We are given an array of at least two numbers. No funny business otherwise.
+ * @Return - We return a number that is the value of the first non consecutive number in the array.
+ * @Example [1, 2, 3, 5, 6, 7] => 5
+ */
+
+function firstNonConsecutive (arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] + 1 != arr[i + 1]) {return arr[i + 1]}
+  }
+  return null
+}

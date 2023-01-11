@@ -6479,3 +6479,15 @@ function firstNonConsecutive (arr) {
   }
   return null
 }
+
+/**
+ * @Description - When given a number represented in km/h, return the number as cm/sec rounded down.
+ * @Parameters - We are given a number greather than or equal to 0. No funny business.
+ * @Return - We return a number following the rules above/
+ * @Example - 1.08 => 30
+ * @Pseudo - I wrote it out as an equation (1.08 / 100,000)x = 30. x = 27.7777777778. Then I used the answer for x to multiply the given number.
+ */
+
+function cockroachSpeed(s) {
+  return Math.floor(s * 27.7777777778)
+}

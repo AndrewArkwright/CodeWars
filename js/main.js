@@ -6491,3 +6491,14 @@ function firstNonConsecutive (arr) {
 function cockroachSpeed(s) {
   return Math.floor(s * 27.7777777778)
 }
+
+/**
+ * @Description - Given the capacity, the amount of people on the bus, and the amount of people waiting, return 0 if all of the people can board the bus, else return the amount of people over the capicity that cannot get on.
+ * @Parameters - We are given three numbers. All tests were positive numbers that produced proper results. Don't have to worry problems like the capcity being larger than the amount of people on the bus.
+ * @Return - We return 0 or the amount of people who cannot fit on the bus that are waiting.
+ * @Example - 100, 60, 50 => 10
+ */
+
+function enough(cap, on, wait) {
+  return cap - on >= wait ? 0 : wait - (cap - on)
+}
